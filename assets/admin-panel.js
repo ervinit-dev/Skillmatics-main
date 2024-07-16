@@ -1,4 +1,4 @@
-if(window.frameElement) {
+ if(window.frameElement) {
   var $live = $(parent.document.getElementsByClassName("theme-editor__add-section")),
       $added = $(parent.document.getElementsByClassName("theme-editor__index")),
       icon_youtube = false,
