@@ -1,0 +1,72 @@
+<style>
+    /* The container */
+    .lfgrcontainer {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default radio button */
+    .lfgrcontainer input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    /* Create a custom radio button */
+    .lfgrcheckmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 18px;
+      width: 18px;
+      border: 2px solid #2196F3;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    .lfgrcontainer:hover input ~ .lfgrcheckmark {
+        background-color: #adcce5;
+    }
+    
+    /* When the radio button is checked, add a blue background */
+    .lfgrcontainer input:checked ~ .lfgrcheckmark {
+      background-color: #2196F3;
+    }
+    
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .lfgrcheckmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the indicator (dot/circle) when checked */
+    .lfgrcontainer input:checked ~ .lfgrcheckmark:after {
+      display: block;
+    }
+    
+    /* Style the indicator (dot/circle) */
+    .lfgrcontainer .lfgrcheckmark:after {
+         top: 3px;
+        left: 3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+    .lfgrcontainer span{
+        margin:0;
+    }
+    .lfgrcontainer p{
+        margin: -3px 0 0px 0;
+    }
+    </style>

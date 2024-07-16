@@ -1,0 +1,504 @@
+<style>
+  
+  .hs-add-discount.hs-disabled{
+    opacity:1;
+    pointer-events: unset;
+  }
+  button.hs-apply-discount.hs-loading-btn .hs-text--apply--discount{
+    visibility: visible;
+  }
+  button.hs-apply-discount.hs-loading-btn .hs--loading {
+    display: none !important;
+}
+.removeCoupon{
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  background: aqua;
+  left: 134px;
+  top: 30%;
+  z-index:1;
+}
+.cart_announcement .hs-announcement p{
+  font-family: 'AvenirRegular' !important;
+  font-size: 14px !important;
+  margin:0;
+  padding:4px 0;
+}
+.cart_announcement .hs-announcement p strong{
+  font-family: 'AvenirMedium' !important;
+}
+.free-gift-container-title{
+  padding:10px;
+}
+.free-gift-container-title span{
+  text-align:left !important;
+}
+.hs-content-discounts-calculate-checkout.hs-enable-content-rewards{
+  padding:0;
+  margin: 0 -10px;
+}
+.hs-rewards-content{
+  padding:10px 10px;
+}
+.free-gift-container{
+  padding:5px;
+  padding-top:2px;
+}
+.free-gift-container .cards .card p{
+  margin:5px 0 0 0;
+}
+.free-gift-container .card button{
+  background: #fff !important;
+  color: #ff805a !important;
+  font-family: 'MikadoRegular';
+  text-transform: none !important;
+}
+@media(min-width:720px){
+  .cart_offer_slider .hs-text-free-shipping{
+    font-size:22px !important;
+  }
+  .cart_offer_slider .hs-text-free-shipping span.money{
+    font-size:22px !important;
+  }
+  .cart_announcement .hs-announcement p{
+    font-size:22px !important; 
+    line-height:22px !important;
+  }
+  .cart_announcement .hs-announcement p{
+    font-size: 18px !important;
+  }
+  .free-gift-container-title span{
+    text-align:center !important;
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+  .free-gift-container .cards .card .title{
+    font-size:18px !important;
+  }
+  .free-gift-container .cards .card .price{
+    font-size:20px !important;
+  }
+  .free-gift-container .cards .card .compare-price{
+    font-size:14px !important;
+  }
+  .free-gift-container .card button{
+    font-size:20px !important;
+  }
+}
+</style>
+<div class="container-indent">
+  <div class="container">
+    <form action="/cart" method="post" novalidate id="updateform">
+      <h1 class="tt-title-subpages noborder" style="padding-bottom:15px; margin:0;">{{ 'cart.general.title' | t }}</h1>
+      <div class="cart_announcement" style="display:none">
+        <div class="hs-announcement hs-mySwiper">
+          <!-- Additional required wrapper -->
+          <div class="hs-swiper-wrapper">
+          <!-- Slides -->
+            <div class="hs-swiper-slide">
+              <p >
+                Win a <strong>FREE GIFT</strong> worth min Rs. 299<br/> on orders above Rs. 1499<br><br>Buy 2 and get <strong>10%</strong> off | Use code <strong>BYOB10</strong>  <br> Buy 3 and get <strong>15%</strong> off | Use code <strong>BYOB15</strong>  <br> <br> <strong>Note:</strong> Coupon codes are not valid on combos. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cart_offer_slider" style="display:none; padding-bottom:2rem;">
+        <div class="hs-content-discounts-calculate-checkout hs-enable-content-rewards" style="border-bottom:none;">
+          <div class="hs-rewards-content">
+            <div class="hs-progess-content hs-hidden-percentages">
+              <div class="hs-text-free-shipping" style="font-size: 22px !important;"></div><div id="hs_shipping_progress">
+                <div id="hs_shipping_bar" style="width: 0%;">
+                </div>
+              </div>
+              <span class="hs-progress-indicator hs-progress-price"><span class="money">Rs. 0</span></span><span class="hs-progress-indicator hs-progress-price"><span class="money">Rs. 750</span></span><span class="hs-progress-indicator hs-progress-price"><span class="money">Rs. 1,499</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %} <div class="also_bought">
+        ///
+      </div> {% endcomment %}
+      <div class="tt-shopcart-table-02">
+        <table>
+          <tbody>
+            {%- for item in cart.items -%}
+            {%- assign inv_man = item.variant.inventory_management -%}{%- assign inv_qua = item.variant.inventory_quantity | plus: 0 -%}{%- unless inv_man -%}{%- assign inv_qua = 100000 -%}{%- endunless -%}{%- if item.variant.inventory_policy == "continue" -%}{%- assign inv_qua = 100000 -%}{%- endif -%}
+            <tr data-tr='tt-shopcart-table-02-{{ item.id }}' id="{{ item.id }}">
+              <td>
+                <div class="tt-product-img">
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.alt | escape }}">
+                </div>
+              </td>
+              <td>
+                <h2 class="tt-title">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  {%- unless item.variant.title contains 'Default' -%}
+                  <p>
+                    {%- for option in item.product.options -%}
+                    {{ option }}: {{ item.variant.options[forloop.index0] }}<br/>
+                    {%- endfor -%}
+                  </p>
+                  {%- endunless -%}
+                </h2>
+                <ul class="tt-list-parameters">
+                  <li>
+                    <div class="tt-price">{{item.price | money}}</div>
+                  </li>
+                  <li>
+                    <div class="detach-quantity-mobile"></div>
+                  </li>
+                  <li>
+                    <div class="tt-price subtotal">{{item.line_price | money}}</div>
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <div class="tt-price">{{item.price | money}}</div>
+              </td>
+              <td>
+                <div class="detach-quantity-desctope">
+                  <div class="tt-input-counter style-01 input-counter">
+                    <span class="minus-btn"{% if item.quantity == 1 %} style="pointer-events:none;opacity:0.5;"{% endif %}></span>
+                    <input{% if inv_qua == 1 %} disabled{% endif %} type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" size="{{ inv_qua }}" title="{% if inv_qua < 100000 %}{{inv_qua}} {{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.many_in_stock' | t }}{% endif %}">
+                    <span class="plus-btn"
+                          title="{% if inv_qua < 100000 %}{{inv_qua}} {{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.many_in_stock' | t }}{% endif %}"
+                          {% if item.quantity == inv_qua %} style="pointer-events:none;opacity:0.5;"{% endif %}
+                          ></span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="tt-price subtotal">{{item.line_price | money}}</div>
+              </td>
+              <td>
+                <span onclick="removeItemManually({{item.id}})" class="tt-btn-close svg-icon-delete js-deleteitem-ajax" title="{{ 'cart.header.button_delete' | t }}" data-line="{{ forloop.index }}">
+                  {% include "svg-delete-icon" %}
+                </span>
+              </td>
+            </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+
+        {% comment %} <div class="tt-shopcart-btn">
+          <div class="col-left">
+            <a class="btn-link" href="/"><i class="icon-e-09"></i>{{ 'cart.general.continue_shopping' | t }}</a>
+          </div>
+          <div class="col-right">
+            <a class="btn-link svg-icon-delete-inline"
+               href="/cart/clear">
+              {% include "svg-delete-icon" %}{{ 'cart.general.clear_cart' | t }}
+            </a>
+            {% unless item.ajaxcartpage %}
+            <a class="btn-link" href="#" name="update"><i class="icon-e-17"></i>{{ 'cart.general.update' | t }}</a>
+            {% endunless %}
+          </div>
+        </div> {% endcomment %}
+      </div>
+      <div class="tt-shopcart-col">
+        <div class="row">
+          {%- if item.cart_shipping_enable -%}
+          <div class="col-md-6 col-lg" style="display:block">
+            {% comment %} <div class="tt-shopcart-box">
+              {%- include 'shipping-calculator' -%}
+            </div> {% endcomment %}
+            
+              <div class="hs-popup-cart-sp-load" style="font-family:'MikadoRegular'">
+                {% comment %} {% render 'peopleAlsoBought' %} {% endcomment %}
+                {% render 'cart-product-slider' %}
+              </div>
+            
+          </div>
+          {%- endif -%}
+          {% comment %} {%- if item.cart_notes_enable -%}
+          <div class="col-md col-lg">
+            <div class="tt-shopcart-box">
+              <h4 class="tt-title">{{ 'cart.label.note' | t }}</h4>
+              <p>{{ 'cart.label.note_text' | t }}</p>
+              <div class="form-default">
+                <textarea id="note" name="note" class="form-control" rows="7">{{ cart.note }}</textarea>
+              </div>
+            </div> 
+          </div>
+          {%- endif -%} {% endcomment %}
+          {%- if item.cart_notes_enable == false and item.cart_shipping_enable == false -%}
+          <div class="col-md-6 col-lg-6">
+          </div>
+          {%- endif -%}
+          <div class="col-md-6 {% if item.cart_notes_enable == false and item.cart_shipping_enable == false %}col-lg-6{% else %}col-lg{% endif %}">
+            {% comment %} <div class="hs-add-discount" style="font-family:'AvenirRegular' !important;">
+              <div class="hs-success-code-discount"></div>
+                <label class="hs-discount-heading" for="hs-id-discount" style="display: none !important;">Discount:</label>
+                <div class="hs-content-discount-add">
+                  <input type="text" class="hs-discount-code hs-event-static" id="hs-id-discount" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter Discount Code" value="" name="hsdiscount" autocomplete="off">
+                  <button title="Apply" type="button" class="hs-apply-discount btn hs-event-static" onclick="submitCoupon()">
+                    <span class="hs-text--apply--discount">Apply</span>
+                    <span class="hs--loading"><div class="hs-spinner"></div></span>
+                  </button>
+                </div>
+              <div class="hs-error-code-discount"></div>
+              <div style="position:relative">
+                <div class="hs-tag-code-discount" ></div>
+                <div class="removeCoupon" onclick="removeCoupon()"></div>
+              </div>
+            </div> {% endcomment %}
+            <div class="tt-shopcart-box tt-boredr-large">
+              <table class="tt-shopcart-table01">
+                <tbody>
+                  <tr id="subtotal">
+                    <th>{{ 'cart.general.subtotal' | t }}</th>
+                    <td>{{ cart.total_price | money }}</td>
+                  </tr>
+                  <tr id="tax" style="display:none">
+                    <th>{{ 'cart.general.shipping_total' | t }}</th>
+                    <td>{{ 0 | money }}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr id="grandtotal">
+                    <th>{{ 'cart.general.total' | t }}</th>
+                    <td>{{ cart.total_price | money }}</td>
+                  </tr>
+                </tfoot>
+              </table>
+              {% if settings.terms_cond_checkbox_show %}
+              <div class="checkbox-group term-conditions-checkbox term-conditions-checkbox-js">
+                <input type="checkbox" id="cart-term-conditions-checkbox" value="1">
+                <label for="cart-term-conditions-checkbox">
+                  <span class="check"></span>
+                  <span class="box"></span>
+                  {{ settings.terms_cond_checkbox_text }}
+                </label>
+              </div>
+              {% endif %}
+              {% render 'gokwik-checkout' %}
+              <!-- <button type="submit" class="btn btn-lg" name="checkout"{% if settings.terms_cond_checkbox_show %} disabled{% endif %}><span class="icon icon-check_circle"></span>{{ 'cart.general.checkout' | t }}</button> -->
+           
+          
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  window.HS_SLIDE_CART_LOADED = function(cart) {
+    document.querySelector('.cart_announcement').style.display="block";
+    document.querySelector('.cart_offer_slider').style.display="block";
+  }
+  {% comment %} const removeCoupon=document.querySelector('.hs-tag-code-discount button'); {% endcomment %}
+  {% comment %} function submitCoupon(){
+    
+    window.HS_SLIDE_CART_APPLY_DISCOUNT(document.querySelector('#hs-id-discount').value);
+  }
+  function removeCoupon(){
+    console.log("removineg")
+    {% comment %} const coupon=document.querySelector('.hs-tag-code-discount button').getAttribute('data-name') {% endcomment %}
+    window.HS_SLIDE_CART_DISCARD_DISCOUNT()
+  } {% endcomment %}
+  function updatePrices2(data){
+    var m = Shopify.formatMoney(data.total_price, money_format);
+    if($('#grandtotal').length){
+      if($('#grandtotal .money').length){
+        $('#grandtotal .money').replaceWith(m);
+      }
+      else{
+        $('#grandtotal td').html(m);
+      }
+    }
+    if($('#subtotal').length){
+      if($('#subtotal .money').length){
+        $('#subtotal .money').replaceWith(m);
+      }
+      else{
+        $('#subtotal td').html(m);
+      }
+    }
+    $('#wrapper-response').length && $('#wrapper-response').hide();
+    $('#tax').length && $('#tax').hide();
+    $('body').trigger('refreshCurrency');
+  }
+  function getGiftAddedInner(cart){
+    for(let i=0; i<cart.items.length;i++){
+        if(cart.items[i].title.includes('Free Gift')){
+            return cart.items[i].id;
+        }
+      }
+      return 0;
+  }
+  function createGiftRow(data,itemId){
+     const item=data;
+    console.log("item",data)
+    const giftRow=`<tr data-tr='tt-shopcart-table-02-${item.id}' id="${item.id}">
+      <td>
+        <div class="tt-product-img">
+          <img src="${item.image}" alt="${item.alt}">
+        </div>
+      </td>
+      <td>
+        <h2 class="tt-title">
+          <a href="${ item.url }">${item.product_title}</a>
+        </h2>
+        <ul class="tt-list-parameters">
+          <li>
+            <div class="tt-price">Rs. ${item.price}</div>
+          </li>
+          <li>
+            <div class="detach-quantity-mobile"></div>
+          </li>
+          <li>
+            <div class="tt-price subtotal">Rs. ${item.line_price}</div>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <div class="tt-price">Rs. ${item.price}</div>
+      </td>
+      <td>
+        <div class="detach-quantity-desctope">
+          <div class="tt-input-counter style-01 input-counter">
+            
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="tt-price subtotal">Rs. ${item.line_price}</div>
+      </td>
+      <td>
+        <span onclick="removeItemManually(${item.id})" class="tt-btn-close svg-icon-delete js-deleteitem-ajax" title="Delete" >
+          {% include "svg-delete-icon" %}
+        </span>
+      </td>
+    </tr>`
+    const innerBody = document.querySelector("table tbody")
+    innerBody.insertAdjacentHTML('beforebegin',giftRow) ;
+  }
+
+  function removeFreeGiftCartPageInner(lineItemId){
+    var params = {
+        type: 'POST',
+        url: '/cart/change.js',
+        data: {
+            quantity: 0,
+            id: `${lineItemId}`
+        },
+        dataType: 'json',
+        success: function(data) {
+            {% comment %} document.querySelectorAll('.tt-shopcart-table-02 tr')[lineItemId-1].remove() {% endcomment %}
+            document.querySelector(`[data-tr=tt-shopcart-table-02-${lineItemId}]`).remove()
+             updatePrices2(data); 
+             {% comment %} location.reload();  {% endcomment %}
+        }
+      };
+      $.ajax(params);
+  }
+  function removeItemManually(itemId){
+    var params = {
+      type: 'POST',
+      url: '/cart/change.js',
+      data: {
+          quantity: 0,
+          id: `${itemId}`
+      },
+      dataType: 'json',
+      success: function(data) {
+        document.querySelector(`[data-tr=tt-shopcart-table-02-${itemId}]`).remove()
+
+          if((data.total_price/100)<1499){
+            const lineItemGift =getGiftAddedInner(data);
+            if(lineItemGift){
+              removeFreeGiftCartPageInner(lineItemGift)
+            }
+            if(document.querySelector('.free-gift-container')){
+              document.querySelector('.free-gift-container').remove();
+            }
+          }else{
+            const lineItemGift =getGiftAddedInner(data);
+            if(lineItemGift<1){
+              showGift(data)
+            }
+          }
+          {% comment %} location.reload();  {% endcomment %}
+          updatePrices2(data); 
+      }
+    };
+    $.ajax(params);
+  }
+  function addGift2(lineItemId){
+    const buttonClicked = document.querySelector(`[data-id="free-gift-${lineItemId}"]`)
+    document.querySelectorAll('.free-gift-container button').forEach((item)=>{
+        item.disabled=true;
+        item.style.opacity='0.8';
+    });
+    buttonClicked.innerText='Adding...';
+    var params = {
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+            quantity: 1,
+            id: lineItemId
+        },
+        dataType: 'json',
+        success: function(data) {
+            localStorage.setItem("_cfg_ad",'true');
+            createGiftRow(data,lineItemId)
+            if(document.querySelector('.free-gift-container')){
+              document.querySelector('.free-gift-container').remove();
+            }
+            {% comment %} location.reload(); {% endcomment %}
+        }
+    };
+    $.ajax(params);
+  }
+  function showGift(cart){
+    const freeGiftSnippet=`
+        <div class="free-gift-container">
+            
+        <div class="cards">
+            {% assign productsData= collections['free-gift'].products %}
+            {% for item in productsData %}
+                {% if item.variants.first.available %}
+                    <div class="card">
+                        <a href="{{ item.url }}">
+                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                        </a>
+                        <a href="{{ item.url }}">
+                            <p class="title">{{ item.title }}</p>
+                        </a>
+                        <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                        <p class="price">
+                        {{ item.price |money}}
+                        <span class="compare-price"> {{ item.compare_at_price|money }}</span>
+                        </p>
+                        {% comment %} <form action="/cart/add" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="{{ item.variants.first.id }}" />
+                            <input type="submit" value="Add" />
+                        </form> {% endcomment %}
+                        <button onclick="addGift2({{ item.variants.first.id }})" data-id="free-gift-{{item.variants.first.id}}" >Add to cart</button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+    `;
+    if(!((cart.total_price/100)<1499) ){
+      if(!getGiftAddedInner(cart)){
+        console.log(getGiftAddedInner(cart),"getGiftAddedInner(cart)")
+      
+        if(!document.querySelector('.free-gift-container')){
+          document.querySelector('.hs-rewards-content').insertAdjacentHTML("afterend", freeGiftSnippet);
+          {% comment %} document.querySelector('.tt-shopcart-table-02').insertAdjacentHTML("afterend", freeGiftSnippet); {% endcomment %}
+        }
+      }
+    }
+    
+  }
+ 
+  showGift({{ cart|json }});
+</script>

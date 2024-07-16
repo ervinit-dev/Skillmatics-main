@@ -1,0 +1,104 @@
+{% assign FeaturedTags = product.metafields.collection.featured_tag | split: ',' %}
+
+{% for FeaturedTag in FeaturedTags %}
+  {% if FeaturedTag contains 'Parents Choice' %}
+    <img
+      class="mobile-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Parent's Choice"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Parent_s_Choice-desk.webp?v=1718676979"
+    >
+    <img
+      class="desktop-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Parent's Choice"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Parent_s_Choice-mob.webp?v=1718676958"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'BestSeller' %}
+    <img
+      class="mobile-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="BestSeller"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Bestseller-desk.webp?v=1718676978"
+    >
+    <img
+      class="desktop-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="BestSeller"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Bestseller-mob.webp?v=1718676958"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'Recommended' %}
+    <img
+      class="mobile-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Recommended"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Recommended-desk.webp?v=1718676979"
+    >
+    <img
+      class="desktop-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Recommended"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Recommended-mob.webp?v=1718676958"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'New Launch' %}
+    <img
+      class="mobile-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="New Launch"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/New_launch-desk.webp?v=1718676979"
+    >
+    <img
+      class="desktop-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="New Launch"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/New_launch-mob.webp?v=1718676958"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'Selling Fast' %}
+    <img
+      class="mobile-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Selling Fast"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Selling_Fast-desk.webp?v=1718676979"
+    >
+    <img
+      class="desktop-hidden"
+      width="100%" loading="lazy"
+      height="auto"
+      alt="Selling Fast"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Selling_Fast-mob.webp?v=1718676958"
+    >
+  {% endif %}
+{% endfor %}
+
+<style>
+  .featured_badge {
+    width: 130px;
+    height: 32px;
+    position: relative;
+    margin-bottom: -32px;
+  }
+
+  .tt-image-box.d1 > div > img {
+    width: unset;
+    border-top-left-radius: 11px;
+  }
+
+  @media (max-width: 890px) {}
+</style>

@@ -1,0 +1,174 @@
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="filters">
+    <div class="filter">
+      <h3>Product Categories</h3>
+      <select onchange="selectCategory(this)">
+        <option value="all">All</option>
+        <option value="board-card-games">Board & Card Games</option>
+        <option value="learning-education">Learning & Education</option>
+        <option value="stem-building-toys">STEM Building Toys</option>
+      </select>
+    </div>
+    <div class="filter">
+      <h3>Product Age</h3>
+      <select onchange="selectCategory(this)">
+        <option value="all">All</option>
+        <option value="0-3-years">0-3 Years</option>
+        <option value="3-6-years">3-6 Years</option>
+        <option value="6-9-years">6-9 Years</option>
+        <option value="8-13-years">8-13 Years</option>
+      </select>
+    </div>
+    <div class="filter">
+      <h3>Product Theme</h3>
+      <select onchange="selectCategory(this)">
+        <option value="all">All</option>
+        <option value="animals-dinosaurs">Animals & Dinosaurs</option>
+        <option value="brain-puzzles">Brain Puzzles</option>
+        <option value="science-math">Science & Math</option>
+        <option value="space-geography">Space & Geography</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <a class="filter-reset" href="/collections/{{ collection.handle }}">Reset Filter</a>
+  </div>
+</div>
+
+<button class="openbtn" onclick="openNav()">&#9776; Filters</button>
+
+<style>
+    .filters {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 2rem;
+    }
+
+      .filter > h3 {
+        font-size: 18px;
+        font-family: MikadoRegular;
+        font-weight: normal;
+        color: #06374F;
+        margin: 10px 0;
+      }
+
+    .filter > h3:after {
+    content: ''; /* required to display pseudo elements */
+    height: 1px; /* this works like a border-width */
+    width: 100%; /* you can use a percentage of parent or fixed px value */
+    background: #CCC; /* the color of border */
+    position: absolute;
+    bottom: -5px; /* position it at the bottom of parent */
+    margin: 0 auto; left: 0; right: 0; /* horizontal centering */
+    }
+
+    /* The sidepanel menu */
+  .sidepanel {
+  height: auto;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 33.5%;
+      left: 100px;
+      background-color: #fdf7f4;
+      overflow-x: hidden;
+      transition: 0.5s;
+      border: 0px solid;
+  }
+
+  /* The sidepanel links */
+  .sidepanel a {
+  padding: 0;
+      font-size: 16px;
+      color: #06374F;
+      display: block;
+      transition: 0.3s;
+      font-family: 'AvenirRegular';
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: #f1f1f1;
+  }
+
+  /* Position and style the close button (top right corner) */
+  .sidepanel .closebtn {
+  position: absolute;
+      top: 6px;
+      right: 26px;
+      font-size: 28px;
+      margin-left: 50px;
+  }
+
+  /* Style the button that is used to open the sidepanel */
+  .openbtn {
+      font-size: 18px;
+      cursor: pointer;
+      color: #06374F;
+      background: transparent;
+      font-family: "MikadoRegular";
+      border: none;
+  }
+
+  .sidepanel a:hover {
+      color: #06374F;
+  }
+
+  @media (max-width: 678px) {
+    .sidepanel {
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      
+    }
+    .filters {
+          display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+      padding: 0 5%;
+    }
+  }
+  
+</style>
+
+<script>
+    /* Set the width of the sidebar to 250px (show it) */
+  function openNav() {
+    document.getElementById("mySidepanel").style.width = "30vw";
+    }
+
+  /* Set the width of the sidebar to 0 (hide it) */
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }
+</script>
+
+<script>
+  function checkMediaQuery() {
+  // If the inner width of the window is greater then 768px
+  if (window.innerWidth < 768) {
+    // Then log this message to the console
+    document.getElementById("mySidepanel").style.width = "70vw";
+  }
+}
+// Add a listener for when the window resizes
+window.addEventListener('resize', checkMediaQuery);
+</script>
+
+<script type="text/javascript">
+  function selectCategory(obj){
+      var urlString = "{{ collection.url }}/";
+      var selectCategory = obj.options[obj.selectedIndex];
+      if (selectCategory.value != "nothing"){             window.location = urlString + selectCategory.value;        }
+          }
+</script>

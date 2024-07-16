@@ -1,0 +1,49 @@
+{% assign section_collection = section.settings.collection %}
+{% unless cart.item_count == 0 %}
+  {% assign product_collection_qty = 0 %}
+  {% for line_item in cart.items %}
+    {% for line_item_product_collection in line_item.product.collections %}
+      {% if line_item_product_collection.title == section_collection.title %}
+        {% assign product_collection_qty = product_collection_qty | plus: line_item.quantity %}
+        {% if product_collection_qty >= 3 %}
+          {% assign show_gifting_product = true %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if show_gifting_product %}
+      <div class="wrapper page-margin">
+        <h2 class="free-gift-title">Choose Free Gift of your choice</h2>
+        <div class="cart-gift-flex">
+          {% for product in section_collection.products %}
+            <div class="cart-gift-flex-item">
+              <a href="{{ product.url }}"><img src="{{ product.featured_image | img_url: "medium" }}"></a>
+              <h3 class="h5--accent strong name_wrapper" style="text-align: center">{{ product.title }}</h3>
+              <p style="text-align: center;">{{ product.price | money }}</p>
+
+              <form method="post" action="/cart/add" style="text-align: center">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                <input min="1" max="1" type="number" id="quantity" name="quantity" value="1"/>
+
+                <input type="submit" value="ADD TO CART" class="btn">
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Cart Free Gift",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Free Gift Collection"
+    }
+  ]
+}
+{% endschema %}

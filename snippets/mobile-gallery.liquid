@@ -1,0 +1,45 @@
+<div class="product-images-carousel tt-product-single-carousel-horizontal">
+    <ul id="smallGallery" class="arrow-location-02 slick-animated-show-js{% if op_group != false %} withfiltres{% endif %}">
+    {%- assign vfilter = '' -%}
+    {% for media in product.media %}
+    {%- if op_group != false -%}{%- assign _v = 'filter' | append: op_group[forloop.index0] | replace: ' ', '_' -%}{%- endif -%}
+    <li class="{{ _v }}">
+        {%- if media.media_type == 'video' or media.media_type =='external_video' -%}
+        <a href="#"
+            {% if forloop.first %} class="zoomGalleryActive"{% endif %}
+            data-image="{{ 'dummy.png' | asset_url }}" 
+            data-target="{{ media.id }}"
+            data-item-type="{{ media.media_type }}">
+        <div class="prpage-video-play-icon">
+            {% render "svg-product-page-play" %}
+        </div>
+        <img srcset="{{ media.preview_image | img_url: '300x' }}" data-lazy="{{ media.preview_image | img_url: 'medium' }}" alt="{{ media.alt }}">
+        </a>
+        {%- elsif media.media_type == 'model' -%}
+        <a href="#"
+            {% if forloop.first %} class="zoomGalleryActive"{% endif %}
+            data-image="{{ 'dummy.png' | asset_url }}" 
+            data-target="{{ media.id }}"
+            data-item-type="{{ media.media_type }}">
+        <div class="prpage-video-cube-icon">
+            {% render "svg-product-page-cube" %}
+        </div>
+    <img srcset="{{ media.preview_image | img_url: '300x' }}" data-lazy="{{ media.preview_image | img_url: 'medium' }}" alt="{{ media.alt }}">
+        </a>
+        {%- else -%}
+        <a href="#"
+            {% if forloop.first %} class="zoomGalleryActive"{% endif %}
+            data-image="{{ media.preview_image | img_url: '1024x1024' }}" 
+            data-zoom-image="{{ media.preview_image | img_url: '2048x2048' }}"
+            data-target="{{ media.id }}"
+            data-item-type="{{ media.media_type }}">
+        <img srcset="{{ media.preview_image | img_url: '300x' }}" data-lazy="{{ media.preview_image | img_url: 'medium' }}" alt="{{ media.alt }}">
+        </a>
+        {%- endif -%}
+    </li>
+    {%- if op_group != false -%}{%- assign vfilter = vfilter | replace: _v, ' ' | append: _v | append: ' ' -%}{%- endif -%}
+    {%- endfor -%}
+    {%- assign vfilter = '<li class="' | append: vfilter | append: '">' -%}
+    {% include 'product_page_gallery_video' tagopen:vfilter tagclose:'</li>' %}
+    </ul>
+</div>

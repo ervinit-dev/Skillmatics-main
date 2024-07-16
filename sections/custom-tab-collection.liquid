@@ -1,0 +1,185 @@
+{% capture placeholder-img %}
+{{ 'placeholder-small.webp' | asset_url}} 
+{% endcapture %}
+<style>
+    .collectiontabscroll:not(.slick-initialized) .coll-product-item{display:none}
+     .coll-product-item .tt-img img {   aspect-ratio: 1 / 1;}
+  .coll-product-item span.old-price,.coll-product-item span.new-price{font-family:'AvenirRegular'!important;font-weight:500}
+ .coll-product-item .tt-product .tt-description .tt-price .old-price, .coll-product-item span.old-price{color:#9BA2A6 !important;font-weight:500;}
+ .coll-product-item span.new-price{color:#06374F!important;font-weight:900;}
+@media screen and (max-width: 749px) {
+    .coll-product-item .tt-title {
+        font-family: 'MikadoMedium' !important;
+        font-weight: 500 !important;
+        font-size: 16px !important;
+        color: #06374F !important;
+        text-align: left !important;
+        margin-top: 0 !important;
+    }
+   .coll-product-item span.old-price{font-size:12px}
+   .coll-product-item span.new-price{font-size:16px;}
+  .coll-product-item h2.tt-title.prod-thumb-title-color.\31 {    margin-top: 0 !important;}
+   .coll-product-item .tt-description .tt-price { text-align: left !important;}
+    .coll-product-item button.tt-btn-addtocart.addtocart-item-js.thumbprod-button-bg.hs-event-static {
+  max-width: 100%; position: initial;width:100%;font-family:'AvenirRegular'!important;  font-size:16px!important;
+  border: 2px solid #ff805a;padding:0;margin:0 auto!important;color:#ffffff;font-weight:800;background:#ff805a;
+}
+}
+  @media (min-width: 750px) {  
+   .coll-product-item .tt-price{margin:0!important;}
+   .coll-product-item .alireviews-review-star-rating1, .coll-product-item .alireviews-review-star-rating {
+ text-align: left !important;}
+    .coll-product-item .prod-thumb-title-color a {
+        font-family: 'MikadoMedium' !important;
+        font-weight: 500 !important;}
+        .coll-product-item button.tt-btn-addtocart.addtocart-item-js.thumbprod-button-bg.hs-event-static {
+      background: rgba(255, 255, 255, 0);
+  max-width: 100%; position: initial;width:100%;font-family:'MikadoMedium'!important;  font-size:20px;
+  border: 2px solid #ff805a;padding:0;margin:0 auto!important;color:#ff805a;font-weight:500;
+} .coll-product-item span.old-price{font-size:16px;}
+    .coll-product-item span.new-price{  font-size:20px;}
+  }
+</style>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .coll-product-item .baby {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.08);
+}
+  @media (max-width: 749px) {    
+   #section-{{ section.id }}  .customsection-title h2 { font-size: 20px;}
+}
+  #section-{{ section.id }} ul.slick-dots {    margin-top: 10px !important;}
+
+
+{%- endstyle -%}
+
+<div style="background: #E9F4F9;" id="section-{{ section.id }}" class="custom-tab-collection">
+  <div class="collection container section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
+ {%- if section.settings.title!= blank -%}<div class="customsection-title"><h2 class="btn-link-01 font-d-MikadoMedium  font-MikadoMedium color-brand">{{ section.settings.title }}</h2></div>{%- endif -%}
+
+       <ul class="custom-tabs tab nav nav-tabs tt-tabs-default" role="tablist">
+        {%- for block in section.blocks -%}
+        <li class="tab-titles nav-item coll-product-tab-{{ forloop.index }}" role="presentation">
+          <a href="#{{ section.id }}{{ forloop.index }}" class="tabtitles nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" role="tab"  aria-label="tab">{{ block.settings.title }}</a>
+        </li>
+        {%- endfor -%}
+      </ul>
+     <div class="tab-content">
+        {%- for block in section.blocks -%}     
+        <div id="{{ section.id }}{{ forloop.index }}" class="tab-pane{% if forloop.first %} active{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
+      
+          
+       <div class="collection-tab-container">
+ <div class="collectiontabscroll row tt-layout-product-item">
+      {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+      <div class="coll-product-item col-6 col-md-3 col-lg-3 coll-product-item-{{ forloop.index }}">
+        {%- include "tab-product-grid-item" -%}
+      </div>
+      {%- endfor -%}
+    </div> 
+    {%- if section.settings.show_view_all !=blank -%}
+    <div class="viewalldiv text-center">
+      <a href="/collections/{{ block.settings.collection }}" class="viewall-btn">{{ section.settings.show_view_all }}</a>
+    </div>
+    {%- endif -%}
+
+  </div>
+          
+    
+        </div>
+        {%- endfor -%}
+      </div>
+ </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Tab Collection",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [  
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Title",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 4,
+      "label": "ProductTo Show"
+    },
+    {
+      "type": "text",
+      "id": "show_view_all",     
+      "label": "View all Label"
+    },
+    {
+      "type": "header",
+      "content": "padding spaceg"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Tab",
+      "settings": [
+          {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Tab Title",
+      "label": "Title"
+    },
+     {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }     
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "featured collection tab"
+    }
+  ]
+}
+{% endschema %}

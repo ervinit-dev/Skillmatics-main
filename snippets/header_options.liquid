@@ -1,0 +1,36 @@
+{%- if settings.header_design == "header_type_5" -%}
+{%- else -%}
+{%- if settings.search_is_open -%}
+<div class="tt-parent-box tt-desctop-parent-headtype1">
+  <div class="tt-search-opened-headtype1 headerformplaceholderstyles">
+    <form action="/search" method="get" role="search">
+      <button type="submit" class="tt-btn-search" aria-label="serach product">
+        <i class="icon-f-85"></i>
+      </button>
+      <input class="tt-search-input"
+             type="search"
+             name="q"
+             placeholder="{{ 'general.search.place_holder' | t }}">
+      <input type="hidden" name="type" value="product" />
+    </form>
+  </div>
+</div>
+{%- endif -%}
+{%- endif -%}
+
+{%- include "menu-search" -%}
+{% comment %}<div class="account-login-icon">
+   {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+          <account-icon>
+            {%- if customer and customer.has_avatar? -%}
+              {{ customer | avatar }}
+            {%- else -%}
+              {% render 'icon-account' %}
+            {%- endif -%}
+          </account-icon>
+          <span class="visually-hidden"> login </span>
+        </a>
+      {%- endif -%}</div>{% endcomment %}
+{%- include "menu-cart" -%}
+

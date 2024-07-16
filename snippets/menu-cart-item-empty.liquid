@@ -1,0 +1,37 @@
+<div class='item-html-js hide'>
+  <div class="tt-item">
+    <a href="#" title="{{ 'cart.header.view_product' | t }}">
+      <div class="tt-item-img">
+        img
+      </div>
+      <div class="tt-item-descriptions">
+        <h2 class="tt-title">title</h2>
+
+        <ul class="tt-add-info">
+          <li class="details">details</li>
+        </ul>
+
+        <div class="tt-quantity"><span class="qty">qty</span> X</div> <div class="tt-price">price</div>
+        
+        
+      <div class="quantityareaindrawer">
+       <div class="qtydiv">
+       <div class="qtybox">
+          <span data-line="{{ forloop.index }}" data-index="{{ forloop.index0 }}" class="btnqty qtyminus icon icon-minus">-</span>
+          <input type="text" id="quantity" name="properties[quantity]" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+          <span data-line="{{ forloop.index  }}" data-index="{{ forloop.index0 }}" class="btnqty qtyplus icon icon-plus">+</span>
+        </div>
+      </div>
+     </div>  
+        
+        
+        
+      </div>
+    </a>
+    <div class="tt-item-close">
+      <a href="/cart/change?id=0&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js" title="{{ 'cart.header.button_delete' | t }}">
+        {% include "svg-delete-icon" %}
+      </a>
+    </div>
+  </div>
+</div>

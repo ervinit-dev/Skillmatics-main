@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    function disableGiftQuantityFieldInCartOverride(arguments) {
+        cart = arguments[0];
+        jQuery = arguments[1];
+        setTimeout(function() {
+            jQuery.each(cart.items, function(cartItemKey, cartItemValue) {
+                if (cartItemValue.product_type == 'singleton_gift' || callFunctionSM('checkIfProductIsGiftByProductID', [cartItemValue.product_id, jQuery], true)) {
+                    jQuery('.hs-event-static').each(function() {
+                        //pre temy ktore maju id variantu ulozene v input[name="updates[]"] attribute
+                        quantityAttribute = jQuery(this).attr(sm_quantity_selector_attr);
+                        if (typeof quantityAttribute !== 'undefined' && quantityAttribute !== false) {
+                            if (quantityAttribute.indexOf(cartItemValue.variant_id) !== -1  && cartItemValue.price == 0) {
+                                if (!callFunctionSM('allowToChangeGiftQuantity', [jQuery], true)) {
+                                    jQuery(this).on('change keyup paste', function () {
+                                        jQuery(this).val(1);
+                                    });
+                                    jQuery(this).siblings('.hs-qtybutton').css('visibility', 'hidden');
+                                    jQuery(this).val(1);
+                                    jQuery(this).attr('type', 'text');
+                                    jQuery(this).siblings().each(function() {
+                                        buttonsAttribute = jQuery(this).attr('data-qty');
+                                        if (typeof buttonsAttribute !== 'undefined' && buttonsAttribute !== false) {
+                                            if (buttonsAttribute !== -1) {
+                                                jQuery(this).css('visibility', 'hidden');
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        }
+        
+                        //pre temy ktore maju id variantu ulozene v .cart-item cart-remove-button a[href^="/cart/change?id=' + cartItemValue.id + '"] attribute
+                        if (jQuery(this).parents('.cart-item').length > 0) {
+                            cartItemClassObject = jQuery(this).parents('.cart-item');
+                            if (cartItemClassObject.find('cart-remove-button a[href^="/cart/change?id=' + cartItemValue.id + '"]').length && cartItemValue.price == 0) {
+                                if (!callFunctionSM('allowToChangeGiftQuantity', [jQuery], true) && cartItemClassObject.find('quantity-input input').length > 0) {
+                                    cartItemClassObject.find('quantity-input input').attr('type', 'text');
+                                    cartItemClassObject.find('quantity-input input').on('change keyup paste', function () {
+                                        jQuery(this).val(1);
+                                    });
+                                    cartItemClassObject.find('quantity-input input').siblings('button').css('visibility', 'hidden');
+                                }
+                            }
+                        }
+        
+                    })
+                }
+            });
+        }, 3000)
+    }
+</script>

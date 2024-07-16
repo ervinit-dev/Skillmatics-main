@@ -1,0 +1,424 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<section class="contact-us__container">
+	<div class="contact-us__wrapper">
+    	
+      <h1 class="contact-us__heading__new">Contact us</h1>
+
+    <div class="contact-us__section">      
+      <div id="spaceA" class="section__content">
+        	<div class="contact-us__sub-heading">
+		For any queries, call us on +91-9152331018 <br>or email us at help@skillmatics.in
+
+              {% form 'contact' %}
+
+			{% if form.posted_successfully? %}
+				<div class="successForm feedback">
+					{{ 'contact.form.post_success' | t }}
+				</div>
+		{% endif %}
+
+
+        {% if form.errors %}
+        
+			<div class="errorForm feedback">
+			<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+			<p>Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+			{% for field in form.errors %}
+			<p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+			{% endfor %}
+			</div>
+		{% endif %}
+        	</div>
+
+  <div id="contactFormWrapper">
+	<p> 
+    <!--<label>{{ 'contact.form.name' | t }}</label>-->
+	<input type="text" required id="contactFormName" name="contact[name]" placeholder="Name">
+	</p>
+	
+	<p>
+	<!--<label>{{ 'contact.form.email' | t }}</label>-->
+	<input type="email" required id="contactFormEmail" name="contact[email]" placeholder="Email Address">
+	</p>
+     <p>
+	
+	<input type="tel" maxlength="10" minlength="10" required id="contactFormnumber" name="contact[number]" placeholder="Phone number">
+	</p>
+	<!--<p>
+	<label>{{ 'contact.form.subject' | t }}</label>
+	<input type="text" required id="contactFormSubject" name="contact[subject]" placeholder="Subject">
+	</p>--!>
+
+  	<p>
+	<!--<label>{{ 'contact.form.message' | t }}</label>-->
+	<textarea required rows="5" id="contactFormMessage" name="contact[body]" placeholder="Type your message here..."></textarea>
+	</p>
+
+  	<p>
+	<input type="submit" class="home-subscribe-btn" id="contactFormSubmit" value="{{ 'contact.form.send' | t }}" />
+	</p>
+  </div>
+
+		{% endform %}
+        
+      <div class="contact-us__emails">
+
+	Customer Queries<br />
+	<a href="mailto:help@skillmaticsworld.com" target="_blank" rel="noopener">help@skillmatics.in</a><br />
+	
+    <br />
+<!-- 	Press Inquiries, Partnerships etc.<br />
+    <a href="mailto:hello@skillmaticsworld.com" target="_blank" rel="noopener">hello@skillmatics.in</a><br /> -->
+      
+      </div>
+      </div>
+    </div>      
+
+  </div>
+</section>
+
+<style>
+  input#contactFormnumber{
+     margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     border: 1px solid rgba(6, 55, 79, 0.5) !important;
+       border-radius: 4px !important;
+     padding-left:24px !important;
+     color: #06374F;
+        width: 100%;
+    height: 51px;
+    background: #fff !important;
+    padding-left: 24px;
+    text-align: left;
+    font-size: 20px;
+}
+   input#contactFormnumber::placeholder{
+   font-family: 'AvenirRegular';
+font-style: normal;
+     color:#BABBC1;
+font-weight: 400;
+font-size: 20px;
+ }
+  }
+  .fa-chevron-down:before {
+    content: "\f078";
+}
+ 
+  input#contactFormSubmit {
+      font-family: Mikado;
+      font-size: 24px !important;
+    }
+  
+ input#contactFormName::placeholder{
+   font-family: 'AvenirRegular';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+ }
+   input#contactFormEmail::placeholder{
+    font-family: 'AvenirRegular';
+font-style: normal;
+font-weight: 400;
+font-size: 20px; 
+   }
+  textarea#contactFormMessage::placeholder{
+    font-family: 'AvenirRegular';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+    line-height: normal;
+  }
+  
+   input#contactFormEmail{
+     margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     border: 1px solid rgba(6, 55, 79, 0.5) !important;
+       border-radius: 4px !important;
+     padding-left:24px !important;
+     color: #06374F;
+    }
+    input#contactFormName{
+       margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     border: 1px solid rgba(6, 55, 79, 0.5) !important;
+        border-radius: 4px !important;
+      color: #06374F;
+    }
+    textarea#contactFormMessage{
+       margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     border: 1px solid rgba(6, 55, 79, 0.5) !important;
+        border-radius: 4px !important;
+      line-height: normal;
+      padding-top: 10px;
+      color: #06374F;
+      height: 100px;
+    }
+  input#contactFormEmail::placeholder{
+    color:#616471 !important;
+    opacity: 50%;
+    
+  }
+  input#contactFormName::placeholder{
+    color:#616471 !important;
+    opacity: 50%;
+  }
+  textarea#contactFormMessage::placeholder{
+    color:#616471 !important;
+    opacity: 50%;
+  }
+  
+  .contact-us__container {
+    padding-bottom: 40px;
+    min-height: 30rem;
+    background: #FDF7F4;
+/*     background-image: url({{ "mobile-faq-bg.png" | asset_img_url: "720x" }}); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+  }
+
+  .contact-us__heading {
+    display: inline-flex;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2em;
+    color: #374559;
+    background-image: url({{ "heading-bg.png" | asset_url }});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  
+  .contact-us__sub-heading {
+    padding-bottom: 0px;
+    font-size: 20px;
+    color: #06374F;
+    text-align: center;
+    font-family: 'AvenirRegular';
+  }
+  
+  .contact-us__emails {
+    font-family: 'AvenirRegular';
+font-style: normal;
+font-weight: 500;
+    font-size: 24px;
+    color: #06374F;
+    text-align: center;
+    margin: 5vh 0px 0vh 0px;
+  }
+  
+  .contact-us__emails > a {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .section__content {
+/*     margin-bottom: 6rem; */
+  	color: #616471;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.5em;
+  }
+  
+  .section__content a {
+  	    font-family: 'AvenirRegular';
+    font-weight: 200;
+    color: #3980C3;
+  }
+  
+  .section__content strong {
+  	font-weight: 600;
+  }
+  
+  .contactFormWrapper > p {
+    margin: 16px 0;
+  }
+  
+  @media (min-width: 1024px) {
+    .contact-us__container {
+/*       max-height: 180vh !important; */
+/*       min-height: 80vh; */
+/*       background-image: url({{ "mobile-faq-bg.png" | asset_img_url: "2000x" }}); */
+    }
+
+    .contact-us__wrapper {
+      width: 425px;
+      margin: 0 auto;
+    }
+
+    .contact-us__heading {
+      font-size: 1.5rem;
+    }
+    
+    .section__content {
+      font-size: 0.95rem;
+    }
+    
+  }
+  
+/*   #spaceA {
+ 	padding-bottom:20% !important; 
+  }
+   */
+  
+   .contact-us__heading__new {
+     padding-top:40px;
+	font-size: 40px;
+	text-align: center;
+	color: #06374F;
+/*     margin-bottom: 1rem; */
+     font-family:'MikadoMedium';
+     font-weight: 500;
+     text-transform: none;
+     opacity:1.0;
+     letter-spacing: normal;
+  }
+  
+  @media (max-width:480px){
+    
+    h1:not(.tt-title-subpages):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+      font-size: 28px;
+    }
+    .home-subscribe-btn {
+      width: 100% !important;
+    }
+    .circles {
+      display: none !important;
+    }
+    .utils {
+      margin-bottom: 0px; 
+    }
+    textarea#contactFormMessage
+    {
+     margin-bottom:8px !important; 
+    }
+    input#contactFormName
+    {
+        margin-bottom:8px !important; 
+    }
+    input#contactFormEmail{
+     padding-left:10px !important; 
+      margin-bottom:8px !important;
+      overflow: auto !important;
+    }
+     input#contactFormnumber{
+        padding-left:10px !important; 
+      margin-bottom:8px !important;
+      overflow: auto !important;
+     }
+    input#contactFormnumber::placeholder{
+         color:#BABBC1 !important;
+   font-family: 'Avenir';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+      
+ }
+    input#contactFormName::placeholder{
+   font-family: 'Avenir';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+ }
+   input#contactFormEmail::placeholder{
+    font-family: 'Avenir';
+font-style: normal;
+font-weight: 400;
+font-size: 16px; 
+   }
+  textarea#contactFormMessage::placeholder{
+    font-family: 'Avenir';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+  }
+    .contact-us__container{
+      padding-bottom:0px !important;
+    }
+    
+    .contact-us__heading__new {
+      padding-top:24px;
+      font-size: 28px;
+      color: #06374F;
+      font-weight: 500;
+      font-family: MikadoMedium;
+      line-height: normal;
+      letter-spacing: normal;
+    	margin-bottom: 8px;
+      padding-bottom: 0px !important;
+    }
+    div#contactFormWrapper {
+      padding-top:0px !important;
+         padding-bottom:0px !important;
+    padding: 24px;
+}
+    .contact-us__sub-heading {
+    font-size: 16px;
+      font-family: Avenir;
+    padding: 24px;
+    padding-bottom: 24px !important;
+    padding-top: 0px !important;
+    font-weight: 400;
+  }
+    input#contactFormSubmit {
+      font-family: Mikado;
+      font-size: 20px !important;
+      height: 59px;
+    }
+    
+    input, textarea {
+      height: 54px !important;
+      font-size: 16px !important;
+      padding-left: 13px !important;
+    }
+    
+      #contactFormWrapper > p {
+    	margin:0 !important;
+  		}
+    
+    .home-subscribe-btn {
+      padding: 0px !important;
+      min-width: 100%;
+    }
+    
+    .contact-us__emails {
+      font-size: 20px !important; 
+      margin: 24px;
+      margin-bottom:0px !important;
+padding-bottom:24px !important;
+      
+    }
+    
+      .contact-us__emails > a {
+    font-size: 16px;
+    font-weight: 500 !important;
+  }
+    
+  }
+  
+/** Form CSS **/
+  .contact-form {margin:6px 0 0 0;}
+  .feedback {padding:0.5em 0.7em;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+  .feedback p {padding:0.5em 0 !important;margin:0 !important;}
+  .successForm {background:#bde0a8;color:green;}
+  .errorForm {background:#eebdbd;color:red;}
+  #contactFormName,#contactFormEmail,textarea {width:100%; height:51px; background:#fff !important; padding-left:24px; text-align: left; font-size: 20px;}
+  .contactFormWrapper {padding-right:25%;}
+  .home-subscribe-btn {
+    margin: 15px auto;
+    height: 64px !important;
+    border-radius: 4px !important;
+    background-color:#62BD81 !important;
+    box-shadow: none !important;
+    width: 425px;
+	font-weight: 700!important;
+	letter-spacing: .6px!important;
+	font-family: 'MikadoMedium'!important;
+    border: none !Important;
+    color: #fff;
+    cursor:pointer;
+  }
+
+</style>

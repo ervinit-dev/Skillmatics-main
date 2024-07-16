@@ -1,0 +1,472 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{%- assign item = section.settings -%}
+{%- paginate blog.articles by item.blog_list -%}
+<style>
+  #tt-pageContent {
+    padding-top: 70px;
+  }
+  @media (max-width: 767px) {
+    #tt-pageContent {
+      padding-top: 24px;
+    }
+    body.pageblog.loaded h1 {
+      font-size: 28px !important;
+    }
+    .tt-listing-post .tt-post .tt-post-content .tt-title a {
+      font-size: 20px;
+    }
+    .tt-listing-post .tt-post .tt-post-content .tt-description, .tt-listing-post .tt-post .tt-post-content .tt-btn a {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+</style>
+<div class="container-indent">
+  <div class="container container-fluid-custom-mobile-padding">
+    <h1 class="tt-title-subpages noborder">{%- unless current_tags -%}{{ blog.title }}{%- else -%}{{ blog.title }}&nbsp;{{ 'blogs.article.title_result' | t }}&nbsp;{{ current_tags.first | replace: '-', ' ' }}{%- endunless -%}</h1>
+      
+    {%- case item.layout -%}
+    {%- when 'left_column' -%}
+    <div class="row flex-sm-row-reverse">
+      <div class="col-sm-12 col-md-8 col-lg-9">
+        {%- include 'blog-listing' -%}
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-3 leftColumn">
+        {%- include 'blog-sidebar' -%}
+      </div>
+    </div>
+
+    {%- when 'right_column' -%}
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-9">
+        {%- include 'blog-listing' -%}
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-3 rightColumn">
+        {%- include 'blog-sidebar' -%}
+      </div>
+    </div>
+    
+    {%- when 'masonry_grid_2' -%}
+    <div class="tt-blog-masonry">
+      <div class="tt-blog-init tt-grid-col-2 tt-layout-01-post tt-add-item">
+        {%- for article in blog.articles -%}
+        {%- include 'blog-masonry-item' -%}
+        {%- endfor -%}
+      </div>
+    </div>    
+    {%- if paginate.parts.size > 0 -%}
+  <div class="cont">
+       <div class="product-pagintion">
+  
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list list-unstyled" role="list">
+      {%- if paginate.previous -%}
+        <li class="pagination__item--next1 list-item">
+          <a href = '{{ paginate.previous.url }}'  class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+         <i class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- for part in paginate.parts -%}
+        <li class="list-item">
+          {%- if part.is_link -%}
+            <a href=' {{ part.url }} ' class="pagination__item link" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <a role="link" aria-disabled="true" class="pagination__item pagination__item--current light" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+            {%- else -%}
+              <span class="pagination__item">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- if paginate.next -%}
+        <li class="list-item">
+          <a href = '{{  paginate.next.url }}' class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+          <i style="transform: rotate(180deg);" class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+       </div>
+{%- endif -%}
+    
+    {%- when 'masonry_grid_3' -%}
+    <div class="tt-blog-masonry">
+      <div class="tt-blog-init tt-grid-col-3 tt-layout-01-post tt-add-item">
+        {%- for article in blog.articles -%}
+        {%- include 'blog-masonry-item' -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if paginate.parts.size > 0 -%}
+  <div class="cont">
+       <div class="product-pagintion">
+  
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list list-unstyled" role="list">
+      {%- if paginate.previous -%}
+        <li class="pagination__item--next1 list-item">
+          <a href = '{{ paginate.previous.url }}'  class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+         <i class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- for part in paginate.parts -%}
+        <li class="list-item">
+          {%- if part.is_link -%}
+            <a href=' {{ part.url }} ' class="pagination__item link" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <a role="link" aria-disabled="true" class="pagination__item pagination__item--current light" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+            {%- else -%}
+              <span class="pagination__item">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- if paginate.next -%}
+        <li class="list-item">
+          <a href = '{{  paginate.next.url }}' class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+          <i style="transform: rotate(180deg);" class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+       </div>
+{%- endif -%}
+
+    {%- else -%}
+    <div class="row">
+      <div class="col-12">
+        {%- include 'blog-listing' half: ' tt-half'%}
+      </div>
+    </div>
+    
+    {%- endcase -%}
+      
+  </div>
+</div>
+{%- endpaginate -%}
+
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Design",
+        "default": "left_column",
+        "options": [
+          {
+            "value": "left_column",
+            "label": "with Left Column"
+          },
+          {
+            "value": "right_column",
+            "label": "with Right Column"
+          },
+          {
+            "value": "no_column",
+            "label": "No Column"
+          },
+          {
+            "value": "masonry_grid_2",
+            "label": "Masonry Grid 2"
+          },
+          {
+            "value": "masonry_grid_3",
+            "label": "Masonry Grid 3"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Thumbnails Settings"
+      },
+      {
+        "type": "text",
+        "id": "blog_list",
+        "label": "Show items",
+        "default": "6",
+      	"info": "Integer"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_tags_uppercase",
+        "label": "Tags uppercase",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_comments",
+        "label": "Show comments",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_button",
+        "label": "Show button",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
+      },
+      {
+        "type": "checkbox",
+        "id": "truncate_excerpt",
+        "label": "Truncate Excerpt",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "truncate",
+        "label": "Show Words",
+        "default": "15",
+        "info": "Integer"
+      },
+      {
+        "type": "text",
+        "id": "truncate_last_symbols",
+        "label": "Last Symbols",
+        "default": "..."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "categories",
+        "name": "Blogs",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "BLOGS"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Blogs",
+            "info": "Separate blog names with a comma"
+          }
+        ]
+      },
+      {
+        "type": "about",
+        "name": "About",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "ABOUT"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "240x240px"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "HTML",
+            "default": "Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+          },
+          {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Link",
+            "info": "Optional"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_button",
+            "label": "Show button",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Button Name",
+            "default": "READ MORE"
+          }
+        ]
+      },
+      {
+        "type": "tags",
+        "name": "Tags",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "TAGS"
+          },
+          {
+            "type": "checkbox",
+            "id": "blog_tags_uppercase",
+            "label": "Tags uppercase",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "recent_post",
+        "name": "Recent Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "RECENT POST"
+          },
+          {
+            "type": "blog",
+            "id": "sidebar_recent_blog_name",
+            "label": "Blog Name"
+          },
+          {
+            "type": "text",
+            "id": "sidebar_recent_blog_count",
+            "label": "Post Count",
+            "info": "Integer",
+            "default": "3"
+          },
+          {
+            "type": "checkbox",
+            "id": "blog_show_tags",
+            "label": "Show tags",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "blog_tags_uppercase",
+            "label": "Tags uppercase",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "blog_show_author",
+            "label": "Show author",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "blog_show_date",
+            "label": "Show date",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_comments",
+            "label": "Show comments",
+            "default": true
+          },
+          {
+            "type": "paragraph",
+            "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
+          },
+          {
+            "type": "checkbox",
+            "id": "truncate_excerpt",
+            "label": "Truncate Excerpt",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "truncate",
+            "label": "Show Words",
+            "default": "15",
+            "info": "Integer"
+          },
+          {
+            "type": "text",
+            "id": "truncate_last_symbols",
+            "label": "Last Symbols",
+            "default": "..."
+          }
+        ]
+      },
+      {
+        "type": "custom_html",
+        "name": "Custom Html",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "TITLE"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "HTML"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+		"limit": 1,
+        "name": "Newsletter",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "NEWSLETTER SIGNUP"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Text",
+			"default": "Subscribe to our email and be the first to know about our special offers! In addition, we will give you a 15% discount on the next order after registration."
+          },
+          {
+            "type": "textarea",
+            "id": "form_text",
+            "label": "Form text",
+			"default": "Enter your e-mail"
+          },
+          {
+            "type": "textarea",
+            "id": "button",
+            "label": "Button text",
+			"default": "GET!"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}

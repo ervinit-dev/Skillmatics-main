@@ -1,0 +1,650 @@
+
+<style>
+  .banner-forbuildables-community-exclusive{display:none;}
+    .comfort-stripe-desktop{
+    }
+    #collections_filter > h1 {
+      padding-top: 40px;
+    }
+  .list-item{
+    cursor:pointer;
+  }
+  .list-unstyled{
+   list-style:none;
+  }
+  .pagination__list {
+    display: flex;
+
+    justify-content: center;
+    padding-left:0;
+  }
+
+  .pagination__list > li {
+    flex: 1 0 40px;
+    max-width: 40px;
+  }
+
+  .pagination__list > li:not(:last-child) {
+    margin-right: 5px;
+  }
+   .pagination__list > li:nth-last-child(2) {
+    margin-right: 0px;
+  }
+  .pagination__item {
+    color: rgb(var(--color-foreground));
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40px;
+    font-size:18px;
+    border-radius:2px;
+    border: 1px solid rgba(6, 55, 79, 0.16);
+    width: 100%;
+    padding: 0;
+    text-decoration: none;
+    background:#E9F4F9;
+  }
+   .collectionsubtitle{font-size:21px;line-height:30px;} 
+    @media screen and (max-width:767px){
+       .collectionsubtitle{font-size:14px;line-height:25px;} 
+    .all-collection{margin-top:8px;}
+    .all-collection img{max-width:100%;object-fit:cover;}
+    }
+  @media screen and (max-width: 552px){
+    .header-popup-bg {display:none !important;}
+    .comfort-stripe-desktop{
+      margin-top:0;
+    }
+    #collections_filter > h1 .collection_desc {
+      padding-top: 4px;
+    }
+     .pagination-wrapper {
+    margin-top: 32px;
+  }
+    .pagination__list > li {
+    flex: 1 0 32px;
+    max-width: 32px;
+  }
+    .pagination__item{
+      font-size:16px;
+      height:32px;
+    }
+  }
+  a.pagination__item:hover::after {
+    height: 0.1rem;
+  }
+  .pagination__item .icon-caret {
+    height: 0.6rem;
+  }
+  .pagination__item::hover{
+   cursor: pointer;
+  }
+  .pagination__item--next:hover .icon {
+    transform: rotate(90deg) scale(1.07);
+  }
+
+  .pagination__item--prev .icon {
+    margin-right: -0.2rem;
+    transform: rotate(-90deg);
+  }
+
+  .pagination__item--prev:hover .icon {
+    transform: rotate(-90deg) scale(1.07);
+  }
+
+  .pagination__item-arrow:hover::after {
+    display: none;
+  }
+  .pagination__item--current{
+   background: #1D81C4;
+    color:white !important;
+  }
+    .pagination__item--next1{
+      margin-right:10px !important;
+    }
+    .pagination__item--prev{
+
+    background:white;
+  }
+    .pagination__item--next{
+    margin-left:10px;
+    background:white;
+  }
+</style>
+{%- assign item = settings -%}
+{%- assign item_sidebar = item.sidebar -%}
+{%- capture flip_sidebar -%}{% if item_sidebar contains "rightColumn" %} flex-sm-row-reverse{% endif %}{%- endcapture -%}
+{%- assign pagination_limit_const = settings.pagination_limit | times: 1 -%}
+
+<div class="return-gifting-collection" style="display:none;padding:0px">
+  <a href="#bundles"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_Return_Gift_Banner_1.webp"
+      class="mobile-only"
+      loading="lazy"
+      fetchpriority="low"
+      alt="bundles"
+      width="400px"
+      height="150px"
+  ></a>
+  <a href="#bundles"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_Return_Gift_Banner_1.webp"
+      class="desktop-only"
+      loading="lazy"
+      fetchpriority="low"
+      alt="bundles"
+      height="150px"
+      style="
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 3;
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: block;
+      "
+  ></a>
+</div>
+
+<!--
+  <div class="bundle-save-collection" style="display:none;padding:0px">
+  <a href="#bundles" aria-label="{{ collection.title }}"><img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mobile_bundle_save_bottom_banner_77c336e6-773c-4bc6-a86a-70adc9da027f.webp" loading="lazy" fetchpriority="low" alt="bundles" width="100%" height="100%" class="mobile-only"></a>
+  <a href="#bundles" aria-label="{{ collection.title }}"><img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_Bundle_Save_bottom_banner_d11a9147-08d0-414d-9fc4-84eda6e052c8.webp" loading="lazy" fetchpriority="low" alt="bundles" width="100%" height="100%" class="desktop-only"></a>
+  </div>
+-->
+
+<div class="summer-sale-collection" style="display:none;padding:0px">
+  <a href="#" aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Banner_Mobile_1.webp?v=1715080144"
+      loading="lazyload"
+      alt="summer sale collection"
+      width="400px"
+      height="150px"
+      class="mobile-only"
+  ></a>
+  <a href="#" aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Banner_Desktop_1.webp?v=1715080144"
+      loading="lazyload"
+      alt="summer sale collection"
+      width="1600px"
+      height="150px"
+      class="desktop-only"
+  ></a>
+</div>
+
+<div class="rakhi-collection" style="display:none;padding:0px">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/rakhi-collection-banner-desktop.png"
+    class="mobile-only"
+    loading="lazyload"
+    alt="rakhi collection"
+    width="400px"
+    height="150px"
+  >
+  <img
+    src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/rakhi-collection-banner-desktop.png"
+    class="desktop-only"
+    style="width:100%;"
+    loading="lazyload"
+    alt="rakhi collection"
+    height="150px"
+  >
+</div>
+
+<!-- summer sale banner -->
+<div class="all-collection banner-for{{ collection.handle }}" style="position:relative;z-index:8;">
+  <a
+    href="/products/foil-fun-disney-frozen-no-mess-art-kit-ages-4-9?utm_campaign=foilfun_frozen&utm_medium=homepage_banner_1&utm_source=homepage_banner_mobile&utm_content=product_specific"
+    aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Mobile_2.webp?v=1718172493"
+      class="mobile-only"
+      loading="lazyload"
+      alt="foil fun frozen"
+  ></a>
+  <a
+    href="/products/foil-fun-disney-frozen-no-mess-art-kit-ages-4-9?utm_campaign=foilfun_frozen&utm_medium=homepage_banner_1&utm_source=homepage_banner_mobile&utm_content=product_specific"
+    aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Desktop_1.webp?v=1718172493"
+      class="desktop-only"
+      loading="lazyload"
+      alt="foil fun frozen"
+  ></a>
+</div>
+
+{% assign banner_image_url = collection.metafields.custom.banner_image %}
+
+{% assign items_per_row = 4 %}
+{% assign current_index = 0 %}
+
+<div class="container-indent" id="bundles">
+  <div class="container{% if item_sidebar contains "_wide" %}-fluid-custom container-fluid-custom-mobile-padding{% endif %}">
+    <div class="row{{ flip_sidebar }}">
+      {%- unless item_sidebar contains '_disable_' -%}{%- include 'collection-page-sidebar' -%}{%- endunless -%}
+
+      <div class="{% if item_sidebar contains "hidden_" %}col-md-12{% else %}col-md-12 col-lg-9 col-xl-9{% endif %}">
+        {%- if collection.description != '' and settings.show_collection_description -%}
+          <div class="content-indent">
+            <div class="row tt-layout-promo-box"></div>
+          </div>
+        {%- endif -%}
+
+        <div class="content-indent container-fluid-custom-mobile-padding-02">
+          {% render 'quinn-stories-1' %}
+
+          {%- paginate collection.products by current_pagination_limit -%}
+            <div
+              class="tt-filters-options{% if item_sidebar contains "hidden_closed" %} desctop-no-sidebar{% endif %}"
+              id="collections_filter"
+            >
+              {%- include 'collection-page-toolbar' -%}
+
+              {% render 'collection-age-btns-dynamic' %}
+            </div>
+
+            <div
+              class="tt-product-listing row{% if collection.products.size == 0 %} flex-center-message{% endif %}{% if settings.products_in_one_row %} tt-col-one only-row{% endif %}"
+              data-onerow="{{ settings.use_one_row_in_theme }}"
+            >
+              {%- if collection.products.size > 0 -%}
+                {%- assign product_counter = 0 -%}
+                {%- for product in collection.products -%}
+                  {%- assign product_counter = product_counter | plus: 1 -%}
+
+                  {%- if product_counter == 5 and collection.metafields.custom.banner_image -%}
+                    <div class="col-12 tt-banner">
+                      <img
+                        src="{{ collection.metafields.custom.banner_image.value }}"
+                        alt="Banner Image"
+                      >
+                    </div>
+                  {%- endif -%}
+
+                   {% unless product.metafields.custom.out_of_stock %}   
+                    <div class="testing2 col-6 col-md-{% if item.products_in_column == '5' %}4{% else %}{{ item.products_in_column }}{% endif %} tt-col-item">
+                     {%- include 'product-grid-item' -%}
+                    </div>
+                    {% else %}                         
+                          {% capture outofstock_item %}   
+                           <div class="testing2 col-6 col-md-{% if item.products_in_column == '5' %}4{% else %}{{ item.products_in_column }}{% endif %} tt-col-item">
+                             {%- include 'product-grid-item' -%}
+                            </div>                         
+                           {% endcapture %} 
+                          {{outofstock_item}}
+                    {% endunless %}
+                 
+                {%- endfor -%}
+
+              {%- else -%}
+                <div class="tt-empty-search">
+                  <div class="empty_collection_result">
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/t/66/assets/empty%20product%20svg.svg">
+                    <h2>Uh-oh!</h2>
+                    <p>
+                      No matching products found, but, don't worry! New exciting launches are on their way. Check back
+                      later or adjust the filters to explore other fun products in the meanwhile!
+                    </p>
+                    <a
+                      href="/collections/all-ages"
+                      class="explore_btn btn"
+                      style="background:#FF805A; color:#fff !important;"
+                      >Explore our collection</a
+                    >
+                  </div>
+                </div>
+                {% render 'bestseller-collection' %}
+              {%- endif -%}
+            </div>
+
+            {%- if paginate.parts.size > 0 -%}
+              <div class="cont">
+                <div class="product-pagintion">
+                  <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                    <ul class="pagination__list list-unstyled" role="list">
+                      {%- if paginate.previous -%}
+                        <li class="pagination__item--next1 list-item">
+                          <a
+                            href="{{ paginate.previous.url }}"
+                            class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
+                            aria-label="{{ 'general.pagination.previous' | t }}"
+                          ><
+                          </a>
+                        </li>
+                      {%- endif -%}
+
+                      {%- for part in paginate.parts -%}
+                        <li class="list-item">
+                          {%- if part.is_link -%}
+                            <a
+                              href=" {{ part.url }} "
+                              class="pagination__item link"
+                              aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                            >
+                              {{- part.title -}}
+                            </a>
+                          {%- else -%}
+                            {%- if part.title == paginate.current_page -%}
+                              <a
+                                role="link"
+                                aria-disabled="true"
+                                class="pagination__item pagination__item--current light"
+                                aria-current="page"
+                                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                              >
+                                {{- part.title -}}
+                              </a>
+                            {%- else -%}
+                              <span class="pagination__item">{{ part.title }}</span>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+
+                      {%- if paginate.next -%}
+                        <li class="list-item">
+                          <a
+                            href="{{  paginate.next.url }}"
+                            class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
+                            aria-label="{{ 'general.pagination.next' | t }}"
+                          >
+                            >
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endpaginate -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .bestseller-section {
+      background: transparent;
+    }
+    .explore_btn {
+          width: 425px;
+    height: 64px;
+    border-radius: 4px;
+    font-size: 24px;
+    font-family: "MikadoMedium";
+    }
+    .empty_collection_result h2 {
+      font-family: MikadoMedium;
+      font-size: 40px;
+      line-height: normal;
+      color: #06374F;
+      width: 50%;
+      margin: 1rem auto;
+    }
+
+    .empty_collection_result p {
+      font-family: AvenirRegular;
+      font-size:20px;
+      line-height: normal;
+      color: #06374F;
+      margin: 1rem auto;
+      width: 50%;
+    }
+
+    .above_footer_container {
+        background: rgba(253, 247, 244, 1);
+        padding: 10px 40px;
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+    }
+
+    .above_footer_text {
+        background: #FFf;
+        padding: 1rem;
+        height: auto;
+        overflow: hidden;
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+    }
+
+    #truncated_above_footer_text {
+        background: #FFf;
+        padding: 1rem;
+        height: auto;
+        overflow: hidden;
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+    }
+
+    .above_footer_text.show-all {
+        height: auto;
+        overflow: visible;
+        text-overflow: none color: rgba(6, 55, 79, 1);
+        text-align: left;
+    }
+
+    .above_footer_text h2,
+    #truncated_above_footer_text h2 {
+        font-family: 'MikadoMedium';
+        font-size: 24px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: left;
+        color: rgba(6, 55, 79, 1);
+        margin: 0.5rem 0;
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+    }
+
+    .above_footer_text p,
+    #truncated_above_footer_text p,
+    .above_footer_text h6,
+    h4,
+    ul,
+    li {
+        font-family: 'AvenirRegular';
+        font-size: 18px !important;
+        line-height: normal !important;
+        text-align: left;
+        color: rgba(6, 55, 79, 1);
+        padding: 0 !important;
+        margin: 0.5rem 0;
+        list-style-position: inside;
+    }
+
+    #above_footer_text h3 {
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #above_footer_text h4 {
+        color: rgba(6, 55, 79, 1);
+        text-align: left;
+        font-size: 20px;
+    }
+
+    .read-additional,
+    .read-more-desc,
+    .read-less-desc
+      {
+        font-family: 'AvenirMedium';
+        font-size: 18px;
+        line-height: normal;
+        text-align: left;
+        color: rgba(6, 55, 79, 1);
+    }
+
+            .collection-toolbar {
+          display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+          }
+
+    @media (max-width: 890px) {
+        .above_footer_container {
+            padding: 10px;
+        }
+
+      .empty_collection_result h2 {
+        font-size: 24px;
+      width: 100%;
+    }
+
+    .empty_collection_result p {
+      font-size: 16px;
+      width: 80%;
+    }
+    }
+
+    .read-more-desc,
+    .read-less-desc {
+        color: #3263A0;
+        font-weight: bold;
+        cursor: pointer;
+    }
+  </style>
+
+  <!-- collection footer text -->
+  {%- if collection.metafields.collection.footer_text != blank -%}
+    <div class="above_footer_container">
+      <div id="truncated_above_footer_text">
+        {{ collection.metafields.collection.footer_text.value }}
+      </div>
+    </div>
+  {% endif %}
+  <script>
+      // requires jquery
+    $(document).ready(function() {
+      (function() {
+        var showChar = 1800;
+        var ellipsestext = "...";
+
+        $("#truncated_above_footer_text").each(function() {
+          var content = $(this).html();
+          if (content.length > showChar) {
+            var c = content.substr(0, showChar);
+            var h = content;
+            var html =
+              '<div class="truncate-text" style="display:block">' +
+              c +
+              '<span class="moreellipses">' +
+              ellipsestext +
+              '&nbsp;&nbsp;<a href="" class="moreless more">more</a></span></span></div><div class="truncate-text" style="display:none">' +
+              h +
+              '<a href="" class="moreless less">Less</a></span></div>';
+
+            $(this).html(html);
+          }
+        });
+
+        $(".moreless").click(function() {
+          var thisEl = $(this);
+          var cT = thisEl.closest(".truncate-text");
+          var tX = ".truncate-text";
+
+          if (thisEl.hasClass("less")) {
+            cT.prev(tX).toggle();
+            cT.slideToggle();
+          } else {
+            cT.toggle();
+            cT.next(tX).fadeToggle();
+          }
+          return false;
+        });
+        /* end iffe */
+      })();
+
+      /* end ready */
+    });
+  </script>
+
+  <!-- this is for bundle-save collection -->
+  <div class="bundle-collection-only" style="display:none">
+    <!--
+      old banners
+      <a href="/pages/build-your-own-bundle"><img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mobile_bundle_save_bottom_banner_1.webp?v=1705745566" class="mobile-only"></a>
+      <a href="/pages/build-your-own-bundle"><img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_Bundle_Save_bottom_banner_1.webp?v=1705745566" class="desktop-only"></a>
+    -->
+
+    <!-- gift banners -->
+    <a href="/pages/build-your-own-bundle"
+      ><img
+        src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mobile_bundle_save_bottom_banner_77c336e6-773c-4bc6-a86a-70adc9da027f.webp?v=1707921331"
+        class="mobile-only"
+        loading="lazy"
+        fetchpriority="low"
+        alt="build bundle"
+        width="100%"
+        height="100%"
+    ></a>
+    <a href="/pages/build-your-own-bundle"
+      ><img
+        src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_Bundle_Save_bottom_banner_d11a9147-08d0-414d-9fc4-84eda6e052c8.webp?v=1707921331"
+        class="desktop-only"
+        loading="lazy"
+        fetchpriority="low"
+        alt="build bundle"
+        width="100%"
+        height="100%"
+    ></a>
+  </div>
+
+  <!-- this is for all collection comfort strip -->
+  <img
+    style="margin-top:30px"
+    src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_-_dark_comfort_strip_CP_2_468f2fd7-8916-417c-83bb-e4f9ac65cd90.webp"
+    class="mobile-only"
+    loading="lazy"
+    fetchpriority="low"
+    alt="Policy"
+    width="100%"
+    height="100%"
+  >
+  <div class="comfort-stripe-desktop" style="background-color:#04384d;text-align:center;">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_-_dark_comfort_strip_CP_2_0d46c124-8be4-4369-b9ce-e05bf830faac.webp"
+      class="desktop-only"
+      loading="lazy"
+      fetchpriority="low"
+      alt="Policy"
+      width="100%"
+      height="100%"
+    >
+  </div>
+</div>
+
+<script>
+  {% comment %} $( document ).ready(function() {
+    var ourInterval = setInterval(function () {
+      $(".list-item").click(function() {
+      $("html, body").animate({ scrollTop: 0 }, "fast");
+      return false;
+      });
+    }, 1000);
+  }); {% endcomment %}
+</script>
+<script>
+    function load_rating() {
+      setTimeout(function(){
+        $.aliReviewsAddRatingCollection()
+      },3000)
+    }
+    $(document).ready(function() {
+      $('.sort-position').change(function() {
+          // alert(this.value);
+          setTimeout(function(){
+              $.aliReviewsAddRatingCollection()
+          },3000)
+      });
+  });
+</script>

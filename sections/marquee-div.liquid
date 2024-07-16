@@ -1,0 +1,247 @@
+{%- for block in section.blocks -%}
+
+      <div class=" desktop-hidden marquee-scroll aano_bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }} style=" margin-bottom: {{ section.settings.margin_bottom_anb }}px; margin-top: {{ section.settings.margin_top_anb }}px; background-color: {{ section.settings.anno_color }};">
+        {%- if block.settings.message_one != blank -%}
+       
+              <div class="page-width marquee enable-animation marquee--hover-pause">
+
+  <ul style="list-style: none" class="marquee__content font-Mikado font-d-Mikado hura-message">
+         <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+        <span class="img-withtext font-Mikado font-d-Mikado hura-message" >{% if block.settings.image1 != blank %}
+        <img src="{{block.settings.image1 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+        {% endif %}{{ block.settings.message_one | escape }}</span>
+         </li>
+          <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+             <span class="img-withtext font-Mikado font-d-Mikado hura-message">
+            {% if block.settings.image2 != blank %}
+           <img src="{{block.settings.image2 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+          {% endif %}
+          {{ block.settings.message_two | escape }}</span>                
+           </li>
+            <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+              <span class="img-withtext font-Mikado font-d-Mikado hura-message">
+            {% if block.settings.image3 != blank %}
+              <img src="{{block.settings.image3 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+            {% endif %}
+             {{ block.settings.message_three | escape }}</span>              
+             </li>
+   
+
+  </ul>    
+                  <ul style="list-style: none" class="marquee__content font-Mikado font-d-Mikado hura-message">
+         <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+        <span class="img-withtext font-Mikado font-d-Mikado hura-message" >{% if block.settings.image1 != blank %}
+        <img src="{{block.settings.image1 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+        {% endif %}{{ block.settings.message_one | escape }}</span>
+         </li>
+          <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+             <span class="img-withtext font-Mikado font-d-Mikado hura-message">
+            {% if block.settings.image2 != blank %}
+           <img src="{{block.settings.image2 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+          {% endif %}
+          {{ block.settings.message_two | escape }}</span>                
+           </li>
+            <li class=" aano_bar_msg {{ block.settings.text_alignment }} h5">
+              <span class="img-withtext font-Mikado font-d-Mikado hura-message">
+            {% if block.settings.image3 != blank %}
+              <img src="{{block.settings.image3 | img_url:'logo'}}" loading="lazy" width="100%"  height="100%"  alt="Image {{ forloop.index }}" role="img" aria-label="Image {{ forloop.index }} {{block.settings.headings}}">
+            {% endif %}
+             {{ block.settings.message_three | escape }}</span>              
+             </li>
+   
+
+  </ul>  
+
+              </div>
+
+        {%- endif -%}
+      </div>
+
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Marquee Scroll",
+  "max_blocks": 1,
+  "settings": [
+   {
+      "type": "number",
+      "id": "margin_top_anb",
+      "label": "Margin top"
+    },
+     {
+      "type": "number",
+      "id": "margin_bottom_anb",
+      "label": "Margin Bottom"
+    },
+     {
+      "type": "color",
+      "id": "anno_color",
+      "label": "Announcemnet bar color"
+    },
+     {
+      "type": "color",
+      "id": "anno_color_text",
+      "label": "Announcemnet bar text color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+           {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1"
+        },
+        {
+          "type": "text",
+          "id": "message_one",
+          "default": "Message one",
+          "label": "Announcement one"
+        },
+           {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2"
+        },
+             {
+          "type": "text",
+          "id": "message_two",
+          "default": "Message two",
+          "label": "Announcement two"
+        },
+           {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3"
+        },
+      {
+          "type": "text",
+          "id": "message_three",
+          "default": "Message three",
+          "label": "Announcement three"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Righht"
+            }
+          ],
+          "default": "center",
+          "label": "Text Alignment"
+        }
+       
+      ]
+    }
+  ],
+   "presets": [
+    {
+      "name": "Marquee Scroll",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+
+  .marquee-scroll  span.img-withtext {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+  .marquee-scroll  span.img-withtext img {
+    width: 30px;object-fit: contain;
+    height: 30px;
+}
+   .marquee-scroll  .img-withtext  {
+    font-size: 16px;     padding: 0 20px;
+    font-weight: 500;    margin: 8px 0;
+}
+.marquee {
+  --gap: 1rem;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+ 
+}
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;padding: 0px 20px;
+  min-width: 100%; margin: 0;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__content {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Enable animation */
+.enable-animation .marquee__content {
+  animation: scroll 30s linear infinite;
+}
+
+/* Pause on hover */
+.marquee--hover-pause:hover .marquee__content {
+  animation-play-state: paused;
+}
+
+.marquee--fit-content {
+  max-width: fit-content;
+}
+
+
+.marquee--pos-absolute .marquee__content:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.enable-animation .marquee--pos-absolute .marquee__content:last-child {
+  animation-name: scroll-abs;
+}
+
+@keyframes scroll-abs {
+  from {
+    transform: translateX(calc(100% + var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+li.aano_bar_msg {
+    color: {{section.settings.anno_color_text}};
+}
+
+</style>

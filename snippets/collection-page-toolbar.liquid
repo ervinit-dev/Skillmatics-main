@@ -1,0 +1,131 @@
+{% if item.show_collection_title %}
+  <!--
+    gift strip mobile above title
+    <img style="padding: 0;
+      overflow: auto;
+      width: 105%;
+      max-width: 105%;
+      margin: 0 -8px;" class="mobile-only" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_Collection_free_gift_strip.webp">
+  -->
+
+  <h1 class="tt-title{% if settings.toolbarsettings == 'hidetoolbaroptionslogoincenter' %} text-center{% endif %}">
+    {{ collection.title -}}
+    {%- if item.show_collection_products_count %}
+      <span class="tt-title-total listing-total-js">({{ paginate.items }})</span>
+    {%- endif %}
+  </h1>
+  <p class="collection_desc">
+    {{ collection.description }}
+    <br>
+    <!--
+      gift strip
+      <img class="desktop-only" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_CP_free_gift_strip.webp">
+    -->
+  </p>
+{% endif %}
+
+<div class="collection-toolbar">
+  <div class="collection-filter-btn tt-btn-toggle filter-on-{{ collection.handle }}">
+    <a href="#" aria-label="collection filter">{{ 'collections.toolbar.filter' | t }}</a>
+  </div>
+
+  {% unless settings.toolbarsettings contains 'hidetoolbaroptions' %}
+    {% capture qty %}{% if collection.all_products_count > pagination_limit_const and settings.show_perpage %}true{% else %}false{% endif %}{% endcapture %}
+    {% if settings.collectionshowsort or qty == 'true' %}
+      <style>
+        .sort-position{
+              border-radius: 4px;
+        padding: 8px;
+        font-size: 18px;
+        font-family: avenirmedium;
+                color: #06374F;
+        }
+        .collection-sort-btn label {
+          font-family: avenirmedium;
+          font-size: 18px;
+                color: #06374F;
+        }
+      </style>
+      <div class="collection-sort-btn">
+        <label for="sort-filter">Sort:</label>
+        {% if settings.collectionshowsort %}
+          <select class="sort-position" id="sort-filter">
+            <!--
+              <option value="manual"{% if collection.default_sort_by == 'manual' %} selected{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+               <option value="title-ascending"{% if collection.default_sort_by == 'title-ascending' %} selected{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+              <option value="title-descending"{% if collection.default_sort_by == 'title-descending' %} selected{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+              <option value="created-ascending"{% if collection.default_sort_by == 'created-ascending' %} selected{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+            -->
+            <option
+              value="created-descending"
+              {% if collection.default_sort_by == 'created-descending' %}
+                selected
+              {% endif %}
+            >
+              {{ 'collections.sorting.date_descending' | t }}
+            </option>
+            <option
+              value="price-ascending"
+              {% if collection.default_sort_by == 'price-ascending' %}
+                selected
+              {% endif %}
+            >
+              {{ 'collections.sorting.price_ascending' | t }}
+            </option>
+            <option
+              value="price-descending"
+              {% if collection.default_sort_by == 'price-descending' %}
+                selected
+              {% endif %}
+            >
+              {{ 'collections.sorting.price_descending' | t }}
+            </option>
+            {% comment %}
+              <!--     <option value="best-selling"{% if collection.default_sort_by == 'best-selling' %} selected{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option> -->
+            {% endcomment %}
+          </select>
+        {% endif %}
+
+        {% if qty == 'true' %}
+          <select class="show-qty">
+            <option>{{ pagination_limit_const }}</option>
+            <option
+              {% if current_pagination_limit == 16 %}
+                selected
+              {% endif %}
+            >
+              16
+            </option>
+            <option
+              {% if current_pagination_limit == 32 %}
+                selected
+              {% endif %}
+            >
+              32
+            </option>
+            <option
+              {% if current_pagination_limit == 50 %}
+                selected
+              {% endif %}
+              value="all"
+            >
+              {{ 'collections.toolbar.all' | t }}
+            </option>
+          </select>
+        {% endif %}
+      </div>
+      </div>
+    {% endif %}
+    {% if settings.collectionshowgrid %}
+      <div class="tt-quantity" style="display:none;">
+        {% if settings.use_one_row_in_theme -%}
+          <a href="#" class="tt-col-one" data-value="tt-col-one" aria-label="collection filter quantity one"></a>
+        {%- endif %}
+        <a href="#" class="tt-col-two" data-value="tt-col-two" aria-label="collection filter quantity two "></a>
+        <a href="#" class="tt-col-three" data-value="tt-col-three" aria-label="collection filter quantity three"></a>
+        <a href="#" class="tt-col-four" data-value="tt-col-four" aria-label="collection filter quantity four"></a>
+        <a href="#" class="tt-col-six" data-value="tt-col-six" aria-label="collection filter quantity six"></a>
+      </div>
+    {% endif %}
+  {% endunless %}
+</div>

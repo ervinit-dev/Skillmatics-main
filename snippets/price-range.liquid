@@ -1,0 +1,177 @@
+<style>
+    .slider {
+    height: 5px;
+    position: relative;
+    background: #ddd;
+    border-radius: 5px;
+    }
+    .slider .progress {
+    height: 100%;
+    left: 8%;
+    right: 40%;
+    position: absolute;
+    border-radius: 5px;
+    background: #3980C3;
+    }
+    .range-min-span{
+        position:absolute;
+        left:8%;
+        top:22px;
+        color:grey !important;
+    }
+    .range-max-span{
+        position:absolute;
+        right:40%;
+        top:-12px;
+        color:grey !important;
+    }
+    .range-input {
+    position: relative;
+    }
+    .range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px;
+    background: none !important;
+    padding:unset !important;
+    margin-top:0 !important;
+    border:none !important;
+
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #3980C3;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    }
+    input[type="range"]::-moz-range-thumb {
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    background: #3980C3;
+    pointer-events: auto;
+    -moz-appearance: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    }
+      
+    .marqueeWrapper{
+      background-color: #EFDD68;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      display: flex;
+      gap:6px;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #06374F;
+      border-top: 1px solid #06374F;
+    }
+
+    .marquee {
+      margin: 0;
+      white-space: nowrap;
+      display: flex;
+      gap: 6px;
+      position: relative;
+    }
+    .marquee1 {
+      transform: translateX(100%);
+      animation: marquee 50s linear infinite;
+
+    }
+    .marquee2 {
+      animation: marquee2 50s linear infinite;
+    }
+    .marquee span {
+      display: flex;
+      font-size: 20px;
+      color: #06374F;
+      font-family: 'Avenir';
+      gap: 6px;
+    }
+    
+    @media(max-width:510px){
+      .marqueeWrapper{
+        padding: 0.4rem 0;
+      }
+      .marquee span {
+        font-size:14px;
+      }
+    }
+    
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    
+    @keyframes marquee2 {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    
+</style>  
+
+<div style="margin:1.5rem 0 3rem 0;"> 
+    <div class="slider">
+        <div class="progress"></div>
+    </div>
+    <div class="range-input">
+        <input type="range" class="range-min" min="250" max="1500" value="350" step="50">
+        <span class="range-min-span">₹350</span>
+        <input type="range" class="range-max" min="250" max="1500" value="1000" step="50">
+        <span class="range-max-span">₹1000</span>
+    </div>
+</div>
+<script>
+ const rangeInput = document.querySelectorAll(".range-input input"),
+  range = document.querySelector(".slider .progress"),
+  range_min_span=document.querySelector(".range-min-span"),
+  range_max_span=document.querySelector(".range-max-span")
+let priceGap = 250;
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minVal = parseInt(rangeInput[0].value),
+      maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+      if (e.target.className === "range-min") {
+        rangeInput[0].value = maxVal - priceGap;
+       
+      } else {
+        rangeInput[1].value = minVal + priceGap;
+        range_max_span.innerText =`${minVal + priceGap}`;
+      }
+    } else {
+      {% comment %} priceInput[0].value = minVal;
+      priceInput[1].value = maxVal; {% endcomment %}
+      range_min_span.innerText = `₹${minVal}`;
+      range_max_span.innerText =`₹${maxVal}`;
+      {% comment %} range.style.left = (minVal / rangeInput[0].max) * 100 + "%"; {% endcomment %}
+      range.style.left = ((minVal-250)/50) * 4+ "%";
+      range_min_span.style.left = ((minVal-250)/50) * 4+ "%";
+      {% comment %} range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%"; {% endcomment %}
+      range.style.right =((1500-maxVal)/50) * 4+ "%";
+      range_max_span.style.right = ((1500-maxVal)/50) * 4+ "%"
+    }
+  });
+});
+
+
+</script>

@@ -1,0 +1,301 @@
+{% assign mascots = product.metafields.pdp.mascots | split: ',' %}
+
+
+
+
+<!-- <div class="jumbotron text-center">
+  <h4>My First Bootstrap Page</h4>
+  <p>Resize this responsive page to see the effect!</p>
+</div> -->
+
+<!--overview mobile secton  -->
+<div class="custom-pro-data">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="mobover" id="removeBR">
+         {{product.description}}
+   </div>
+    </div>
+    
+    
+    
+    
+    <!--     Skills Developed Mobile  -->
+   {% if product.metafields.pdp.skillsTextDesktop != blank %}
+    <div class="col-sm-12">
+       
+      <span class="skldesk">Skills Developed</span>
+      <div id="skildevmob">
+      <h4 class="skldev"> Skills Developed</h4>
+      <div class="skilmob">
+        {% assign skillsTextMobile = product.metafields.pdp.skillsTextMobile | split: ',' %}
+        {% assign skillsImagesMobile = product.metafields.pdp.skillsImagesMobile | split: ',' %}
+      {% for i in (0..1) %}
+        <div class="hexa">     
+        <div class="pro1cont" id="sc">
+          {% assign skillIndex = 2|times: i| plus: 0 %}
+        <img class="ahexa" src="{{skillsImagesMobile[skillIndex]}}">
+        <p>{{skillsTextMobile[skillIndex] | replace: '~',','}}</p>
+        </div>
+        <div class="pro2cont">
+          {% assign skillIndex = 2|times: i| plus: 1 %}
+        <img class="ahexa" src="{{skillsImagesMobile[skillIndex]}}">
+         <p>{{skillsTextMobile[skillIndex] | replace: '~',','}}</p>
+        </div>
+      </div>
+		{%endfor%}
+      </div>
+      </div>
+      
+      <!--     Skills Developed Desktop    -->
+      {% assign skillsTextDesktop = product.metafields.pdp.skillsTextDesktop | split: ',' %}
+      {% assign skillsD_size = skillsTextDesktop.size  | minus: 1 %}
+      {% assign skillsImagesDesktop = product.metafields.pdp.skillsImagesDesktop | split: ',' %}
+      <div class="skildesc">
+        <div id="mascot1Desktop">
+        <img src="{{ mascots[0] }}">
+        </div>
+        <div class="skilimg">
+          <img src="{{ product.metafields.pdp.skillsDesktopMainImg }}">
+        </div>
+        <div class="skilconttt">
+          <div class="skillsmalimg">
+            {% for i in (0..skillsD_size) %}
+            <div class="s">
+             <img src="{{skillsImagesDesktop[i]}}"> 
+            </div>
+            <div class="b">
+              <p>{{skillsTextDesktop[i] | replace: '~',','}}</p>
+            </div>
+            {% endfor %}
+          </div>                             
+        </div>
+      </div>
+      
+      
+         </div>
+    {%endif%}
+    
+    
+
+    
+      
+    
+    </div>
+  </div>
+  
+  
+  
+  </div>
+
+    {% if product.metafields.pdp.learningOutcomesDesktop != blank %}
+ 		<div class="col-sm-12">       
+<!--     Learning Outcomes Mobile   -->
+ 
+          <div id="lernoutmob" class="lerndesc">
+            <span class="lerningh4desc"> Learning Outcomes</span>
+             <div class="container">
+      <h4 class="lerningh4"> Learning Outcomes</h4>
+               
+             
+        
+      <div class="hexaother">
+        {% assign learningOutcomesMobile = product.metafields.pdp.learningOutcomesMobile | split: ',' %}
+        {% assign learningImagesMobile = 'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_9f2dc17b-e2d8-4729-aaa7-e92277e04dc7.png?v=1622793138,https://cdn.shopify.com/s/files/1/0568/1945/0045/files/3_1.png?v=1622793138,https://cdn.shopify.com/s/files/1/0568/1945/0045/files/2_f05e107e-1c6b-48e9-95af-387fa3fddb7f.png?v=1622793138' | split: ',' %}     
+        {% if learningOutcomesMobile.size < 5 %}
+        {%assign end_loop = learningOutcomesMobile.size| minus:1%}
+        {%for i in (0..1)%}
+        <div class="hexatwocol">
+          {% assign learnImgIndex = 2|times: i| plus: 0 %}
+          <div class="imgp">
+             {% assign learnImgIndex = i | modulo:3 %}
+             {% assign learnIndex = 2|times: i| plus: 0 %}
+            <img class="ahexa1" src="{{learningImagesMobile[learnImgIndex]}}">
+            <p class="an">{{learningOutcomesMobile[learnIndex] | replace: '~',','}}</p>
+          </div>   
+          <div class="imgp">
+            {% assign learnImgIndex = i | modulo:3 | plus: 1 %}
+             {% assign learnIndex = 2|times: i| plus: 1 %}
+            <img class="ahexa1" src="{{learningImagesMobile[learnImgIndex]}}">
+            <p class="an">{{learningOutcomesMobile[learnIndex] | replace: '~',','}}</p>
+          </div> 
+        </div>
+        {%endfor%}
+        
+        
+		{%else%}
+        {% for i in (0..1) %}
+        <div class="pro11cont row" id="et">
+          {% assign learnIndex = 3|times: i| plus: 0 %}
+          {%if i==0%}
+          {% assign learnImgIndex = 0 %}
+          {%else%}
+          {% assign learnImgIndex = 2 %}
+          {%endif%}
+           <div class="imgp ssy1">
+             {%if learningOutcomesMobile[learnIndex]%}
+             <img class="ahexa1" src="{{learningImagesMobile[learnImgIndex]}}">
+             {%endif%}
+          <p class="an">{{learningOutcomesMobile[learnIndex] | replace: '~',','}}</p>
+          </div>
+          {% assign learnIndex = 3|times: i| plus: 1 %}
+
+          {%if i==0 %}
+          {% assign learnImgIndex = 1 %}
+          {%else%}
+          {% assign learnImgIndex = 0 %}
+          {%endif%}
+           <div class="imgp ssy2">
+             {%if learningOutcomesMobile[learnIndex]%}
+             <img class="ahexa1" src="{{learningImagesMobile[learnImgIndex]}}">
+             {%endif%}
+          <p class="an">{{learningOutcomesMobile[learnIndex] | replace: '~',','}}</p>
+          </div>
+          {% assign learnIndex = 3|times: i| plus: 2 %}
+
+          {%if i==0 %}
+          {% assign learnImgIndex = 2 %}
+          {%else%}
+          {% assign learnImgIndex = 1 %}
+          {%endif%}
+           <div class="imgp ssy3">
+             {%if learningOutcomesMobile[learnIndex]%}
+             <img class="ahexa1" src="{{learningImagesMobile[learnImgIndex]}}">
+             {%endif%}
+          <p class="an">{{learningOutcomesMobile[learnIndex] | replace: '~',','}}</p>
+          </div>
+        </div>
+		{%endfor%}
+        {%endif%}
+        </div>
+          </div>  
+            
+          </div> 
+          
+          <!--     Learning Outcomes Desktop    -->
+            {% assign learningOutcomesDesktop = product.metafields.pdp.learningOutcomesDesktop | split: ',' %}
+            {% assign learningD_size = learningOutcomesDesktop.size  | minus: 1 %}
+          <div class="desclern">
+            <div class="desclrncont">
+             <ul>
+               {% for i in (0..learningD_size) %}
+               <li>{{learningOutcomesDesktop[i] | replace: '~',','}}</li>
+               {% endfor %}
+              </ul>
+            </div>
+            <div class="desclernimg">
+              <img src="{{ product.metafields.pdp.learningDesktopMainImg }}">
+            </div>
+          </div>
+          
+          
+     </div>
+
+    {%endif%}
+
+
+
+
+
+
+
+
+
+
+        <div id="mascot2Desktop">
+        <img src="{{ mascots[1] }}">
+        </div>
+
+        <div id="mascot1Mobile">
+        <img src="{{ mascots[0] }}">
+        </div>
+  <!--     Widgets 1,2,3 Desktop mobile both    -->
+
+  <div id="slideerpdpwid" class="slideerpdpwidth">
+  {%- include 'pdp-desc-slider' -%}
+  </div>
+  <div id="adsnlinfo" class="descaditional">
+  <div class="col-sm-12">
+      <h4> Additional Information</h4>
+    {% assign productSpecifications = product.metafields.pdp.productSpecifications | split: ',' %}
+        <p style="margin-top: 3px;" class="">
+          {{productSpecifications[0]}}<br/>
+          {{productSpecifications[1]}}</p>
+
+  
+         </div>
+  </div>
+<div id="mascot2Mobile">
+        <img src="{{ mascots[1] }}">
+        </div>
+
+<div id="mascot3Desktop">
+        <img src="{{ mascots[2] }}">
+        </div>
+<!-- Reviews App Widget   -->
+<div id='Areviewsapp' class='page-full'><div class="fulreview">{%  render 'aliexpress_reviews' , product: product %}</div><a class="rewanc" href="https://skillmaticsindia.myshopify.com/pages/reviews?product_id={{product.id}}">VIEW ALL</a></div>
+<!-- End Reviews App Widget   -->    
+
+<div id="mascot3Mobile">
+        <img src="{{ mascots[2] }}">
+        </div>
+
+<div id="buynowother"  class="bunowcust desck">
+              {%- form 'product', product -%}
+        <input type="hidden" class="input_variant" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <div class="buyinoneclick"
+         data-buttonname="{{ 'products.general.buy_now_button' | t }}"
+         data-loading="{{ 'products.general.loading' | t }}">
+      {{ form | payment_button }}
+    </div>
+        {%- endform -%}
+     </div>
+  
+  
+  {% comment %}
+  
+{%- capture html_tabs -%}  
+{%- for block in section.blocks -%}
+{%- assign b_i = block.settings -%}
+{%- case block.type -%}
+  {%- when 'tab_desc' -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title"{% if b_i.title == "" %} style="pointer-events: none; padding-bottom: 0px;"{% endif %}>{{ b_i.title }}</div>
+    <div class="tt-collapse-content">{{ product.description }}</div>
+      
+      
+    </div>
+
+  {%- when 'tab_same_html' -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">{{ b_i.html }}</div>
+    </div>
+  {%- when 'tab_unique' -%}
+
+	{%- if product_meta[b_i.key] != blank -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">{{ product_meta[b_i.key] }}</div>
+    </div>
+	{%- endif -%}
+  {%- when 'tab_review' -%}
+
+	{%- unless settings.selectedreviewaapp == 'alireviewapp' -%}
+	<div id="tab_review" class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">
+        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+      </div>
+    </div>
+	{%- endunless -%}
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+
+{%- if html_tabs != '' -%}
+<div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
+{%- endif -%}
+   {% endcomment %}

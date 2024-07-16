@@ -1,0 +1,27 @@
+<span
+              class="save--badge"
+              {% unless sale_on %}
+                style="display: none;"
+              {% endunless %}
+            >
+              {{- percent }} OFF</span
+            >
+          </div>
+          <style>
+            .save--badge { top: 0px !important; color: #FFF !important; text-align: right!important; font-family:
+            AvenirRegular !important; font-size: 14px!important; font-style: normal !important; font-weight: 900 !important; line-height:
+            normal !important; border-radius: 4px !important; background: #558EBE !important; padding: 4px 8px !important; margin: 0 !important;}
+            span.save--badge {color: #FFF !important;}
+            span.new-price {color: #06374F !important;}
+            @media (max-width: 890px) {
+              .save--badge {font-size: 12px !important;padding: 4px !important;}
+            }
+              @media only screen
+                and (width: 375px)
+                and (height: 812px)
+                and (-webkit-device-pixel-ratio: 3) {
+              .save--badge {font-size: 10px !important;}
+
+
+                }
+          </style>

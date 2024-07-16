@@ -1,0 +1,802 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
+  </link
+>
+<script
+  async
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
+  integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<style>
+    .pagination-wrapper {
+    margin-top: 40px;
+      margin-bottom:40px
+  }
+  .list-item{
+    cursor:pointer;
+  }
+  .list-unstyled{
+   list-style:none;
+  }
+  .pagination__list {
+    display: flex;
+
+    justify-content: center;
+    padding-left:0;
+  }
+
+  .pagination__list > li {
+    flex: 1 0 40px;
+    max-width: 40px;
+  }
+
+  .pagination__list > li:not(:last-child) {
+    margin-right: 5px;
+  }
+   .pagination__list > li:nth-last-child(2) {
+    margin-right: 0px;
+  }
+  .pagination__item {
+    color: rgb(var(--color-foreground));
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40px;
+    font-size:18px;
+    border-radius:2px;
+    border: 1px solid rgba(6, 55, 79, 0.16);
+    width: 100%;
+    padding: 0;
+    text-decoration: none;
+    background:#E9F4F9;
+  }
+  @media screen and (max-width: 552px){
+    form > button {
+      margin: 0px !important;
+      padding: 0px !important;
+      position: relative !important;
+      top: 0px;
+      left: 0px;
+      width: 95% !important;
+    }
+     .pagination-wrapper {
+    margin-top: 32px;
+  }
+    .pagination__list > li {
+    flex: 1 0 32px;
+    max-width: 32px;
+  }
+    .pagination__item{
+      font-size:16px;
+      height:32px;
+    }
+      .btn.btn-white {
+        width: 100%;
+        font-size: 24px;
+      }
+  }
+  a.pagination__item:hover::after {
+    height: 0.1rem;
+  }
+
+  .pagination__item .icon-caret {
+    height: 0.6rem;
+  }
+
+
+  .pagination__item::hover{
+   cursor: pointer;
+  }
+
+
+
+
+  .pagination__item--next:hover .icon {
+    transform: rotate(90deg) scale(1.07);
+  }
+
+  .pagination__item--prev .icon {
+    margin-right: -0.2rem;
+    transform: rotate(-90deg);
+  }
+
+  .pagination__item--prev:hover .icon {
+    transform: rotate(-90deg) scale(1.07);
+  }
+
+  .pagination__item-arrow:hover::after {
+    display: none;
+  }
+  .pagination__item--current{
+   background: #1D81C4;
+    color:white !important;
+  }
+    .pagination__item--next1{
+      margin-right:10px !important;
+    }
+    .pagination__item--prev{
+
+    background:white;
+  }
+    .pagination__item--next{
+    margin-left:10px;
+    background:white;
+  }
+
+    .btn.btn-white {
+      background: #FF805A;
+      color: #FFF;
+      font-size: 24px;
+      width: 425px;
+      height: 64px;
+      font-family: MikadoMedium;
+    }
+
+    #tt-pageContent > div > div > span > svg{opacity: 0.2;}
+</style>
+{%- if search.performed -%}
+  {%- if search.results_count == 0 -%}
+    <div class="container-indent nomargin">
+      <div class="tt-empty-search">
+        <span>
+          <svg
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            stroke-linejoin="round"
+            width="64px"
+            height="64px"
+            stroke-miterlimit="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m15.97 17.031c-1.479 1.238-3.384 1.985-5.461 1.985-4.697 0-8.509-3.812-8.509-8.508s3.812-8.508 8.509-8.508c4.695 0 8.508 3.812 8.508 8.508 0 2.078-.747 3.984-1.985 5.461l4.749 4.75c.146.146.219.338.219.531 0 .587-.537.75-.75.75-.192 0-.384-.073-.531-.22zm-5.461-13.53c-3.868 0-7.007 3.14-7.007 7.007s3.139 7.007 7.007 7.007c3.866 0 7.007-3.14 7.007-7.007s-3.141-7.007-7.007-7.007z" fill-rule="nonzero"/>
+          </svg>
+        </span>
+        <h1 class="tt-title">No results for: {{ search.terms }}</h1>
+        <a href="/collections/all-products/" class="btn btn-white ttbtnmainstyle">Continue shopping </a>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="container-indent">
+      <div class="container">
+        <h1 class="tt-title-subpages noborder">
+          {{ 'general.search.results_title' | t }} "{{ search.terms }}"
+          <span class="tt-title-total">({{ search.results_count }})</span>
+        </h1>
+        <div class="row">
+          <div class="col-md-12">
+            {%- paginate search.results by 12 -%}
+              <div class="tt-product-listing row">
+                {%- for item in search.results -%}
+                  {%- assign product = item -%}
+                  <div class="col-6 col-md-4 col-lg-3 tt-col-item">{%- include 'product-grid-item' -%}</div>
+                {%- endfor -%}
+              </div>
+              {%- if paginate.pages > 1 -%}
+                <div class="pagination-wrapper">
+                  <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                    <ul class="pagination__list list-unstyled" role="list">
+                      {%- if paginate.previous -%}
+                        <li class="pagination__item--next1 list-item">
+                          <a
+                            onclick="window.location.href = '{{ paginate.previous.url }}'"
+                            class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
+                            aria-label="{{ 'general.pagination.previous' | t }}"
+                          >
+                            <i class="fa-sharp fa-solid fa-angle-left"></i>
+                          </a>
+                        </li>
+                      {%- endif -%}
+
+                      {%- for part in paginate.parts -%}
+                        <li class="list-item">
+                          {%- if part.is_link -%}
+                            <a
+                              onclick="window.location.href = '{{ part.url }}'"
+                              class="pagination__item link"
+                              aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                            >
+                              {{- part.title -}}
+                            </a>
+                          {%- else -%}
+                            {%- if part.title == paginate.current_page -%}
+                              <a
+                                role="link"
+                                aria-disabled="true"
+                                class="pagination__item pagination__item--current light"
+                                aria-current="page"
+                                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                              >
+                                {{- part.title -}}
+                              </a>
+                            {%- else -%}
+                              <span class="pagination__item">{{ part.title }}</span>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+
+                      {%- if paginate.next -%}
+                        <li class="list-item">
+                          <a
+                            onclick="window.location.href = '{{ paginate.next.url }}'"
+                            class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
+                            aria-label="{{ 'general.pagination.next' | t }}"
+                          >
+                            <i style="transform: rotate(180deg);" class="fa-sharp fa-solid fa-angle-left"></i>
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  </nav>
+                </div>
+              {%- endif -%}
+            {%- endpaginate -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+{%- else -%}
+  <div class="container-indent nomargin">
+    <div class="tt-empty-search">
+      <span class="tt-icon icon-h-04"></span>
+      <h1 class="tt-title">{{ 'general.search.no_results_title_html' | t }}</h1>
+    </div>
+  </div>
+{%- endif -%}
+
+<style>
+    @media only screen and (max-width: 552px) {
+    .baby{
+    }
+      body.pagesearch.touch-device.loaded span.new-price{
+        font-size:16px;
+      }
+    }
+        .tt-price{
+         margin-top: 10px !important;
+          margin-left:0 !important;
+       }
+
+    .nav__dropdown:hover .nav__dropdown-content {
+      display: block;
+  }
+    .tt-price {
+      text-align: left !important;
+
+    }
+    .btn-atc {
+      background: #ff805a;
+      color: #fff;
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      font-family: "MikadoMedium";
+      border-radius: 4px;
+  }
+    .tt-title-subpages.noborder {
+      font-size: 32px;
+      line-height: normal;
+      font-weight: 700;
+      padding: 0px;
+      padding-top: 50px;
+      font-family: 'MikadoMedium' !important;
+      color: #06374F;
+      text-transform: none;
+      opacity: 1.0;
+  }
+    .col-lg-3 {
+      flex: 0 0 23%;
+      max-width: 23%;
+  }
+    .tt-product .tt-description .tt-btn-addtocart.thumbprod-button-bg {
+      background-color: #FF805A;
+      border: #FF805A;
+      font-weight: 500;
+  }
+    .tt-product-listing > .tt-col-item {
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 10px;
+      padding-left: 10px;
+  /*     border: 1px solid; */
+      padding: 10px;
+  /*     border: 1px solid #D8E0E4; */
+      border-radius: 11px;
+      background: white;
+      padding-bottom: 12px;
+      margin-top: 0 !important;
+    }
+    body.pagecollection.loaded .tt-product .tt-description .tt-price {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-content: center !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .btn.btn-border {
+      background: ;
+      color: #FFF;
+      border: 2px solid #FF805A;
+      height: 40px;
+      padding-left: 29px;
+      padding-right: 29px;
+      font-size: 16px;
+      font-family: 'MikadoMedium';
+    }
+
+    .btn.btn-border:hover {
+      background: #FF805A;
+      color: #FFF;
+      border: 2px solid #FF805A;
+    }
+
+  .col-md-3 {
+  	flex: 0 0 23%;
+  	max-width: 23%;
+  }
+
+  .pagecollection .tt-product .tt-image-box {
+  	height: auto;
+  	margin-bottom: 1rem;
+  }
+
+  .pagecollection .tt-product-listing>.tt-col-item {
+  	padding: 12px;
+  	border: 1px solid #D8E0E4;
+  	border-radius: 11px;
+  }
+
+  .tt-product-listing {
+  	display: flex;
+  	flex-wrap: wrap;
+  	margin-right: 0px;
+  	margin-left: 0px;
+  	gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+     .container-indent{
+       background: #FDF7F4;
+     }
+
+    #tt-pageContent {
+      padding-top: 100px;
+    }
+
+  .tt-product .tt-description .tt-title {
+  	font-style: normal;
+  	font-weight: 400;
+  	font-size: 18px;
+  	line-height: normal;
+  	text-align: left;
+    margin-bottom:8px;
+    font-family: 'MikadoMedium' !important;
+    padding: 0;
+  	display: -webkit-box;
+  	-webkit-line-clamp: 2;
+  	-webkit-box-orient: vertical;
+  	overflow: hidden;
+    height: 51px;
+  }
+    .testing.areviews_product_item {
+      text-align: left !important;
+    }
+  #tt-pageContent > .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+    margin-top: 0px !important;
+  }
+  .prod-thumb-title-color a {
+  	color: #06374F !important;
+
+  }
+  .tt-breadcrumb {
+    display: none;
+  }
+  .tt-product .tt-description .tt-price span {
+  	font-family: 'AvenirRegular' !important;
+  	font-style: normal;
+  	font-weight: 900;
+  	font-size: 20px;
+  	line-height: normal;
+  	text-align: center;
+
+  	color: #06374F !important;
+  }
+
+  .tt-product:not(.tt-view).product-nohover .tt-description .tt-product-inside-hover {
+  	margin: 10px 0;
+      margin-bottom: 0;
+  }
+
+  .tt-product .tt-description .tt-product-inside-hover>* {
+  	margin-top: 12px !important;
+  	display: inline-block;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+  }
+
+  .pagecollection .tt-product .tt-description .tt-btn-addtocart.thumbprod-button-bg {
+  	background-color: #FF805A;
+  	border: #FF805A;
+  	position: absolute;
+  padding: 14px;
+  }
+
+  .tt-product .tt-description .tt-btn-addtocart {
+  	font-family: 'MikadoMedium';
+  	font-style: normal;
+  	font-weight: 800;
+  	font-size: 18px !important;
+  	text-align: center;
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .tt-filters-options .tt-sort {
+  	margin-top: 0px;
+  	border: none;
+
+  }
+
+  span.srt {
+  	position: absolute;
+  	margin-left: -50px;
+      background: transparent;
+      padding: 8px 10px;
+  	font-family: 'AvenirRegular';
+  	font-style: normal;
+  	font-weight: 400;
+  	font-size: 16px;
+  	line-height: normal;
+  	color: #06374F;
+  }
+
+  .tt-filters-options .tt-sort select,
+  .tt-filters-options .tt-sort select:hover {
+  	font-family: 'AvenirRegular' !important;
+  	font-style: normal;
+  	font-weight: 900;
+  	font-size: 16px;
+  	line-height: normal;
+  	color: #06374F;
+  	padding: 4px;
+  	background: #FFF;
+  	border: 1px solid #06374F;
+      border-radius: 4px;
+  }
+  .tt-filters-options .tt-sort {
+    background: #fff !important;
+  }
+  .tt-filters-options .tt-btn-toggle a {
+  	background: #FFF;
+  	font-family: 'AvenirRegular';
+  	font-style: normal;
+  	font-weight: 500;
+  	font-size: 16px;
+  	line-height: normal;
+  	text-align: center;
+  	color: #06374F;
+  	padding: 3px 13px;
+  	border-radius: 4px !important;
+  }
+
+  body.pagecollection.loaded .tt-product .tt-description .tt-title {
+
+  	height: 65px !important;
+    padding: 16px;
+  	display: -webkit-box;
+  	-webkit-line-clamp: 2;
+  	-webkit-box-orient: vertical;
+  	overflow: hidden;
+  }
+
+    .pagecollection .desctop-no-sidebar.tt-filters-options .tt-title {
+      margin-top: 0px;
+    }
+
+    #collections_filter > h1 {
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: normal;
+  text-align: center;
+  opacity: 1.0;
+  color: #06374F;
+      text-transform: none;
+      font-family: 'MikadoMedium' !important;
+    }
+
+    #collections_filter > h1 > span {
+      display: none;
+    }
+
+    .collection_desc {
+      font-family: 'AvenirRegular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: normal;
+  text-align: center;
+      text-transform: none;
+  color: #06374F;
+    }
+
+    .content-indent:not(:first-child) {
+      margin-top: 0px;
+  }
+    .arv-collection {
+      margin-left: 0 !important;
+      padding: 0px !important;
+    }
+
+    .sticky_filter_row {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+   span.icon.icon-shopping_basket {
+      display: none !important;
+    }
+    @media (max-width: 640px) {
+      .arv-collection {
+        padding: 4px !important;
+      }
+      .pagesearch .tt-product .tt-description .tt-price .old-price {
+        font-size:12px !important;
+        margin-left: 0 !important;
+        padding-left:4px;
+      }
+      .tt-product-listing {
+        gap: 0.5rem !important;
+      }
+       div#tt-pageContent {
+        padding-top: 50px;
+      }
+      .testing.areviews_product_item {
+        padding-left: 10px;
+      }
+      .tt-product-listing > .tt-col-item {
+  padding: 10px 5px;
+  }
+      .tt-title-subpages.noborder {
+      margin-top: 20px;
+      font-size: 25px;
+      line-height: normal;
+      padding-bottom: 0;
+      color: #06374F !important;
+      font-family: 'MikadoMedium' !important;
+      opacity: 1.0;
+      text-transform: none;
+  }
+      .pagesearch .tt-product .tt-description .tt-btn-addtocart.thumbprod-button-bg {
+      padding: 0px !important;
+  }
+      .tt-product .tt-description .tt-product-inside-hover>* {
+        margin: 0px !important;
+      }
+      .col-lg-3 {
+  	flex: 0 0 48% !important;
+  	max-width: 48% !important;
+  }
+      .tt-product .tt-description .tt-price .new-price {
+        width: 35%;
+        margin-right: 0px;
+      }
+          .tt-product .tt-description .tt-price .old-price {
+        width: 40%;
+        margin-right: 0px;
+            font-size: 16px;
+      }
+      body.pagecollection.loaded .tt-product .tt-description .tt-price {
+        justify-content: flex-start !important;
+      }
+      .tt-product .tt-description .tt-title {
+        font-size:16px;
+      height: 46px;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      padding: 0 4px ;
+  margin:0;
+  }
+      .col-md-3 {
+        flex: 0 0 100%;
+      max-width: 100%;
+      }
+      .pagecollection .tt-col-one .tt-col-item {
+      margin: 0px !important;
+  }
+      .pagecollection .tt-col-one .tt-col-item .respimgsize {
+        margin: 0px;
+      }
+      body.pagecollection.touch-device.loaded .tt-product-listing.tt-col-one .tt-product .tt-image-box, .tt-product-listing.tt-col-one .tt-product-design02 .tt-image-box {
+      position: relative;
+      width: 100%;
+      left: 0;
+      margin: 0px !important;
+  }
+      div.content-indent.container-fluid-custom-mobile-padding-02 > div.tt-product-listing.row > div > div > div {
+            display: inline-flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      }
+      .pagecollection h2.tt-title.prod-thumb-title-color {
+      margin-top: 0 !important;
+      padding-top: 0;
+      width: auto;
+      text-align: left;
+      line-height: normal;
+        font-family: 'MikadoMedium' !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+        color: #06374F;
+        margin-bottom: 6px;
+  }
+      .pagecollection .tt-col-item .tt-image-box .tt-img {
+      height: auto !important;
+  }
+      .tt-product .tt-image-box .tt-img img, .tt-product-design02 .tt-image-box .tt-img img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+  }
+      .pagecollection .tt-product-listing.tt-col-one .tt-product .tt-description, .tt-product-listing.tt-col-one .tt-product-design02 .tt-description {
+
+      left: 0;
+      padding: 0px !important;
+      margin: 0px !important;
+      width: 100%;
+            margin-left: 10px !important;
+  }
+      .tt-product:not(.tt-view).product-nohover .tt-description .tt-product-inside-hover {
+      margin: 10px 0;
+  }
+      .tt-product .tt-description .tt-product-inside-hover>* {
+      margin-top: 12px;
+      display: block;
+      margin: 0 3rem;
+      padding: 5px 0px;
+  }
+      .metaagecoll {
+      border: 1px solid #D8ECFF;
+      border-radius: 4px;
+      width: auto;
+      padding: 0 8px;
+      background: #D8ECFF;
+      margin: 0px;
+      font-size: 12px;
+  }
+      .pagecollection .metaagecoll {
+      display: inline-block !important;
+      margin-top: 0;
+      position: relative;
+  }
+      p.metcoll {
+      text-align: center;
+      font-family: 'Avenir';
+      font-size: 12px;
+      color: #3980C3;
+      margin: 0px;
+      font-weight: 800;
+  }
+      .pagecollection .tt-product-listing>.tt-col-item {
+      border: none;
+  }
+      .tt-col-one .tt-col-item:before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      border-top: 1px solid #e9e7e7;
+      width: calc(100% - 20px);
+  }
+      .tt-product .tt-description .tt-price span {
+        font-family: 'MikadoMedium' !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: normal;
+  text-align: left;
+  color: #06374F;
+      }
+      .tt-product .tt-description .tt-price {
+      color: #f8353e;
+      min-height: auto !important;
+        padding: 5px 4px;
+        padding-right: 0;
+  }
+      .tt-product:not(.tt-view).product-nohover .tt-description .tt-product-inside-hover {
+      margin: 10px 0 !important;
+  }
+      .tt-product .tt-description .tt-btn-addtocart.thumbprod-button-bg {
+
+    }
+      .pagecollection button.tt-btn-addtocart.addtocart-item-js.thumbprod-button-bg {
+
+      font-family: 'MikadoMedium';
+
+      font-size: 16px !important;
+  }
+
+  .content-indent:not(:first-child) {
+    margin: 0px !important;
+  }
+      #collections_filter > h1 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: normal;
+      text-align: center;
+      opacity: 1.0;
+      color: #06374F;
+      margin: 0px !important;
+      padding: 0px !important;
+       text-transform: none;
+  }
+  .collection_desc {
+      font-family: 'AvenirRegular';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: normal;
+      text-align: center;
+      text-transform: none;
+      color: #06374F;
+  }
+      .pagecollection .tt-filters-options .tt-btn-toggle,.tt-filters-options .tt-sort {
+      position: relative;
+      }
+      .pagecollection .tt-filters-options .tt-btn-toggle, .tt-filters-options .tt-sort {
+      position: relative;
+      margin-top: 20px;
+  }
+      select.sort-position {
+      width: 100%;
+
+  }
+      .tt-filters-options .tt-sort {
+      width: 40%;
+  }
+      .tt-filters-options .tt-sort select:not(:first-child) {
+      margin-left: 0px;
+  }
+      .tt-filters-options + .tt-product-listing {
+      margin-top: 40px;
+  }
+      .show_unavailable_variants span {
+      font-family: 'AvenirRegular' !important;
+      text-transform: capitalize !important;
+  }
+      .sticky_filter_row {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+      top: 0px;
+      position: relative;
+  }
+      .tt-filters-options+.tt-product-listing {
+        margin-top: 20px !important;
+      }
+        .tt-product .tt-description .tt-btn-addtocart {
+          height: 30px !important;
+          margin-top: 20px !important;
+          border-radius: 2px !important;
+        }
+    }
+</style>

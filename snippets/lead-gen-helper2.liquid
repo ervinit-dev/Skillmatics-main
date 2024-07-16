@@ -1,0 +1,2404 @@
+<script>
+    
+    document.querySelectorAll('.theme-buttons.f1 label img').forEach((button) => {
+        button.addEventListener('click', (e) => {
+            remove('.theme-buttons.f1 label img');
+            e.srcElement.style.border = '5px solid #253ca7';
+            e.srcElement.style.backgroundColor = 'dodgerblue';
+            e.srcElement.style.opacity = 1;
+            
+            
+            const selectedColl=e.srcElement.attributes['value'].value;
+            setLocalData("category",selectedColl);
+            let productNew="";
+            let tempData=JSON.parse(localStorage.getItem("localData"));
+            if(tempData.sort!=""){
+                if(tempData.sort=="Price Low to High"){
+                    if(tempData.category!=""){
+                        if(tempData.category=="arts-crafts"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="puzzles-pretend-play"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="toddler-infants"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="learning-resources"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="card-board-games"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="stem-toys"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                    }
+                    else{
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products |sort: 'price' %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products |sort: 'price' %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products |sort: 'price' %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        } 
+                    }
+                }else if(tempData.sort=="Price High to low"){
+                    if(tempData.category!=""){
+                        if(tempData.category=="arts-crafts"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price'|reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price'|reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="puzzles-pretend-play"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price'|reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="toddler-infants"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="learning-resources"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' |reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price'|reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="card-board-games"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="stem-toys"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products |sort: 'price'|reverse %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products |sort: 'price' |reverse%}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                    }
+                    else{
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products |sort: 'price' |reverse%}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products |sort: 'price' |reverse%}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products |sort: 'price' |reverse%}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products |sort: 'price' |reverse%}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        } 
+                    }
+                }else{
+                    if(tempData.category!=""){
+                        if(tempData.category=="arts-crafts"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "arts-crafts" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="puzzles-pretend-play"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "puzzles-pretend-play" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="toddler-infants"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "toddler-infants" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="learning-resources"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "learning-resources" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="card-board-games"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "card-board-games" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                        else if(tempData.category=="stem-toys"){
+                            if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                                productNew= `
+                                {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="3-6-years"){
+                                productNew= `
+                                {% assign productsData= collections['3-6-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="6-9-years"){
+                                productNew= `
+                                {% assign productsData= collections['6-9-years'].products  %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            }
+                            else if(tempData.ageGroup=="8-13-years"){
+                                productNew= `
+                                {% assign productsData= collections['8-13-years'].products %}
+                                {% for item in productsData %}
+                                    {% assign productCollections = item.collections | map: "handle" %}
+                                    {%if productCollections contains "stem-toys" %}
+                                        <label for="{{ item.id }}">
+                                            <div class="card">
+                                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                                <p class="title">{{ item.title }}</p>
+                                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                                <p class="price">
+                                                {{ item.price | money }}
+                                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    {%endif %}
+                                {% endfor %}`;
+                            } 
+                        }
+                    }
+                    else{
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products  %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products  %}
+                            {% for item in productsData %}
+                                <label for="{{ item.id }}">
+                                <div class="card">
+                                    <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                    <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                    <p class="title">{{ item.title }}</p>
+                                    <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                    <p class="price">
+                                    {{ item.price | money }}
+                                    <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                    </p>
+                                </div>
+                                </label>
+                            {% endfor %}`;
+                        } 
+                    }
+                }
+            }else{
+                if(tempData.category!=""){
+                    if(tempData.category=="arts-crafts"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "arts-crafts" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "arts-crafts" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "arts-crafts" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "arts-crafts" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                    else if(tempData.category=="puzzles-pretend-play"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "puzzles-pretend-play" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "puzzles-pretend-play" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "puzzles-pretend-play" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "puzzles-pretend-play" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                    else if(tempData.category=="toddler-infants"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "toddler-infants" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "toddler-infants" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "toddler-infants" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "toddler-infants" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                    else if(tempData.category=="learning-resources"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "learning-resources" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "learning-resources" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "learning-resources" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "learning-resources" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                    else if(tempData.category=="card-board-games"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "card-board-games" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "card-board-games" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "card-board-games" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "card-board-games" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                    else if(tempData.category=="stem-toys"){
+                        if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                            productNew= `
+                            {% assign productsData= collections['our-products-for-ages-0-3'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "stem-toys" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="3-6-years"){
+                            productNew= `
+                            {% assign productsData= collections['3-6-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "stem-toys" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="6-9-years"){
+                            productNew= `
+                            {% assign productsData= collections['6-9-years'].products  %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "stem-toys" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        }
+                        else if(tempData.ageGroup=="8-13-years"){
+                            productNew= `
+                            {% assign productsData= collections['8-13-years'].products %}
+                            {% for item in productsData %}
+                                {% assign productCollections = item.collections | map: "handle" %}
+                                {%if productCollections contains "stem-toys" %}
+                                    <label for="{{ item.id }}">
+                                        <div class="card">
+                                            <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                            <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                            <p class="title">{{ item.title }}</p>
+                                            <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                            <p class="price">
+                                            {{ item.price | money }}
+                                            <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                            </p>
+                                        </div>
+                                    </label>
+                                {%endif %}
+                            {% endfor %}`;
+                        } 
+                    }
+                }
+                else{
+                    if(tempData.ageGroup=="our-products-for-ages-0-3"){
+                        productNew= `
+                        {% assign productsData= collections['our-products-for-ages-0-3'].products %}
+                        {% for item in productsData %}
+                            <label for="{{ item.id }}">
+                            <div class="card">
+                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                <p class="title">{{ item.title }}</p>
+                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                <p class="price">
+                                {{ item.price | money }}
+                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                </p>
+                            </div>
+                            </label>
+                        {% endfor %}`;
+                    }
+                    else if(tempData.ageGroup=="3-6-years"){
+                        productNew= `
+                        {% assign productsData= collections['3-6-years'].products  %}
+                        {% for item in productsData %}
+                            <label for="{{ item.id }}">
+                            <div class="card">
+                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                <p class="title">{{ item.title }}</p>
+                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                <p class="price">
+                                {{ item.price | money }}
+                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                </p>
+                            </div>
+                            </label>
+                        {% endfor %}`;
+                    }
+                    else if(tempData.ageGroup=="6-9-years"){
+                        productNew= `
+                        {% assign productsData= collections['6-9-years'].products  %}
+                        {% for item in productsData %}
+                            <label for="{{ item.id }}">
+                            <div class="card">
+                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                <p class="title">{{ item.title }}</p>
+                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                <p class="price">
+                                {{ item.price | money }}
+                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                </p>
+                            </div>
+                            </label>
+                        {% endfor %}`;
+                    }
+                    else if(tempData.ageGroup=="8-13-years"){
+                        productNew= `
+                        {% assign productsData= collections['8-13-years'].products  %}
+                        {% for item in productsData %}
+                            <label for="{{ item.id }}">
+                            <div class="card">
+                                <input type="checkbox" id="{{ item.id }}" name="{{ item.title }}" value ="{{item.title}}" onclick="itemClicked({{item.id}})"/>
+                                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                                <p class="title">{{ item.title }}</p>
+                                <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                                <p class="price">
+                                {{ item.price | money }}
+                                <span class="compare-price"> {{ item.compare_at_price | money }}</span>
+                                </p>
+                            </div>
+                            </label>
+                        {% endfor %}`;
+                    } 
+                }
+            }
+           
+            
+            document.querySelector('.cards').innerHTML=productNew;
+            markCheckedProducts();
+            try{
+                aliReviewsAddRatingCollection()
+            }catch(e){
+                console.log(e)
+            }
+            if(document.querySelectorAll('.cards .card').length===0){
+                document.querySelector('.cards').innerHTML=`<div><span style="font-size:24px; padding:1rem;white-space: nowrap;">No product available</span></div>`
+            }
+        });
+      });
+</script>

@@ -1,0 +1,256 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+{% assign product1 = all_products[article.metafields.blog.bestseller_product_1] %}
+{% assign product2 = all_products[article.metafields.blog.bestseller_product_2] %}
+{% assign product3 = all_products[article.metafields.blog.bestseller_product_3] %}
+{% assign product4 = all_products[article.metafields.blog.bestseller_product_4] %}
+{%- if article.metafields.blog.bestseller_product_1 != blank -%}
+  <div class="bestseller-section">
+    <h2>Our Bestseller</h2>
+    <div class="carousel owl-carousel">
+      <div class="card">
+        <img src="{{ product1.featured_image | img_url: 'medium' }}" alt="{{ product1.title }}">
+        <a class="product_title" href="{{ product1.url }}" target="_self">{{ product1.title }}</a>
+        <div
+          product-id="{{ product1.id }}"
+          product-handle="{{ product1.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="product_prices">
+          {{ product1.price | money }}
+          {% if product1.compare_at_price > product1.price %}
+            <span>{{ product1.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+        <div class="product_atc">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product1.variants.first.id }}">
+            <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+            <input type="submit" value="Add to cart" class="product_btn">
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{{ product2.featured_image | img_url: 'medium' }}" alt="{{ product2.title }}">
+        <a class="product_title" href="{{ product2.url }}" target="_self">{{ product2.title }}</a>
+        <div
+          product-id="{{ product2.id }}"
+          product-handle="{{ product2.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="product_prices">
+          {{ product2.price | money }}
+          {% if product2.compare_at_price > product2.price %}
+            <span>{{ product2.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+        <div class="product_atc">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product2.variants.first.id }}">
+            <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+            <input type="submit" value="Add to cart" class="product_btn">
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{{ product3.featured_image | img_url: 'medium' }}" alt="{{ product3.title }}">
+        <a class="product_title" href="{{ product3.url }}" target="_self">{{ product3.title }}</a>
+        <div
+          product-id="{{ product3.id }}"
+          product-handle="{{ product3.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="product_prices">
+          {{ product3.price | money }}
+          {% if product3.compare_at_price > product3.price %}
+            <span>{{ product3.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+        <div class="product_atc">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product3.variants.first.id }}">
+            <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+            <input type="submit" value="Add to cart" class="product_btn">
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{{ product4.featured_image | img_url: 'medium' }}" alt="{{ product4.title }}">
+        <a class="product_title" href="{{ product4.url }}" target="_self">{{ product4.title }}</a>
+        <div
+          product-id="{{ product4.id }}"
+          product-handle="{{ product4.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="product_prices">
+          {{ product4.price | money }}
+          {% if product4.compare_at_price > product4.price %}
+            <span>{{ product4.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+        <div class="product_atc">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product4.variants.first.id }}">
+            <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+            <input type="submit" value="Add to cart" class="product_btn">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+<script>
+  $(window).on('load', function (){
+    $(".owl-carousel").owlCarousel({
+      margin: 10,
+      center:false,
+      items: 4,
+      loop: false,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: false,
+      responsive: {
+        0: {
+          items: 2,
+          nav: false
+        },
+        600: {
+          items: 4,
+          nav: false
+        },
+        1000: {
+          items: 4,
+          nav: false
+        }
+      }
+    });
+    });
+</script>
+
+<style>
+    .bestseller-section {
+        background: #E9F4F9;
+        padding: 2rem 16%;
+        width: 100%;
+    }
+
+    @media (max-width: 890px) {
+      .bestseller-section {
+      padding: 16px !important;
+      width: 100% !important;
+      }
+    }
+
+    .bestseller-section h2 {
+        font-family: MikadoBold !important;
+        font-size: 32px !important;
+        font-weight: 500;
+        line-height: normal;
+        text-align: center !important;
+        padding-bottom: 24px !important;
+    }
+
+      @media (max-width: 890px) {
+       .bestseller-section h2  {
+          font-size: 28px !important;
+      }
+    }
+
+    .carousel {
+        width: 100%;
+    }
+
+    .card {
+        background: #fff;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border-radius: 11px;
+      box-shadow: 0px 4px 16px 0px #00000014;
+
+    }
+
+    @media (max-width: 890px) {
+      .card {
+      padding: 0.6rem !important;
+      gap: 4px !important;
+    }
+    }
+
+    a.product_title {
+        font-family: MikadoMedium;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: left;
+        color: #06374F !important;
+      display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: auto;
+    }
+
+        @media (max-width: 890px) {
+        a.product_title {
+      font-size: 16px !important;
+
+  }
+        }
+
+    .product_prices {
+        font-family: AvenirMedium;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: left;
+        color: #06374F !important;
+    }
+
+        @media (max-width: 890px) {
+          .product_prices {
+            font-size: 18px !important;
+          }
+        }
+
+    .product_prices span {
+        font-size: 16px;
+        color: #607F8E !important;
+        text-decoration: line-through;
+    }
+
+        @media (max-width: 890px) {
+          .product_prices span {
+            font-size: 16px !Important;
+          }
+        }
+
+    .product_btn {
+        width: 100%;
+        border: 2px solid #FF805A;
+        border-radius: 4px;
+        padding: 8px;
+        font-family: MikadoMedium;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: center;
+        color: #FF805A !important;
+    }
+
+        @media (max-width: 890px) {
+         .product_btn {
+           font-size: 18px !important;
+                       padding: 4px !important;
+          }
+        }
+</style>
+
+<script>
+  $(window).on('load', function (){
+      $(".owl-carousel").owlCarousel();
+    });
+</script>

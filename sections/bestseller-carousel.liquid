@@ -1,0 +1,280 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+{% assign product1 = all_products[article.metafields.blog.bestseller_product_1] %}
+{% assign product2 = all_products[article.metafields.blog.bestseller_product_2] %}
+{% assign product3 = all_products[article.metafields.blog.bestseller_product_3] %}
+{% assign product4 = all_products[article.metafields.blog.bestseller_product_4] %}
+
+<div class="your-class">
+  <div>
+    <div class="product-card">
+      <img
+        src="{{ product1.featured_image | img_url: 'medium' }}"
+        alt="{{ product1.title }}"
+        class="product-image"
+      >
+      <a class="product-title" href="{{ product1.url }}" target="_self">{{ product1.title }}</a>
+      <div
+        product-id="{{ product1.id }}"
+        product-handle="{{ product1.handle }}"
+        class="alireviews-review-star-rating"
+      ></div>
+      <div class="product-prices">
+        {{ product1.price | money }}
+        {% if product1.compare_at_price > product1.price %}
+          <span>{{ product1.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+      <div class="product-atc">
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product1.variants.first.id }}">
+          <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+          <input type="submit" value="Add to cart" class="product-btn">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="product-card">
+      <img
+        src="{{ product2.featured_image | img_url: 'medium' }}"
+        alt="{{ product2.title }}"
+        class="product-image"
+      >
+      <a class="product-title" href="{{ product2.url }}" target="_self">{{ product2.title }}</a>
+      <div
+        product-id="{{ product2.id }}"
+        product-handle="{{ product2.handle }}"
+        class="alireviews-review-star-rating"
+      ></div>
+      <div class="product-prices">
+        {{ product2.price | money }}
+        {% if product2.compare_at_price > product2.price %}
+          <span>{{ product2.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+      <div class="product-atc">
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product2.variants.first.id }}">
+          <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+          <input type="submit" value="Add to cart" class="product-btn">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="product-card">
+      <img
+        src="{{ product3.featured_image | img_url: 'medium' }}"
+        alt="{{ product3.title }}"
+        class="product-image"
+      >
+      <a class="product-title" href="{{ product3.url }}" target="_self">{{ product3.title }}</a>
+      <div
+        product-id="{{ product3.id }}"
+        product-handle="{{ product3.handle }}"
+        class="alireviews-review-star-rating"
+      ></div>
+      <div class="product-prices">
+        {{ product3.price | money }}
+        {% if product3.compare_at_price > product3.price %}
+          <span>{{ product3.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+      <div class="product-atc">
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product3.variants.first.id }}">
+          <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+          <input type="submit" value="Add to cart" class="product-btn">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="product-card">
+      <img
+        src="{{ product4.featured_image | img_url: 'medium' }}"
+        alt="{{ product4.title }}"
+        class="product-image"
+      >
+      <a class="product-title" href="{{ product4.url }}" target="_self">{{ product4.title }}</a>
+      <div
+        product-id="{{ product4.id }}"
+        product-handle="{{ product4.handle }}"
+        class="alireviews-review-star-rating"
+      ></div>
+      <div class="product-prices">
+        {{ product4.price | money }}
+        {% if product4.compare_at_price > product4.price %}
+          <span>{{ product4.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+      <div class="product-atc">
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product4.variants.first.id }}">
+          <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1">
+          <input type="submit" value="Add to cart" class="product-btn">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="/collections/best-sellers"><h4 class="view_all_btn">View all</h4></a>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.your-class').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+    });
+  });
+</script>
+
+<style>
+      .product-card {
+      background: #fff;
+      box-shadow: 0px 4px 16px 0px #00000014;
+      border-radius: 11px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+
+  .product-image {}
+
+  .product-title {
+      font-family: 'MikadoMedium';
+      font-size: 20px;
+      line-height: normal;
+      text-align: left;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #06374F;
+  }
+
+  .product-prices {
+      font-family: 'AvenirMedium';
+      font-size: 20px;
+  }
+
+  .product-prices span {
+      font-size: 16px;
+      font-family: 'AvenirRegular';
+      color: #607F8E;
+      text-decoration: line-through;
+  }
+
+  .product-btn {
+      border: 2px solid #FF805A;
+      border-radius: 4px;
+      width: 100%;
+      font-family: 'MikadoMedium';
+      font-size: 20px;
+      text-align: center;
+      color: #FF805A;
+      padding: 8px;
+    cursor: pointer;
+  }
+
+  .alireviews-review-star-rating {
+      font-family: 'AvenirMedium';
+      color: #06374F;
+      margin: 0;
+  }
+
+  div.alireviews-review-star-rating>div {
+      margin: 0;
+  }
+
+  .alireviews-review-star-rating .alr-wh-star-rating-average-number {
+      margin-bottom: 0 !important;
+  }
+
+  .alireviews-review-star-rating .alr-wh-star-rating {
+      padding-bottom: 0 !important;
+  }
+
+  .view_all_btn {
+      font-family: 'MikadoRegular';
+      font-size: 20px;
+      line-height: normal;
+      text-align: center;
+      text-decoration: underline;
+      color: #3980C3;
+  }
+
+  .slick-slider .slick-dots {
+    margin: 0;
+    padding: 0;
+    position: unset;
+  }
+
+  @media (max-width: 890px) {
+    .product-card {
+    padding: 8px;
+    gap: 6px;
+  }
+    .product-title {
+      font-size: 18px;
+    }
+    .product-prices {
+      font-size: 18px;
+    }
+    .product-btn {
+      font-size:18px;
+      padding: 6px;
+    }
+    .view_all_btn {
+      font-size: 18px;
+      margin: 1rem 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Carousel on Blog",
+  "settings": []
+}
+{% endschema %}

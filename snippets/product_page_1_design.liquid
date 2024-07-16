@@ -1,0 +1,22 @@
+<div class="container-indent">
+
+  {% include "product_page_1_gallery" type: 'mobile' %}
+  
+  <div class="container container-fluid-mobile">
+    <div class="row">
+      {% include "product_page_1_gallery" type: item.gallery_type %}
+      
+      <div class="col-6">
+        {%- unless  product.metafields.pdp.popupVideo  == blank -%}
+        <div class="item tttt">
+          <div data-value="{{ product.metafields.pdp.popupVideo }}" class="video-link-product mob" data-toggle="modal" data-type="youtube" data-target="#modalVideoProduct">
+            <i class="icon-f-32"></i>
+         
+          </div>
+        </div>
+        {%- endunless -%}
+      	{% include "product_page_1_description" %}
+      </div>
+    </div>
+  </div>
+</div>

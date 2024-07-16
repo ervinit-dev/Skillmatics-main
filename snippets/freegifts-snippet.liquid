@@ -1,0 +1,72 @@
+<style>
+  #sca-fg-today-offer-widget {
+    bottom: 90px !important;
+    right: 20px !important;
+}
+  @media only screen and (min-width: 768px) {
+    #sca-fg-today-offer-iframe {
+    bottom: 165px !important;
+}
+}
+
+  {% if template contains 'product' %}
+    @media only screen and (max-width: 767px) {
+      #sca-fg-today-offer-widget {
+          bottom: 170px !important;
+          right: 11px !important;
+      }
+       #sca-fg-today-offer-iframe {
+    z-index: 999999;
+}
+    }
+  {% endif %}
+
+  @media only screen and (min-width: 768px) {
+ #freegifts-main-popup-container div.sca-modal-dialog-fg {
+     width: 43% !important;
+}
+}
+  /* .whatsapp-button {
+    bottom: 20px !important;
+    right: 20px !important;
+   
+} */
+#freegifts-main-popup-container div.sca-modal-dialog-fg {
+     background: #E9F4F9 !important;
+      font-family: 'Avenir LT Std 45 Book';
+}
+
+  .freegifts-main-container .fg-section-title {
+   font-family: 'MikadoMedium' !important;
+}
+  .freegifts-main-container .fg-section-title {
+    font-size: 20px !important;
+    padding: 20px 0 20px 0 !important;
+}
+
+  .freegifts-main-container .product-title {
+    font-size: 14px !important;
+    color: #06374f !important;
+}
+  .freegifts-main-container .d-flex.price-section {
+    font-size: 14px;
+}
+
+  .freegifts-main-container .d-flex.price-section {
+    justify-content: center !important;
+    gap: 8px;
+}
+   #sca-fg-today-offer-iframe .sca-fg-footer {
+    display: none !important;
+  }
+
+  .sca-fg-today-offer-title, .sca-fg-today-offer-subtitle, .sca-offer-title{
+    color: #06374f !important;
+  }
+
+  #sca-today-offer-wrap {
+    color: #06374f !important;
+    font-family: 'Avenir LT Std 45 Book';
+  }
+
+</style>

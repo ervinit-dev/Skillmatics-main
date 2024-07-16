@@ -1,0 +1,165 @@
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<style>
+      .collection-toolbar {
+      display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .collection-age-btns{
+        width: 25%;
+        margin: 0 auto;
+        margin-top: -3rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+  .hidden {
+    display: none;
+  }
+
+      @media only screen
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px) {
+          .collection-age-btns{
+    width: 50%;
+    }
+      }
+
+    @media only screen and (min-width: 1030px) and (max-width: 1366px) {
+      .collection-age-btns{
+    width: 50%;
+    }
+  }
+
+  @media only screen and (min-width: 1366px) and (max-width:1680px) {
+          .collection-age-btns{
+    width: 40%;
+    }
+  }
+
+
+      .collection-age-btns a {
+        padding: 8px 16px;
+        background: #fff;
+        color: #3980C3;
+        border-radius: 4px;
+        border: 1px solid #3980C3;
+        font-family: AvenirRegular;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: left;
+      }
+
+      .slick-slide {
+        padding:unset;
+      }
+
+      .slick-track {
+        margin: 1rem;
+      }
+
+      @media (max-width: 890px) {
+        .collection-toolbar {
+            flex-wrap: wrap;
+        }
+        .collection-filter-btn {
+            width: 40%;
+            order: 1;
+        }
+        .collection-age-btns {
+          order: 3;
+          width: 100%;
+          padding: 1rem 0;
+          margin-top: -10px;
+          order: 3;
+          width: 100%;
+          padding: 1rem 0;
+          margin-top: -10px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-content: center;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .collection-sort-btn {
+          order: 2;
+          display: flex;
+          align-items: center;
+          gap: 2px;
+
+        }
+
+        .collection-age-btns a {
+          padding: 4px 16px;
+          font-size: 18px;
+
+      }
+
+        .pagecollection .tt-filters-options .tt-btn-toggle {
+          margin-top: 0 !important;
+        }
+        select.sort-position {
+              padding: 6px;
+            font-size: 16px;
+        font-family: 'AvenirMedium';
+                border: 1px solid rgba(6, 55, 79, 1);
+          border-radius: 4px;
+          background: #fff !Important;
+
+        }
+        #collections_filter > div.collection-toolbar > div.collection-sort-btn > span {
+          font-size: 16px;
+          font-family: 'AvenirMedium' !important;
+          color: #06374F !important;
+        }
+        .tt-filters-options .tt-btn-toggle a {
+          top: 0;
+        }
+        .slider-track {
+          padding: 0 !important;
+        }
+
+        .slick-track {
+        margin-left: 26px !important;
+        }
+
+        .slick-slide {
+          margin: 0 -26px !important;
+        }
+
+        .slick-list {
+          padding: 0 !important;
+        }
+      }
+</style>
+
+<div class="collection-age-btns filtres-js">
+  <div><a class="03" href="0-3-years">0-3</a></div>
+  <div><a class="36" href="3-6-years">3-6</a></div>
+  <div><a class="69" href="6-9-years">6-9</a></div>
+  <div><a class="813" href="8-13-years">8-13</a></div>
+  <!-- <div><a href="all-ages">All Ages</a></div> -->
+  <div class="filtres-remove-js">
+    <a href="/collections/{{ collection.handle }}" class="filtres-remove-js clear_all">Clear All</a>
+  </div>
+</div>
+
+{% assign collection_handles = '0-3years,our-products-for-ages-0-3,3-6-years,6-9-years,8-13-years' | split: ',' %}
+{% if collection_handles contains collection.handle %}
+  <style>
+    .collection-age-btns {
+      display: none;
+    }
+  </style>
+{% endif %}

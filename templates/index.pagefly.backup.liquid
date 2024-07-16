@@ -1,0 +1,12 @@
+{{ content_for_index }}
+<script>
+  if(window.innerWidth < 450){
+    var set_int = setInterval(function(){
+      if($('.tt-product').length){
+		    $('.tt-product').css({'display': 'flex', 'flex-direction': 'column', 'justify-content': 'space-between',
+    	'min-height': '270px'})
+					clearInterval(set_int);
+		}
+    })
+	}
+</script>

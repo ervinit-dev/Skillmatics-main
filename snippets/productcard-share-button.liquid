@@ -1,0 +1,106 @@
+<style>
+  img.shareimg {    object-fit: contain;
+    max-width: 18px;
+    max-height: 18px;
+}
+  .pcard-sharebtn.menu__btn svg {
+    width: 18px;
+    height: 18px;
+}
+  .productcardatc { max-height: 44px;}
+  .prouctatc-cardbtn {
+    display: grid;
+    align-content: center;
+    grid-template-columns: auto 20%;
+    max-width: 100%;
+    align-items: center;
+}
+  @media only screen and (max-width: 767px) {
+   .product-card-share.menu { max-height: 35px; border-radius: 2px; }
+    .prouctatc-cardbtn {gap:2px;}
+}
+   @media only screen and (min-width: 768px) {
+     .prouctatc-cardbtn   .tt-btn-addtocart { max-height: 44px;}
+    .product-card-share.menu { max-height: 44px; margin-right: 6px; border-radius: 6px; }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 800px) {
+    .product-card-share.menu {   margin-top: 13px; }
+}
+  @media only screen and (min-width:801px) {
+   .template-search.product-card-share.menu { margin-left: 5px; margin-right: 0!important;}
+   .product-card-share.menu {margin-right: 6px;}
+}
+ .product-card-share i.menu__btn-icon,.product-card-share  i.menu__icon {
+    font-size: 20px;line-height: 20px;
+}
+.product-card-share.menu {
+    position: relative;    cursor: pointer;
+    text-align: center;
+    background: #E9F4F9;    
+}
+.pcard-sharebtn.menu__btn {
+    padding-top: 3px;
+    background: #E9F4F9;
+    text-align: center;
+    width: 100%;
+    color: #3980c3;
+    height: 100%; border-radius: 6px;
+    position: absolute;
+    align-content: center;
+}
+   .pcard-sharebtn.menu__btn.active{   
+    color: #E9F4F9!important;    
+    background: #3980c3!important;
+  }
+.pcard-sharelinks.menu__list {
+  
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.pcard-sharelinks .menu__item {
+    padding: 5px 0;
+}
+.pcard-sharelinks.menu__list--open  {  
+    background: white;
+    opacity: 1!important;
+    visibility: visible!important;
+    transition: opacity 0.3s ease, visibility 0s;
+    /* Additional animation properties */
+    /* Example animation */
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+  position: absolute;
+    width: 100%;
+    bottom: 0px;z-index:2;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.linkcopymsg{font-size:10px;color:#3980c3;line-height:10px;font-family:'AvenirRegular';}
+</style>
+<script>
+    function copyProductcardUrl(url) {
+        navigator.clipboard.writeText(url);
+        var tooltipHtml = '<div class="linkcopymsg linktooltips-container">Link copied</div>';
+        var linkElement = event.target.closest('a');
+        linkElement.insertAdjacentHTML('afterend', tooltipHtml);
+        setTimeout(() => {
+            document.querySelectorAll('.linktooltips-container').forEach(el => el.remove());
+        },1000);
+    }
+  //toggle btn
+
+  function togglesharebtn(header) {
+    const content = header.nextElementSibling;
+    header.classList.toggle('active');
+    content.classList.toggle('menu__list--open');
+   
+  }
+
+
+
+</script>

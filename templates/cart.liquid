@@ -1,0 +1,148 @@
+{% comment %} <script>
+  window.location.replace('/')
+</script> {% endcomment %}
+<div class="container-indent nomargin{% if cart.item_count > 0 %} hide{% endif %} tt-empty-cart-js">
+  <div class="tt-empty-cart">
+    <span class="tt-icon icon-f-39"></span>
+    <h1 class="tt-title">Your cart is empty</h1>
+    <a href="/" class="btn ttbtnmainstyle">Continue shopping</a>
+  </div>
+</div>
+
+{%- comment -%}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{%- endcomment -%}
+
+<div class="line-items-box-js {% if cart.item_count == 0 %} hide{% endif %}">
+{% section 'cart-template' %}
+{% section 'free-gift-test' %}
+</div>
+
+<style>
+  #updateform > div.tt-shopcart-table-02 > div > div.col-right {
+    display:none;
+  }
+  .tt-empty-cart .btn {
+    background:#FF805A;
+    font-family:"MikadoMedium";
+    font-size:24px;
+    width:425px;
+    height:64px;
+    border-radius:4px;
+  }
+body.pagecart.loaded h1 {
+  font-size: 40px;
+  font-family: MikadoMedium;
+  color: #06374f;
+  text-transform: none;
+}
+.tt-title-subpages.noborder {
+    font-family: 'MikadoMedium' !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 54px;
+    color: #06374F !important;
+    margin-bottom: 40px;
+    opacity: 1.0;
+    text-transform: initial;
+  letter-spacing: initial;
+} 
+
+  .tt-shopcart-table-02 .tt-title a {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'MikadoRegular';
+    padding-right: 20px;
+    color: #06374F !important;
+}
+
+  .tt-shopcart-table-02 .tt-price:not(.subtotal),
+  .tt-shopcart-table-02 .tt-price,
+  .tt-shopcart-table01 tbody tr td
+  {
+    font-size: 22px;
+    font-weight: normal;
+    font-family: 'MikadoRegular' !important;
+    padding-right: 20px;
+    color: #06374F !important;
+}
+
+  #updateform > div.tt-shopcart-col > div > div:nth-child(3) > div > button {
+    background: #FF805A;
+    font-family: 'MikadoMedium';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: normal;
+text-align: center;
+letter-spacing: 0.08em;
+text-transform: initial;
+color: #FFFFFF;
+  }
+
+  body.pagecart.loaded th {
+    color: #06374F;
+    font-family: 'AvenirRegular' ;
+  }
+
+  .tt-shopcart-table01 tfoot tr td {
+font-family: 'MikadoMedium' !important;
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: normal;
+
+color: #06374F;
+    opacity: 1.0;
+    text-transform: initial;
+  }
+
+  .tt-shopcart-table01 tbody tr th {
+    font-weight: 500 !important;
+  }
+
+  @media (max-width: 640px) {
+    .tt-shopcart-table-02 .tt-title a {
+      font-size: 16px;
+    }
+    .tt-shopcart-table-02 .tt-price:not(.subtotal),
+    .tt-shopcart-table-02 .tt-price,
+    .tt-shopcart-table01 tbody tr td
+    {
+      font-size: 16px;
+    }
+    #updateform > div.tt-shopcart-table-02 > table > tbody > tr > td:nth-child(6) {
+      vertical-align: bottom;
+    }
+    #updateform > div.tt-shopcart-table-02 > table > tbody > tr > td:nth-child(2) > h2 {
+      margin-bottom: 0;
+    }
+    body.pagecart.loaded h1 {
+      font-size: 28px;
+    }
+    #updateform > div.tt-shopcart-col > div > div:nth-child(3) > div > button {
+      font-size:20px;
+      font-weight:normal;
+      
+    }
+    .tt-shopcart-table-02 .tt-title {
+      padding-right: 0px !important;
+    }
+    .tt-shopcart-table01 tfoot tr td {
+      font-size: 20px !important;
+    }
+    .tt-title-subpages.noborder {
+    font-family: 'MikadoMedium' !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: normal;
+    color: #06374F !important;
+    margin-bottom: 0px;
+    opacity: 1.0;
+    text-transform: initial;
+    letter-spacing: initial;
+} 
+  } 
+</style>

@@ -1,0 +1,508 @@
+<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- FAQ only for Desktop -->
+<style>
+/* FAQ Section before Container */
+.faq_wrapper {
+  background: #fff;
+  padding: 64px 0;
+}
+
+/* FAQ Container Box */
+.faq_container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* FAQ Section Heading */
+.faq_container h2 {
+  font-family: "MikadoMedium";
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  line-height: normal;
+  color: #06374f;
+
+  padding: 0 0 48px 0;
+  margin: 0;
+}
+
+  ul {
+    margin: 10px;
+    padding: 0;
+    list-style: disc;
+    list-style-position: inside;
+    display: list-item;
+    font-family: 'AvenirRegular';
+    color: #06374f;
+    font-size: 20px;
+    
+}
+
+  /* FAQ Section Heading */
+  h3.subheading {
+    display: inline-flex;
+    padding: 1rem;
+    padding-left: 0%!important;
+    font-family: AvenirRegular;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 44px;
+    color: #06374f;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px;
+    margin-top: 1rem;
+  }
+
+/* Single FAQ */
+.faq_single {
+  padding: 16px 0 0 0;
+  cursor: pointer !important;
+}
+
+.faq_single:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 16px;
+  border-bottom: 1px solid #616471;
+}
+
+/* FAQ Question */
+.faq_question h3 {
+  font-family: "AvenirRegular";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: normal;
+  color: #3980c3;
+  margin: 0;
+  text-align: left;
+}
+
+/* FAQ Open/Close Button */
+.faq_arrow {
+  font-size: 24px;
+  color: #3980c3;
+  float: right;
+  position: relative;
+  top: -25px;
+  right: 0;
+}
+
+/* FAQ Answer */
+.faq_answer p {
+  font-family: "AvenirRegular";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: normal;
+  text-align: left;
+  color: #06374f;
+}
+
+/* FAQ Page Link */
+.faq_link,
+.faq_link a {
+  font-family: "AvenirRegular";
+  font-weight: 800;
+  font-size: 24px;
+  line-height: normal;
+  text-align: center;
+  text-decoration: underline;
+  color: #3980c3;
+  padding: 24px 0 0 0;
+}
+
+/* Mobile Changes */
+
+@media (max-width: 480px) {
+  /* Mobile:FAQ Section before Container */
+  .faq_wrapper {
+    padding: 45px 0;
+  }
+
+  /* Mobile:FAQ Container Box */
+  .faq_container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Mobile:FAQ Section Heading */
+  .faq_container h2 {
+    font-size: 28px;
+    line-height: normal;
+
+    padding: 0 0 2rem 0;
+    margin: 0;
+  }
+
+  h3.subheading {
+    display: inline-flex;
+    padding: 1rem;
+    padding-left: 24px !important;
+    font-family: AvenirRegular;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: normal;
+    color: #06374f;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px;
+    margin-top: 1rem;
+}
+
+  /* Mobile: Single FAQ */
+  .faq_single {
+    padding: 16px 24px 0 24px;
+  }
+
+  /* Mobile:FAQ Question */
+  .faq_question h3 {
+    font-size: 16px;
+    padding-right: 15px;
+  }
+
+  /* Mobile:FAQ Answer */
+  .faq_answer p {
+    font-size: 16px;
+    margin: 16px 0 0 0;
+  }
+
+  /* Mobile:FAQ Page Link */
+  .faq_link,
+  .faq_link a {
+    font-size: 16px;
+    padding: 24px 0 0 0;
+  }
+
+  ul {
+    font-size: 16px;
+    margin: 10px auto;
+  }
+}
+</style>
+
+<div class="faq_wrapper">
+  <div class='faq_container'>
+    <h2>Frequently asked questions</h2>  
+
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What is Skillmatics?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Skillmatics is a global brand that develops innovative educational products and games that build core skills in children through the joy of play! Our mission is to offer families a smarter way to play and enable each child to realise their full potential - one Skillmatics product at a time!</p>
+      </div>
+    </div>
+    
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What products do we offer?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Skillmatics has a wide portfolio of over  200+ award winning products across 4 key categories - Learning & Education, Board & Card Games, STEM Building Toys and Preschool. We are growing our portfolio rapidly, so keep an eye out for new categories and products!</p>
+      </div>
+    </div>
+    
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How do we develop our products?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>At Skillmatics, we have a 100 member product team consisting of subject experts, educationalists, remedial instructors and design specialists who collaborate to create our innovative products. All our products are designed based on our unique learning framework which has been inspired by Kolb’s Learning Cycle and Harvard Gardner’s Theory of Multiple Intelligences.</p>
+      </div>
+    </div>
+    <h3 class="subheading">Product Safety:</h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Are Skillmatics products safe for my children?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Yes. Every Skillmatics product is 100% safe and non-toxic. All our products are in full compliance with American (ASTM), European (EN-71) and Indian (BIS) Safety Standards.</p>
+      </div>
+    </div>
+    
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What materials are used in the products?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Skillmatics is a new age brand that cares about the world our children will grow up in. We believe in using sustainable materials which is why our products are predominantly paper and wood based.</p>
+      </div>
+    </div>
+    <h3 class="subheading">Product Specific FAQs (Write & Wipe)</h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How long will the Skilly Billy marker last? </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>As with any writing instrument, this depends on the frequency of use. When not in use, markers that are stored horizontally with caps installed tightly can last for 1 year.        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How can I remove a stain caused by my Skilly Billy marker?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Stains on the activity mats can be removed with soap and water. Stains on fabrics are harder to remove. We suggest using regular detergent or baking soda.</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Can I use a regular dry erase / whiteboard marker on the Skillmatics Write and Wipe Activity Mats?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Yes, any regular dry erase / whiteboard marker will also work!</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Can the Skilly Billy marker be restored if it dries out?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>The markers can often be restored if there isn’t too much solvent loss. Place the cap back on the marker tightly and store it (tip down) for 24 hours. Once revived, store the marker in its normal horizontal position.</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Can I just buy the Skilly Billy Markers?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Unfortunately, we do not sell the Skilly Billy pens by themselves. You can, however,  use any white board marker on the sheets.</p>
+      </div>
+    </div>
+
+ <h3 class="subheading">Product Specific FAQs (Buildables)    </h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Are Buildables products safe for children?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Safety is our first priority, and we assure you our products are safe for children. All Buildables products are tested, and subsequently certified by testing labs.        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Where can I get some further guidance on how to build the product?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Every box comes with a detailed, step-by-step instruction manual, which we recommend you follow carefully. You must also track your progress at all the 'checkpoints', to make sure you are progressing correctly. You can also watch a free instructional video by scanning the QR code on the front of the box or on the Build Manual. If you have any further questions, feel free to contact us at help@skillmatics.in, we will be happy to help you!        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What if parts are missing/broken/wrong in my products?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>We have included extra essential parts in every product to ensure you do not face any problem in building your machine. If you have any further questions or queries, feel free to contact us at help@skillmatics.in, we will be happy to help you!        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What age is Buildables for? Can children below the specified age group use the product?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Buildables is designed for ages 8-15 years. However, we believe that with guidance, even children below our proposed age group can build and use Buildables products.         </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Do I need any additional tools to build the product?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>All the tools you need are provided in the Buildables box.
+
+        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Will the Buildables machine work as well as a factory-made machine?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>The Buildables range focuses on providing the experience of building a machine from scratch and teaching practical STEM skills. The product is a 'model' built by a child, with non-motorized technology. Therefore, it can only partially replicate a factory-machine to a certain level of performative accuracy. 
+        </p>
+      </div>
+    </div>
+ <h3 class="subheading">Payment    </h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What payment methods do you accept?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>We accept all valid debit cards, credit cards, payment wallets, and net banking.        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Do you offer cash on delivery?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Yes, we offer cash on delivery at a nominal charge of Rs 50 for all orders up to Rs 5,000       </p>
+      </div>
+    </div>
+
+     <h3 class="subheading">Shipping & Delivery:    </h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How long will my order take to be delivered to me?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>All orders are delivered within 3-5 working days across India.        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Where can I track my shipment?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>You will first receive an email confirming your order once it has been placed. Once your order has been dispatched, you will receive an email with the details of the tracking number and the courier company that is processing your order.  You can track the status of your package 24 hours after your order is dispatched from our warehouse or you can email us at help@skillmatics.in and we’ll do it for you. You can expect a response from us within a day with your updated shipping status.</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Who are our trusted courier partners?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Blue Dart – http://www.bluedart.com/
+
+          <br/>Vamaship – https://ecom.vamaship.com/track/
+          
+          <br/>The Professional Couriers – http://www.tpcindia.com/ </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How much am I paying for shipping?
+
+        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>We offer free shipping on orders over Rs 400. For orders under Rs 400, a Rs 40 shipping fee is applicable.
+        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Does Skillmatics ship internationally?
+
+        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Yes! Please contact us at help@skillmatics.in to place an order for international shipping.
+
+        </p>
+      </div>
+    </div>
+    <h3 class="subheading">Returns & Exchanges:    </h3>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How do I return a product?         </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>To return an item back to Skillmatics please: 
+          <br> 
+        <ul>Email us at help@skillmatics.in with the name of the product you are returning, your order number and the reason for your return.        </ul>  
+      <ul>We will generate a pick up from your address with our trusted delivery partner.       </ul>    
+    <ul>We will refund your account once your return has been delivered to our warehouse. Refunds can take up to 10 business days to reflect on your credit card account.    </ul>  </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>What is our return policy?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>We offer returns within 30 days of purchase. Simply email us at help@skillmatics.in with your order number and we will have the product picked up.</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How do I exchange a product?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>We entertain exchanges only if there are items missing from the box. If you wish to exchange your product, please send us an email at help@skillmatics.in        </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How can I cancel an order that is placed?        </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p> You can cancel your order at any time. Simply email us at help@skillmatics.in with your order number and we will cancel the order.</p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>Bulk Discounts and Return Gifting </h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>Hosting a birthday party? Reach out to us at help@skillmatics.in for bulk discounts and special offers.         </p>
+      </div>
+    </div>
+    <div class="faq_single">
+      <div class="faq_question">
+        <h3>How long does it take for a product to get restocked?</h3>
+        <span class="faq_arrow plus-minus">+</span>
+      </div>
+      <div class="faq_answer" style="display: none;">
+        <p>
+          We try our best to keep pace with the rapidly growing demand for Skillmatics. However, there are times when a few of our products can get out of stock. You can typically expect “out of stock” items to be back in stock within 7 days.
+
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+  $(".faq_question").click(function () {
+    if ($(".faq_answer").is(":visible")) {
+      $(".faq_answer").slideUp(500);
+      $(".plus-minus").text("+");
+    }
+    if ($(this).next(".faq_answer").is(":visible")) {
+      $(this).next(".faq_answer").slideUp(500);
+      $(this).children(".plus-minus").text("+");
+    } else {
+      $(this).next(".faq_answer").slideDown(500);
+      $(this).children(".plus-minus").text("-");
+    }
+  });
+});
+</script>

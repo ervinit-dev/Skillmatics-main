@@ -1,0 +1,6 @@
+{%  comment %}{{ 'theme.css' | asset_url | stylesheet_tag }}{%  endcomment %}
+{{ 'theme.min.css' | asset_url | stylesheet_tag }}   
+{% if settings.use_rtl %}{{ 'style-rtl.css' | asset_url | stylesheet_tag }}{% endif %}
+{%  comment %}{{ 'custom.css' | asset_url | stylesheet_tag }}{%  endcomment %} 
+{{ 'custom.min.css' | asset_url | stylesheet_tag }} 
+{{ 'custom-page.css' | asset_url | stylesheet_tag }} 

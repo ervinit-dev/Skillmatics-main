@@ -1,0 +1,32 @@
+{{'https://areviewsapp.com/css/reviews_online.css' | stylesheet_tag}}<script src='https://areviewsapp.com/js_codes/areviews_main_jscodes.js' defer></script><div id='az_reviews' class='az_reviews AReviewsApp' data-product_id=''></div><script>
+
+var get_params = function(search_string) {
+
+  var parse = function(params, pairs) {
+    var pair = pairs[0];
+    var parts = pair.split('=');
+    var key = decodeURIComponent(parts[0]);
+    var value = decodeURIComponent(parts.slice(1).join('='));
+
+    // Handle multiple parameters of the same name
+    if (typeof params[key] === "undefined") {
+      params[key] = value;
+    } else {
+      params[key] = [].concat(params[key], value);
+    }
+
+    return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+  }
+
+  // Get rid of leading ?
+  return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+}
+var params = get_params(location.search);
+
+// Finally, to get the param you want
+params['product_id'];
+var el = document.querySelector('#az_reviews');
+el.setAttribute('data-product_id', params['product_id']);
+console.log( params['product_id']);
+</script><script type='text/javascript'>var customer_id = null;var success = false;var counter = 0;</script>{% if customer %}<script>customer_id = {{customer.id}}</script>{% endif %}<script>var product_id =  params['product_id'];</script><script src='https://areviewsapp.com/js_codes/areviews_app.js'></script><script>jQuery('#az_reviews').html('<img class=\'areviews_loading\' style=\'width: 180px; display: block; margin: 0 auto;\' src=\'https://areviewsapp.com/images/loading_icons/default/loading.gif\'>');</script>
+

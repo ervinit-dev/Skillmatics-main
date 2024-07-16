@@ -1,0 +1,160 @@
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+</link>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+    .comfort-stripe-desktop{
+    margin-top:45px;
+  }
+  .pagination-wrapper {
+  
+}
+.list-item{
+  cursor:pointer;
+}
+.list-unstyled{
+ list-style:none; 
+}
+.pagination__list {
+  display: flex;
+  margin: 2rem 0;
+  justify-content: center;
+  padding-left:0;
+}
+
+.pagination__list > li {
+  flex: 1 0 40px;
+  max-width: 40px;
+}
+
+.pagination__list > li:not(:last-child) {
+  margin-right: 5px;
+}
+ .pagination__list > li:nth-last-child(2) {
+  margin-right: 0px;
+}
+.pagination__item {
+  color: rgb(var(--color-foreground));
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 40px;
+  font-size:18px;
+  border-radius:2px;
+  border: 1px solid rgba(6, 55, 79, 0.16);
+  width: 100%;
+  padding: 0;
+  text-decoration: none;
+  background:#E9F4F9;
+}
+@media screen and (max-width: 552px){
+  .comfort-stripe-desktop{
+    margin-top:0;
+  }
+   .pagination-wrapper {
+  margin-top: 32px;
+}
+  .pagination__list > li {
+  flex: 1 0 32px;
+  max-width: 32px;
+}
+  .pagination__item{
+    font-size:16px;
+    height:32px;
+  }
+}
+a.pagination__item:hover::after {
+  height: 0.1rem;
+}
+
+.pagination__item .icon-caret {
+  height: 0.6rem;
+}
+
+
+.pagination__item::hover{
+ cursor: pointer;
+}
+
+
+
+
+.pagination__item--next:hover .icon {
+  transform: rotate(90deg) scale(1.07);
+}
+
+.pagination__item--prev .icon {
+  margin-right: -0.2rem;
+  transform: rotate(-90deg);
+}
+
+.pagination__item--prev:hover .icon {
+  transform: rotate(-90deg) scale(1.07);
+}
+
+.pagination__item-arrow:hover::after {
+  display: none;
+}
+.pagination__item--current{
+ background: #1D81C4;
+  color:white !important;
+}
+  .pagination__item--next1{
+    margin-right:10px !important;
+  }
+  .pagination__item--prev{
+  
+  background:white;
+}
+  .pagination__item--next{
+  margin-left:10px;
+  background:white;
+}
+</style>
+<div class="tt-listing-post{{ half }}">
+  {%- for article in blog.articles -%}
+  {%- include 'blog-listing-item' -%}
+  {%- endfor -%}
+  
+  {%- if paginate.parts.size > 0 -%}
+  <div class="cont">
+       <div class="product-pagintion">
+  
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list list-unstyled" role="list">
+      {%- if paginate.previous -%}
+        <li class="pagination__item--next1 list-item">
+          <a href = '{{ paginate.previous.url }}'  class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+         <i class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- for part in paginate.parts -%}
+        <li class="list-item">
+          {%- if part.is_link -%}
+            <a href=' {{ part.url }} ' class="pagination__item link" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <a role="link" aria-disabled="true" class="pagination__item pagination__item--current light" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+            {%- else -%}
+              <span class="pagination__item">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- if paginate.next -%}
+        <li class="list-item">
+          <a href = '{{  paginate.next.url }}' class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+          <i style="transform: rotate(180deg);" class="fa-sharp fa-solid fa-angle-left"></i>
+          </a>
+        </li>
+      {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+       </div>
+{%- endif -%}
+</div>

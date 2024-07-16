@@ -1,0 +1,117 @@
+{%- assign item = section.settings -%}
+<style>
+  .giffting-sec{  
+    background-position: center;      
+        background-size: cover;
+ background-repeat: no-repeat;
+ background-size: cover;}
+
+  .giffting-sec {
+    min-height: 280px;
+    align-content: center;
+}
+  .mailbtn img{
+    width: 23px;
+    margin-right: 10px;
+    object-fit: contain;
+    height: 23px;;
+}
+  a.mailbtn {
+    max-width: 300px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    margin: 5px 8px;
+    background: rgba(233, 244, 249, 1);
+    border: 1px solid rgba(57, 128, 195, 0.24);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+.btn-contacts {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin: 10px 0;
+}
+  a.mailbtn span{ text-decoration: underline;font-weight:500;text-align: center;}
+  .gifting-container{ padding: 10px 0;margin:0 auto;}
+      @media screen and (min-width: 750px) {
+        .btn-contacts {  margin: 22px 0;}
+        .section-gifting-subtitle { line-height: 26px; font-size: 20px!important;}
+   a.mailbtn span{font-size:18px;}
+     .gifting-container {  max-width: 450px;}
+  .giffting-sec{  background-image: url({{'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_bg.webp?v=1714287818'}});}
+} 
+    @media screen and (max-width: 749px) {
+      a.mailbtn span{font-size:16px;}
+    .gifting-container  {    max-width: 295px;}  
+       .btn-contacts {    flex-direction: column; place-items: center;}   
+ .giffting-sec{  background-image: url({{ 'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_bg.webp?v=1714287818'}});}
+}
+ 
+  
+</style>
+
+<div id="section-{{ section-id }}" class="giffting-sec ">
+  <div class="container">
+    <div class="offer-block-title">
+    
+    
+    </div>
+   <div class="gifting-container center text-center">
+  {% if section.settings.text1 != blank %}
+     <h1 class="color-brand font-d-MikadoMedium  font-MikadoMedium section-giftheading">{{ section.settings.text1 }}</h1>{% endif %}
+   {% if section.settings.text2 != blank %}   <span class="font-d-Mikado color-brand font-Mikado section-gifting-subtitle">{{ section.settings.text2 }}</span>{% endif %}
+      {% if section.settings.show-btn %} 
+     <div class="btn-contacts"> 
+    <a class="font-d-Avenir font-Avenir mailbtn" href="mailto:{{ section.settings.emailid }}"><img src="{{ 'email-white.png'| asset_url }}" alt="email" width="25px" height="25px"><span class="color-brand">{{ section.settings.emailid }}</span></a>
+    <a class="font-d-Avenir font-Avenir mailbtn" href="https://api.whatsapp.com/send?phone={{ section.settings.phoneno }}"><img src="{{ 'whatsapp-icon.png' | asset_url }}" alt="whatslink" width="25px" height="25px"><span class="color-brand">{{ section.settings.phoneno }}</span></a>
+     </div>
+     {% endif %}
+   </div>
+       
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Gift text",
+  "class": "index-section",
+  "settings": [
+      {
+        "type": "text",
+        "id": "text1",
+        "label": "Heading",
+        "default": "Have a birthday party or  an event coming up?!"
+      },
+     {
+        "type": "richtext",
+        "id": "text2",
+        "label": "text",
+        "default": "<p>Contact us for product recommendations and special discounts!</p>"
+      },
+     {
+          "type": "checkbox",
+          "id": "show-btn",
+          "label": "Show contacts"          
+   },  
+      {
+          "type": "text",
+          "id": "emailid",
+          "label": "Emailid"          
+   } ,
+      {
+          "type": "text",
+          "id": "phoneno",
+          "label": "Phone Number"          
+   } 
+  ],
+  "presets": [
+    {
+      "name": "Gift text",
+      "category": "Simple Section"
+    }
+  ]
+}
+{% endschema %}

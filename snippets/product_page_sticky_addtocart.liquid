@@ -1,0 +1,97 @@
+
+{%- if product.available and settings.satc_show -%}
+<div class="tt-fixed-product-wrapper" style="display: none;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6 col-lg-4 col-xl-3">
+        <div class="tt-fixed-product">
+          <div class="tt-img">
+<!--             <img src="{{ product.featured_image.src | product_img_url: 'x80' }}" alt="Sticky Image"> -->
+          </div>
+          <div class="tt-description">
+<!--             <h3 class="tt-title">{{ product.title }}</h3> -->
+            <div class="tt-price">
+<!--               <span class="new-price">$278</span>
+              <span class="old-price">$400</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-6 col-lg-4 col-xl-3">
+        <div class="tt-row-custom01">
+          <div class="col-item">
+            <div class="enqcrt">
+              <div id="crtad">
+            <a href="#" class="btn stickyaddtocart">ADD TO CART</a>
+              </div>
+            </div>
+<!--          <--   <div class="tt-input-counter style-01">
+              <span class="minus-btn"></span>
+              <input type="text" value="1" size="5">
+              <span class="plus-btn"></span>
+            </div> -->
+          </div>
+          <div class="bunowcust">
+              {%- form 'product', product -%}
+        <input type="hidden" class="input_variant" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <div class="buyinoneclick"
+         data-buttonname="{{ 'products.general.buy_now_button' | t }}"
+         data-loading="{{ 'products.general.loading' | t }}">
+      {{ form | payment_button }}
+    </div>
+        {%- endform -%}
+          </div>
+          <div class="col-item">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%- endif -%}
+
+
+
+
+
+<script>
+  
+    /* For buy now button */
+  function changeBuyNowName(){
+    var $buyinoneclick = $('.buyinoneclick');
+    var buttonname = $buyinoneclick.data("buttonname");
+    var loadname = $buyinoneclick.data("loading");
+    if($buyinoneclick.length == 0) return false;
+    $buyinoneclick.first().bind('DOMNodeInserted', function() {
+      $(this).unbind('DOMNodeInserted');
+      var $shopifypaymentbutton = $(this).find(".shopify-payment-button__button");
+      setTimeout(function(){
+        if($('.buyinoneclick').length){
+          $buyinoneclick.hide();
+          setTimeout(
+            function(){
+              if($(".shopify-payment-button__button").hasClass("shopify-payment-button__button--branded")){
+                $(".shopify-payment-button__button")
+                .on("click", function(){
+                  $('.buyinoneclick').replaceWith('<p class="tt-loading-text">' + loadname + '</p>')
+                })
+                .find('span[aria-hidden=true]').first().text(buttonname+' ');
+              }
+              else{
+                $(".shopify-payment-button__button")
+                .on("click", function(){
+                  $('.buyinoneclick').replaceWith('<p class="tt-loading-text">' + loadname + '</p>')
+                })
+                .text(buttonname);
+              }
+              $buyinoneclick.fadeIn()
+            }, 300);
+        }
+      }, 300);
+    });
+  }
+</script>

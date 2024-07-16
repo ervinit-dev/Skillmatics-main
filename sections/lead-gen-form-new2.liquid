@@ -1,0 +1,712 @@
+{% render 'lead-gen-css' %}
+ {% render 'customCheckbox' %} 
+{% render 'customRadio' %}
+  <div class="lead-gen-container page-width">
+    <div class="banner-q1">
+      <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_Banner.webp?v=1714738303"  loading="lazy" alt="gemform"  width="100%" height="100%" class="mob"/>
+      <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_Banner.webp?v=1714738303"  loading="lazy" alt="gemform"  width="100%" height="100%" class="desk"/>
+      {% render 'marqueeStrip' %}
+  </div>
+    
+    <div class="form-container3" style="display:block" id="step-2">
+      
+      {% comment %} <div class="heading-3 title">Please share the following details -</div> {% endcomment %}
+      <div class="heading-conatiner">
+        {% comment %} <p class="sub-heading">
+          We have a wide range of products to cater to all age groups. To help us serve you better, please share the details below:   
+        </p> {% endcomment %}
+      </div>
+      <form class="form" id="form">
+        <label >What age group are you looking at?<span style="font-size:18px">*</span></label>
+        <div style="margin-bottom:14px">(you can choose 1 or more options)</div>
+        <div class="theme-buttons-grid">
+          <label class="lgfcontainer age-checkbox">
+            <input type="checkbox" id="age-0" name="age-group" value="Ages 0-3" onchange="onChangeCheckbox()">
+            <span class="checkmark"></span>
+            <p>Ages 0-3</p>
+          </label>
+          <label class="lgfcontainer age-checkbox">
+            <input type="checkbox" id="age-3" name="age-group" value="Ages 3+" onchange="onChangeCheckbox()">
+            <span class="checkmark"></span>
+            <p>Ages 3+</p>
+          </label>
+          <label class="lgfcontainer age-checkbox">
+            <input type="checkbox" id="age-6" name="age-group" value="Ages 6+" onchange="onChangeCheckbox()">
+            <span class="checkmark"></span>
+            <p>Ages 6+</p>
+          </label>
+          <label class="lgfcontainer age-checkbox">
+            <input type="checkbox" id="age-8" name="age-group" value="Ages 8+" onchange="onChangeCheckbox()">
+            <span class="checkmark"></span>
+            <p>Ages 8+</p>
+          </label>
+          
+        </div>
+        <span class="age-group-error" style="display:none; margin-bottom:14px;">Please select atleast 1 option </span>
+        <label for="item-quantity">Quantity you’re looking at?<span style="font-size:18px">*</span></label>
+        <input type="text" name="item-quantity" placeholder="Enter the quantity here" onchange="quantityChange('quantitySM')" class="numberFieldlgf">
+        <div class="quantity-bundle-tag" style="display:none; background-color:#E9F4FA; padding:0.8rem;margin-bottom:1rem; font-size:16px; margin-top:-14px; font-family:'AvenirRegular'">For orders under 10 products, please checkout our 
+        <a href="/collections/bestsellers"><span style="color:#3980C3;text-decoration:underline">bestselling bundles</span> <span><svg style="margin-bottom: -2px;margin-left:6px;" xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+          <path d="M6.71344 7.55408L6.35988 7.20053L1.14999 1.99064C1.14997 1.99063 1.14995 1.99061 1.14994 1.99059C1.04639 1.88698 0.98822 1.7465 0.98822 1.60002C0.98822 1.45356 1.04637 1.3131 1.14988 1.2095C1.1499 1.20948 1.14992 1.20946 1.14994 1.20944C1.14995 1.20943 1.14997 1.20941 1.14999 1.20939C1.25359 1.10588 1.39405 1.04773 1.54051 1.04773C1.68699 1.04773 1.82748 1.1059 1.93108 1.20944L6.71344 7.55408ZM6.71344 7.55408L6.35988 7.90764L1.15349 13.114C1.05445 13.2179 0.999701 13.3564 1.00095 13.5C1.00221 13.6449 1.06032 13.7835 1.16276 13.8859C1.2652 13.9883 1.40377 14.0464 1.54864 14.0477C1.69229 14.049 1.83072 13.9942 1.93464 13.8952L7.88511 7.94471C7.88512 7.94469 7.88514 7.94467 7.88516 7.94466C7.98871 7.84105 8.04688 7.70056 8.04688 7.55408C8.04688 7.4076 7.98871 7.26712 7.88516 7.16351C7.88514 7.16349 7.88512 7.16348 7.88511 7.16346L1.93114 1.2095L6.71344 7.55408Z" fill="#3980C3" stroke="black"/>
+          </svg></span></a>  </div>
+        <span class="quantitySM" style="display:none; margin-bottom:14px;">Please enter a quantity </span>
+        <label for="amount">Budget per product?<span style="font-size:18px">*</span></label>
+        {% comment %} <input type="number" name="amount" placeholder="Enter the price here">  {% endcomment %}
+        {% comment %} <span class="amountSM" style="display:none">Amount is required*</span> {% endcomment %}
+        {% render 'price-range' %}
+
+        <label for="date-of-product">Estimated delivery date<span style="font-size:18px">*</span><span class="deleiveryExtratextDesk">(We deliver products within 2-5 business working days across India)</span></label>
+        <input name="date-of-product" type="date" style="width:100%" onchange="onChangeHandle('date-of-product','date-of-productSM')">
+        <span class="deleiveryExtratextMob">(We deliver products within 2-5 business working days across India)</span>
+        <span class="date-of-productSM" style="display:none; margin-bottom:14px;">Date is required*</span>
+        <label for="no">Contact number<span style="font-size:18px">*</span></label>
+        <input type="text" maxlength="10" name="number" id="mob_num" placeholder="Enter your phone number here" class="numberFieldlgf" onchange="onChangeHandleContact('number','numberSM','numberSMValid')">
+        <span class="numberSM" style="display:none; margin-bottom:14px;">Please enter your phone number</span>
+        <span class="numberSMValid" style="display:none; margin-bottom:14px;">Invalid phone number</span>
+        <label for="name">Name<span style="font-size:18px">*</span></label>
+        <input type="text" name="name" placeholder="Enter your name here" onchange="onChangeHandle('name','nameSM')">
+        <span class="nameSM" style="display:none; margin-bottom:14px;">Name is required*</span>
+        {% comment %}<label for="mail" id="usr_email">Email ID<span style="font-size:18px">*</span></label>
+         <input name="mail" type="email" placeholder="Enter your email ID here" onchange="onChangeHandleContact('mail','mailSM','mailSMValid')">
+        <span class="mailSM" style="display:none; margin-bottom:14px;">Please enter your Email ID </span>
+        <span class="mailSMValid" style="display:none; margin-bottom:14px;">Invalid email ID</span> {% endcomment %}
+        {% comment %} <label for="mail" id="usr_email">What type of game are you interested in?</label>
+        <div style="margin-bottom:14px">(you can choose 1 or more options)</div>
+        <div class="theme-buttons-grid-2">
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-0" name="age-group" value="arts-crafts">
+            <span class="checkmark"></span>
+            <p>Arts & Crafts</p>
+          </label>
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-3" name="age-group" value="puzzles-pretend-play">
+            <span class="checkmark"></span>
+            <p>Puzzles & Pretend Play</p>
+          </label>
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-6" name="age-group" value="toddler-infants">
+            <span class="checkmark"></span>
+            <p>Toddlers & Infants</p>
+          </label>
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-8" name="age-group" value="learning-resources">
+            <span class="checkmark"></span>
+            <p>Learning Resources</p>
+          </label>
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-8" name="age-group" value="card-board-games">
+            <span class="checkmark"></span>
+            <p>Card & Board Games</p>
+          </label>
+          <label class="lgfcontainer theme-checkbox">
+            <input type="checkbox" id="age-8" name="age-group" value="stem-toys">
+            <span class="checkmark"></span>
+            <p>STEM Toys</p>
+          </label>
+        </div>
+        <label for="mail" id="usr_email" style="margin-top: 10px;">Have you previously purchased from us?</label>
+        <div class="theme-buttons-grid3" style="display: flex; gap:2rem; margin-top: 8px;">
+          <label class="lfgrcontainer theme-checkbox">
+            <input type="radio" id="age-0" name="age-group" value="yes" style='margin-bottom:0'>
+            <span class="lfgrcheckmark"></span>
+            <p>Yes</p>
+          </label>
+            
+          <label class="lfgrcontainer theme-checkbox">
+            <input type="radio" id="age-3" name="age-group" value="no" style='margin-bottom:0'>
+            <span class="lfgrcheckmark"></span>
+            <p>No</p>
+          </label>
+        </div> {% endcomment %}
+      </form>
+      <div class="next-back-button">  
+      <button class="submit formSubmit" onclick="formSubmit()">Submit</button>
+      </div>
+      <div class="footer-right">
+       
+        <p>
+          Please note - this page is for providing personalised support for bulk orders above 5 units. If you would like to buy our products for your tiny tot please check this -<br> <a href="/collections/all-ages">Shop All</a>
+        </p>
+      </div>
+    </div>
+    <div style="padding-top:2rem; display:none" id="step-3">
+    <div class="form-container4" style="margin-top:10px;" >
+      <div class="form-container4-inner">
+          <p>Thank you, We will get back to you in 24 hours to provide personalised recommendations</p>
+      </div>
+      
+      <div class="form-container4-note">
+          If you want to get in touch with us, you can call/ text on this number: <br><a href="https://wa.me/919152331018" target="_blank"><span style="font-weight:500; font-family: 'MikadoMedium'; color:#06374F; text-decoration: underline;">+919152331018</span></a>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="divider"></div>
+
+    <div class="themesHeading-head" style="padding:0.5rem 0;">Meanwhile, you can check out our Bestsellers</div>
+    <div data-test="for themes" >
+        <div class="themesHeading">
+          <div class="themesHeading-head" style="padding:1rem 0;"></div>
+          <a href="/collections/bestsellers" class="mob themesHeading-btn" style="width:fit-content"><span>View All</span></a>
+        </div>
+        <div class="cards">
+          {% assign productsData= collections['all-products'].products %}
+          {% for item in productsData limit:4%}
+            {%- assign pr_variant = item.selected_or_first_available_variant -%}
+              <div class="card">
+                <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+                <p class="title">{{ item.title }}</p>
+                <div product-id="{{ item.id }}" product-handle="{{ item.handle }}" class="alireviews-review-star-rating"></div>
+                <p class="price">
+                  {{ item.price |money}}
+                  <span class="compare-price"> {{ item.compare_at_price|money }}</span>
+                </p>
+                <div class="tt-row-btn">
+                  <form action="/cart/add" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="{{ pr_variant.id }}">
+                    <button
+                      onclick="btnpddesk()"
+                      data-soldout="Sold out"
+                      data-adding="Adding..."
+                      data-added="Thank you!"
+                      class="tt-btn-addtocart{% unless pr_variant.available %} disable{% endunless %} thumbprod-button-bg"
+                      {%- unless item.metafields.description.related_collection == blank -%}
+                        data-relatedcollection="{{ item.metafields.description.related_collection }}"
+                      {%- endunless -%}
+                    >
+                      {% unless pr_variant.available %}
+                        Sold out
+                      {% else %}
+                        {% if item.selected_or_first_available_variant.inventory_management == 'shopify'
+                          and item.selected_or_first_available_variant.inventory_policy == 'continue'
+                          and item.selected_or_first_available_variant.inventory_quantity <= 0
+                        %}
+                          {{ 'products.general.preorder_html' | t }}
+                        {% else %}
+                          Add to cart
+                        {% endif %}
+                      {% endunless %}
+                    </button>
+                  </form>
+                </div>
+              </div> 
+              
+          {% endfor %}
+        </div>
+        <div><a href="/collections/bestsellers" class="desk themesHeading-btn"><span>View All</span></a></div>
+    </div>
+    <div class="divider"></div>
+    <div class="themesHeading-head" style="padding:1rem 0;">Shop By Category</div>
+    <div data-test="for category">
+      <div class="theme-buttons-grid">
+          <a href="/collections/arts-crafts">
+          <label class="label" for="theme1"
+            ><img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_e297fcf1-830f-4d38-ac64-7f42260119f2.png?v=1708941108" id="Arts & Crafts" value="arts-crafts">
+            <h3>Arts & Crafts</h3>
+          </label>
+          </a>
+          <a href="/collections/puzzles-pretend-play">
+          <label class="label" for="theme2">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_2.png?v=1708942385"
+              id="Puzzles & Pretend Play"
+              value="puzzles-pretend-play"
+            >
+            <h3>Puzzles & Pretend Play</h3>
+          </label>
+          </a>
+          <a href="/collections/toddler-infants">
+          <label class="label" for="theme3">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_1.png?v=1708942385"
+              id="Toddlers & Infants"
+              value="toddler-infants"
+            >
+            <h3>Toddlers & Infants</h3>
+          </label>
+          </a>
+          <a href="/collections/learning-resources">
+          <label class="label" for="theme4">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_7.png?v=1708942385"
+              id="Learning Resources"
+              value="learning-resources"
+            >
+            <h3>Learning Resources</h3>
+          </label>
+          </a>
+          <a href="/collections/best-sellers">
+          <label class="label" for="theme5">
+              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_4.png?v=1708942385" id="STEM Toys" value="stem-toys">
+              <h3>Bestsellers</h3>
+          </label>
+          </a>
+          <a href="/collections/bundle-save">
+          <label class="label" for="theme5">
+              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_5.png?v=1708942385" id="STEM Toys" value="stem-toys">
+              <h3>Gift Bundles</h3>
+          </label>
+          </a>
+          <a href="collections/new-launches">
+          <label class="label" for="theme5">
+              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_6.png?v=1708942385" id="STEM Toys" value="stem-toys">
+              <h3>New Launches</h3>
+          </label>
+          </a>
+          <a href="collections/card-board-games">
+          <label class="label" for="theme5">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1_years_3.png?v=1708942385"
+              id="Card & Board Games"
+              value="card-board-games"
+            >
+            <h3>Card & Board Games</h3>
+          </label>
+          </a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="lead-gen-toast" style="display:none">
+      <span></span>
+  </div>
+  
+ 
+  <script>
+  
+    const url = new URL(location.href);
+    const searchParams = new URLSearchParams(url.search);
+    const UtmParams ={};
+    if(searchParams.size==1 && searchParams.has('success')){
+      window.history.replaceState(null, null, "/pages/lead-gen-form");
+    }else{
+      searchParams.forEach((value, key) => {
+        if(key.includes('utm') || key == 'gclid'){
+          UtmParams[`${key}`]=value;
+        }
+      }); 
+    }
+
+    function quantityChange(selector){
+        const value= 0 || parseInt(document.querySelector('[name=item-quantity]').value);
+        document.querySelector(`.${selector}`).style.display = "none";
+        document.querySelector("[name=item-quantity]").style.border="1px solid rgba(6, 55, 79, 0.16)";
+        if(value<10)
+        {
+            document.querySelector('.quantity-bundle-tag').style.display='block';
+        }else{
+            document.querySelector('.quantity-bundle-tag').style.display='none';
+        }
+    }
+    function onChangeHandle(selector, selectorError){
+      document.querySelector(`[name=${selector}]`).style.border="1px solid rgba(6, 55, 79, 0.16)";
+      document.querySelector(`.${selectorError}`).style.display = "none";
+    }
+    function onChangeHandleContact(selector, selectorError,selectorError2){
+      const inputSelector=document.querySelector(`[name=${selector}]`);
+      if(inputSelector.name=="number" && inputSelector.value.length ==10){
+        inputSelector.style.border="1px solid rgba(6, 55, 79, 0.16)";
+        document.querySelector(`.${selectorError}`).style.display = "none";
+        document.querySelector(`.${selectorError2}`).style.display = "none";
+      }
+      {% comment %} else if(inputSelector.name=="mail" && validateEmail(inputSelector.value)){
+        inputSelector.style.border="1px solid rgba(6, 55, 79, 0.16)";
+        document.querySelector(`.${selectorError}`).style.display = "none";
+        document.querySelector(`.${selectorError2}`).style.display = "none";
+      } {% endcomment %}
+    }
+
+    function onChangeCheckbox(){
+      const selectedAges=getAges();
+      if(selectedAges.length === 0){
+        document.querySelectorAll('.theme-buttons-grid .checkmark').forEach(item=>{
+          item.style.border="2px solid rgb(215, 61, 74)";
+        });
+        document.querySelector('.age-group-error').style.display='block';
+        formValid=false;
+      }else{
+        document.querySelectorAll('.theme-buttons-grid .checkmark').forEach(item=>{
+          item.style.border="2px solid #2196F3";
+        });
+        document.querySelector('.age-group-error').style.display='none';
+      }
+    }
+    window.onload=function(){
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementsByName("date-of-product")[0].setAttribute('min', today);
+    }
+    {% comment %} window.history.replaceState(null, null, "/pages/lead-gen-form");  {% endcomment %}
+    let localData1={
+        ageGroup:"",
+        sort:"",
+        category:"",
+    }
+    localStorage.setItem("localData",JSON.stringify(localData1))
+    
+    function getAges(){
+      const ages=[];
+      document.querySelectorAll('.theme-buttons-grid .age-checkbox input').forEach(item=>{
+        if(item.checked){
+          ages.push(item.value)
+        }
+      })
+      return ages;
+    }
+    {% comment %} function getThemes(){
+      const themes=[];
+      document.querySelectorAll('.theme-buttons-grid-2 .theme-checkbox input').forEach(item=>{
+        if(item.checked){
+          themes.push(item.value)
+        }
+      })
+      return themes;
+    } {% endcomment %}
+    {% comment %} function getPurchases(){
+      let themes='';
+      document.querySelectorAll('.theme-buttons-grid3 input').forEach(item=>{
+        if(item.checked){
+          themes= item.value;
+        }
+      })
+      return themes;
+    } {% endcomment %}
+    function toggleToast(message){
+        document.querySelector('.lead-gen-toast span').innerText=message;
+        document.querySelector('.lead-gen-toast').style.display='block';
+
+        setTimeout(()=>{
+        document.querySelector('.lead-gen-toast').style.display='none';
+        },2000)
+    }
+  </script>
+  <script>
+    function showProducts(data){
+      if(data[0]=="Ages 0-3"){
+        {% assign productsData2= collections['our-products-for-ages-0-3'].products %}
+      }else if(data[0]=="Ages 3+"){
+        {% assign productsData2= collections['3-6-years'].products %}
+      }else if(data[0]=="Ages 6+"){
+        {% assign productsData2= collections['6-9-years'].products %}
+      }else if(data[0]=="Ages 8+"){
+        {% assign productsData2= collections['8-13-years'].products %}
+      }else{
+        {% assign productsData2= collections['all-products'].products %}
+      }
+    
+    {% comment %} {% assign productsData2= collections['all-products'].products %} {% endcomment %}
+  
+    document.querySelector('.cards').innerHTML=`
+    {% for item in productsData2 limit:4%}
+      {%- assign pr_variant = item.selected_or_first_available_variant -%}
+        <div class="card">
+          <img src="{{ item.featured_image | product_img_url:"large" }}" width="150px" height="100px">
+          <p class="title">{{ item.title }}</p>
+          <div product-id="{{ item.id }}" product-handle="{{ item.handle }}" class="alireviews-review-star-rating"></div>
+          <p class="price">
+            {{ item.price |money}}
+            <span class="compare-price"> {{ item.compare_at_price|money }}</span>
+          </p>
+          <div class="tt-row-btn">
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="{{ pr_variant.id }}">
+              <button
+                onclick="btnpddesk()"
+                data-soldout="Sold out"
+                data-adding="Adding..."
+                data-added="Thank you!"
+                class="tt-btn-addtocart{% unless pr_variant.available %} disable{% endunless %} thumbprod-button-bg"
+                {%- unless item.metafields.description.related_collection == blank -%}
+                  data-relatedcollection="{{ item.metafields.description.related_collection }}"
+                {%- endunless -%}
+              >
+                {% unless pr_variant.available %}
+                  Sold out
+                {% else %}
+                  {% if item.selected_or_first_available_variant.inventory_management == 'shopify'
+                    and item.selected_or_first_available_variant.inventory_policy == 'continue'
+                    and item.selected_or_first_available_variant.inventory_quantity <= 0
+                  %}
+                    {{ 'products.general.preorder_html' | t }}
+                  {% else %}
+                    Add to cart
+                  {% endif %}
+                {% endunless %}
+              </button>
+            </form>
+          </div>
+        </div> 
+        
+    {% endfor %}`
+
+    try{
+      aliReviewsAddRatingCollection()
+    }catch(e){
+        console.log(e)
+    }
+  }
+  </script> 
+  <script>
+      const mutation=`mutation GenericForm($name:String!,$email:String!,$formName:String,$phone:String!,$responseBody:String!,$client:ID) {
+          genericFormCreate(
+              input: { name:$name,email:$email,formName:$formName,phone:$phone,responseBody:$responseBody,client:$client}
+          ) {
+              genericForm {
+              responseId
+              responseBody
+              formName
+              name
+              phone
+              email
+              client {
+                  clientName
+              }
+          
+              createdAt
+              id
+              }
+              genericFormErrors {
+              code
+              message
+              field
+              }
+          }
+      }`
+  
+    function validateEmail(input){
+          var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          if(input.match(validRegex)){
+            return true;
+          }
+          return false;
+    }
+    function formSubmit(){
+      console.log("helo form")
+      let formValid=true;
+      let formValid2=true;
+      let name="";
+      let email="dummy@dummy.com";
+      let mob="9999999999";
+      let quantity=0;
+      let amount=0;
+      let date="";
+      document.querySelectorAll(".form input").forEach((button) => {
+          if(button.name=="item-quantity"){
+               if(button.value){
+                   if( parseInt(button.value)>9){
+                    quantity=button.value;
+                    document.querySelector('.quantitySM').style.display="none";
+                  }else{
+                    document.querySelector('.quantitySM').style.display="none";
+                    document.querySelector("[name=item-quantity]").style.border="1px solid #D73D4A";
+                   formValid=false;
+                  }
+               }else{
+                
+                   document.querySelector('.quantitySM').style.display="block";
+                   document.querySelector("[name=item-quantity]").style.border="1px solid #D73D4A";
+                   formValid=false;
+               }
+           }
+          {% comment %} else if(button.name=="amount"){
+              if(button.value){
+                  amount=button.value;
+                  document.querySelector('.amountSM').style.display="none";
+              }else{
+                  document.querySelector('.amountSM').style.display="block";
+                  formValid=false;
+              }
+          } {% endcomment %}
+          else if(button.name=="date-of-product"){
+              if(button.value){
+                  date=button.value;
+                  document.querySelector('.date-of-productSM').style.display="none";
+              }else{
+                document.querySelector('.date-of-productSM').style.display="block";
+                document.querySelector("[name=date-of-product]").style.border="1px solid #D73D4A";
+                formValid=false;
+            }
+          } 
+          else if(button.name=="number"){
+              if(button.value){
+                  mob=button.value;
+                  document.querySelector('.numberSM').style.display="none";
+              }
+          }
+          else if(button.name=="name"){
+              if(button.value){
+                  name=button.value;
+                  document.querySelector('.nameSM').style.display="none";
+              }else{
+                  document.querySelector('.nameSM').style.display="block";
+                  document.querySelector("[name=name]").style.border="1px solid #D73D4A";
+                  formValid=false;
+              }
+          }
+          {% comment %} else if(button.name=="mail"){
+              if(button.value){
+                  email=button.value;
+                  document.querySelector('.mailSM').style.display="none";
+              }
+          }  {% endcomment %}
+      }) 
+      if(mob=="9999999999"){
+          formValid2=false;
+          {% comment %} document.querySelector('.mailSM').style.display="block"; {% endcomment %}
+          document.querySelector('.numberSM').style.display="block";
+          {% comment %} document.querySelector("[name=mail]").style.border="1px solid #D73D4A"; {% endcomment %}
+          document.querySelector("[name=number]").style.border="1px solid #D73D4A";
+      }
+      else if(mob!="9999999999" ){
+        let mobtemp= false;
+        {% comment %} let emailtemp= false; {% endcomment %}
+        if(mob.length==10){
+          document.querySelector('.numberSMValid').style.display="none";
+          {% comment %} document.querySelector('.mailSM').style.display="none"; {% endcomment %}
+          document.querySelector("[name=number]").style.border="1px solid rgba(6, 55, 79, 0.16)";
+            {% comment %} document.querySelector("[name=mail]").style.border="1px solid rgba(6, 55, 79, 0.16)"; {% endcomment %}
+          mobtemp=true;
+        }else{
+          document.querySelector('.numberSMValid').style.display="block";
+          document.querySelector("[name=number]").style.border="1px solid #D73D4A";
+          mobtemp=false;
+        }
+        {% comment %} if(validateEmail(email)){
+          document.querySelector('.mailSMValid').style.display="none";
+          document.querySelector('.numberSM').style.display="none";
+          document.querySelector("[name=number]").style.border="1px solid rgba(6, 55, 79, 0.16)";
+            {% comment %} document.querySelector("[name=mail]").style.border="1px solid rgba(6, 55, 79, 0.16)"; {% endcomment %}
+          emailtemp=true; 
+        }else{
+          document.querySelector('.mailSMValid').style.display="block";
+          document.querySelector("[name=mail]").style.border="1px solid #D73D4A";
+          emailtemp=false; 
+        } {% endcomment %}
+        formValid2=mobtemp ;
+      }
+      {% comment %} else if(mob!="9999999999") {
+        if(mob.length==10){
+            document.querySelector('.numberSMValid').style.display="none";
+            document.querySelector('.mailSM').style.display="none";
+            document.querySelector("[name=number]").style.border="1px solid rgba(6, 55, 79, 0.16)";
+            document.querySelector("[name=mail]").style.border="1px solid rgba(6, 55, 79, 0.16)";
+            formValid2=true;
+        }else{
+          document.querySelector('.numberSMValid').style.display="block";
+          document.querySelector("[name=number]").style.border="1px solid #D73D4A";
+          formValid2=false;
+        }
+        
+      } {% endcomment %}
+      {% comment %} else if(email!="dummy@dummy.com"){
+        if(validateEmail(email)){
+          document.querySelector('.mailSMValid').style.display="none";
+          document.querySelector('.numberSM').style.display="none";
+          formValid2=true; 
+        }else{
+          document.querySelector('.mailSMValid').style.display="block";
+          formValid2=false; 
+        }
+      } {% endcomment %}
+      {% comment %} else{
+          {% comment %} document.querySelector('.mailSM').style.display="none"; {% endcomment %}
+          document.querySelector('.numberSM').style.display="none";
+      } {% endcomment %}
+      const selectedAges=getAges();
+      {% comment %} const selectedTheme=getThemes(); {% endcomment %}
+      {% comment %} const selectedPurchases=getPurchases(); {% endcomment %}
+      if(selectedAges.length === 0){
+        document.querySelectorAll('.theme-buttons-grid .checkmark').forEach(item=>{
+          item.style.border="2px solid rgb(215, 61, 74)";
+        });
+        document.querySelector('.age-group-error').style.display='block';
+        formValid=false;
+      }else{
+        document.querySelectorAll('.theme-buttons-grid .checkmark').forEach(item=>{
+          item.style.border="2px solid #2196F3";
+        });
+        document.querySelector('.age-group-error').style.display='none';
+      }
+      if(formValid && formValid2){
+          fetch('https://farzionehapi.farziengineer.co/graphql/?source=website', {
+              method: 'POST',
+              headers: {
+                  'content-type': 'application/json',
+              },
+              body: JSON.stringify({
+                  query:mutation,
+                  variables: {
+                  name:name,
+                  email:email,
+                  formName:"leadGenForm",
+                  phone:`+91${mob}`,
+                  responseBody:JSON.stringify({
+                      ageGroups:selectedAges,
+                      {% comment %} themes:selectedTheme, {% endcomment %}
+                      quantity:quantity,
+                      priceRange:`${rangeInput[0].value} - ${rangeInput[1].value}`,
+                      delivery_date:date,
+                      {% comment %} havePurchased:selectedPurchases, {% endcomment %}
+                      utmParams:UtmParams,
+                  }),
+                  client:"Q2xpZW50OjEy"
+                  },
+              }),
+              })
+              .then(res => res.json())
+              .then(({data, errors})=> {
+                  if(errors && errors.length>0){
+                      toggleToast("Enter valid Data")
+                  }else{
+                  document.getElementById('step-2').style.display="none";
+                  document.getElementById('step-3').style.display="block";
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
+                  localStorage.setItem("formStep","3");
+                  document.querySelector(".banner-q1").style.display="none";
+                  showProducts(selectedAges)
+                  window.history.replaceState(null, null, "?success=true");  
+                  document.getElementById("form").reset();
+                  }
+              })
+      }
+    }
+    {% comment %} document.querySelector('.formSubmit').addEventListener('click', (e) => {
+      
+    }); {% endcomment %}
+    $('.numberFieldlgf').bind('input', function() {
+      var c = this.selectionStart,
+          r = /[^0-9]+$/,
+          v = $(this).val();
+      if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+      }
+      this.setSelectionRange(c, c);
+    });
+  </script>
+  <script>
+    $('.tt-btn-addtocart').click(function(event){
+      event.currentTarget.innerText = 'Adding...'
+      setTimeout(function(){
+          event.currentTarget.innerText = 'Thank you!'
+          setTimeout(function(){
+              event.currentTarget.innerText = 'Add to cart'
+          },500)
+      },500)
+    })
+  </script>
+  
+  {% schema %}
+  {
+    "name": "Lead-gen-form-new",
+    "tag": "section",
+    "settings": [],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Lead Gen Form New",
+        "settings": {}
+      }
+    ]
+  }
+  {% endschema %}
+  

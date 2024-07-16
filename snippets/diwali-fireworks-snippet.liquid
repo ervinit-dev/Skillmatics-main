@@ -1,0 +1,83 @@
+<div class="pyro" id="diwali-fireworks"></div>
+
+<style>
+
+.pyro {
+  display: block;
+  position: relative;
+  z-index: 999999;
+}
+  
+.pyro:before, .pyro:after {
+  content: "●";
+  font-size: 16px;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  text-shadow: -1px -49px #FF805A, 241px -338px #FF805A, -137px 145px #FF805A, -39px 8px #FF805A, 305px 123px #FF805A, 10px 36px #FF805A, -55px -305px #FF805A, -126px 58px #FF805A, 156px -279px #FF805A, -5px -129px #FF805A, -117px -232px #FF805A, -353px 94px #FF805A, -215px -24px #FF805A, 327px 53px #FF805A, 143px -319px #FF805A, 350px 49px #FF805A, 55px 107px #FF805A, 20px 196px #FF805A, -107px -222px #FF805A, -48px -75px #FF805A, -101px 158px #FF805A, -202px -167px #FF805A, -22px 129px #FF805A, 62px 24px #FF805A, -211px 396px #FF805A, 222px -214px #FF805A, 41px -407px #FF805A, -305px 304px #FF805A, -133px -248px #FF805A, -165px -370px #FF805A, 193px 244px #FF805A, -233px 276px #FF805A, 276px -236px #FF805A, -322px 175px #FF805A, -75px 406px #FF805A, 133px -83px #FF805A, 65px -376px #FF805A, -173px 347px #FF805A, 12px -145px #FF805A, 102px 275px #FF805A, 32px 40px #FF805A, -1px 0px #FF805A, 224px 31px #FF805A, -113px -79px #FF805A, 76px -264px #FF805A, 69px -125px #FF805A, 335px -85px #FF805A, 348px 47px #FF805A, 12px 11px #FF805A, -66px -51px #FF805A, -6px 104px #FF805A, -308px 296px #FF805A, -302px -119px #FF805A, -21px -18px #FF805A, -125px -5px #FF805A, -69px -315px #FF805A, 192px -210px #FF805A, 220px 337px #FF805A, -37px -20px #FF805A, -381px 94px #FF805A, -45px 30px #FF805A, -165px -6px #FF805A, -4px -389px #FF805A, 171px 203px #FF805A, -273px -265px #FF805A, -78px -466px #FF805A, -40px 62px #FF805A, -310px 53px #FF805A, 68px -226px #FF805A, -34px -136px #FF805A, 94px -223px #FF805A, 116px -304px #FF805A, 176px 19px #FF805A, -186px -415px #FF805A, 166px 23px #FF805A, 29px 308px #FF805A, 242px 76px #FF805A, -97px -413px #FF805A, 169px 433px #FF805A, -2px 0px #FF805A, -113px 202px #FF805A;
+  animation: 2s  bang      ease-out  infinite backwards, 2s  gravity   ease-out   infinite backwards, 10s  position  linear    infinite forwards;
+}
+
+.pyro:after {
+  animation-delay: -5s;
+  animation-duration: 2.5s, 2.5s, 14.5s;
+}
+
+@keyframes bang {
+  0%, 5% {
+    text-shadow: 0 0 transparent;
+  }
+  35% {
+    text-shadow: 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A, 0 0 #FF805A;
+  }
+}
+@keyframes gravity {
+  0%, 5% {
+    font-size: 120%;
+    opacity: 0;
+    transform: translateY(340px);
+    animation-timing-function: ease-out;
+  }
+  35% {
+    transform: translateY(0px);
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(1000px);
+    opacity: 0;
+    font-size: 0;
+    animation-timing-function: ease-in;
+  }
+}
+@keyframes position {
+  0%, 20% {
+    margin-top: 50vh;
+    margin-left: 60vw;
+    filter: hue-rotate(0deg);
+  }
+  20.1%, 40% {
+    margin-top: 10vh;
+    margin-left: 30vw;
+    filter: hue-rotate(72deg);
+  }
+  40.1%, 60% {
+    margin-top: 30vh;
+    margin-left: 40vw;
+    filter: hue-rotate(144deg);
+  }
+  60.1%, 80% {
+    margin-top: 60vh;
+    margin-left: 70vw;
+    filter: hue-rotate(216deg);
+  }
+  80.1%, 100% {
+    margin-top: 30vh;
+    margin-left: 80vw;
+    filter: hue-rotate(288deg);
+  }
+}
+
+</style>
+
+

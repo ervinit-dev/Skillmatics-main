@@ -1,0 +1,262 @@
+{%- if  section.blocks.size > 0 and section.settings.show_announcement_bar -%}
+<div class="hura-announcement-bar swiper-container offer-banner-revised">
+  <div class="hura-messages swiper-wrapper">
+    {%- for block in section.blocks -%}
+      <div class="hura-message swiper-slide">
+        <a href="{{block.settings.link}}">{{block.settings.message}}</a>
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="hura-swiper-button swiper-button-prev"></div>
+  <div class="hura-swiper-button swiper-button-next"></div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="moda1">
+
+  <!-- Modal content -->
+  <div class="moda1-content">
+    <span class="close">&times;</span>
+    <p style="margin:0;padding:0;">Offer not valid on combos, bundles & learning kits</p>
+  </div>
+
+</div>
+<style>
+  .hura-message.swiper-slide:not(.swiper-slide-active) a {
+    display: none;
+}
+/* The Modal (background) */
+.moda1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.moda1-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 40%; /* Could be more or less, depending on screen size */
+  font-family:"MikadoRegular";
+  font-size:20px;
+  text-align: center;
+  color: #06374F;
+}
+
+  @media (max-width:789px) {
+    .moda1-content {
+          width: 95%;
+    margin: 50% auto;
+    font-size: 18px;
+    }
+  }
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+  </style>
+
+  <script>
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("mdBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+if(btn){
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  </script>
+
+<script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    {%- if section.settings.autoplay %}
+    autoplay: {delay: {{section.settings.delay}} },
+    {%- endif -%}
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+<style>
+  h3.modalheading {
+    font-size: 20px;
+    color: #06374F;
+    font-family:"MikadoMedium";
+  }
+  #shopify-section-multi-announcement-bar {
+  background: #004E80;
+  }
+  
+  .snowfall {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #ffffff;
+  background-image: url('https://www.krasotaiskusstva.com/themes/merry-christmas/_images/snowh.png'), url('https://www.krasotaiskusstva.com/themes/merry-christmas/_images/snow3q.png'), url('https://www.krasotaiskusstva.com/themes/merry-christmas/_images/snow2l.png');
+  -webkit-animation: snow 20s linear infinite !important;
+  -moz-animation: snow 20s linear infinite !important;
+  -ms-animation: snow 20s linear infinite !important;
+  animation: snow 20s linear infinite !important;
+}
+
+/*----------------------------
+	.-- Key Frames
+-----------------------------*/
+@keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+@-moz-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+@-webkit-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+@-ms-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+  </style>
+<style>
+  .hura-announcement-bar{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .hura-announcement-bar .hura-message a{
+    color: white;
+    font-family: 'MikadoMedium';
+  }
+  .hura-announcement-bar .hura-message{
+    font-size: 16px !important;
+    padding: 8px 20px !important;
+    font-weight: 500 !important;
+    font-family: 'MikadoMedium';
+    text-align:center;
+    color:{{section.settings.colorText}};
+  }
+  .hura-announcement-bar .swiper-button-next:after, .hura-announcement-bar .swiper-container-rtl .swiper-button-prev:after,
+  .hura-announcement-bar .swiper-button-prev:after, .hura-announcement-bar .swiper-container-rtl .swiper-button-next:after{
+    font-size: 15px;
+    color:{{section.settings.colorText}};
+  }
+  {%- if  section.blocks.size < 2 %}
+  .hura-announcement-bar .hura-swiper-button{display:none!important;}
+  {%- endif -%}
+</style>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay"
+      },
+      {
+        "type": "text",
+        "id": "delay",
+        "label": "Delay between transitions (in ms)",
+        "default": "5000"
+      },
+      {
+        "type": "color",
+        "id": "colorBackground",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "colorText",
+        "label": "Text color",
+        "default": "#000"
+      }
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Message",
+        "settings": [
+{
+              "id": "message",
+              "type": "html",
+             "label": "Message"
+            },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+            }
+        ]
+      }
+]
+  }
+{% endschema %}
